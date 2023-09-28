@@ -1,0 +1,344 @@
+---
+title: "Introduction to Stats 67 and Data"
+author: "Mine Dogucu"
+execute:
+  echo: true
+format: 
+  revealjs:
+    footer: "[stats4cs.com](https://stats4cs.com)"
+    slide-number: true
+    incremental: true
+    theme: ["../templates/slide-style.scss"]
+    logo: "https://www.stats4cs.com/img/logo.png"
+    title-slide-attributes: 
+      data-background-image: "https://www.stats4cs.com/img/logo.png"
+      data-background-size: 5%
+      data-background-position: 50% 85%
+    include-after-body: "../templates/clean_title_page.html"
+---
+
+# Getting to Know Each Other
+
+## Merhaba
+
+Hello\
+`Private Sub Form_Load() MsgBox "Hello, World!" End Sub`\
+Hallo\
+مرحبا\
+`print('Hello world')`\
+नमस्ते & السلام عليكم\
+`print("Hello world")`\
+`<html> Hello world</html>`\
+¡Hola!\
+سلام
+
+## Meet and Greet Each Other
+
+In groups three or four meet and greet each other.
+
+Include
+
+Your name\
+Your year\
+I live ...\
+My favorite thing about UCI is ...\
+I am awesome because ...
+
+Find something in common between all of you by expanding the conversation.\
+Find a difference.
+
+# Getting to Know the Course
+
+## 
+
+::: font100
+The most important thing about this course
+:::
+
+[The course website](stats4cs.com)
+
+## What is Statistics?
+
+Think 💭 - Pair 👫🏽 - Share 💬
+
+What do you think statistics is about and what will we learn in this course? There is no correct or wrong answer.
+
+## How to be successful in this course
+
+- Be punctual
+- Be organized
+- Do the work
+
+## How to make your professor happy
+
+- Be kind
+- Be honest
+
+# Getting to Know the Toolbox
+
+## hello woRld
+
+<center>
+
+<video width="80%" height="45%%" align = "center" controls>
+  <source src="screencast/01a-hello-world.mp4" type="video/mp4">
+</video>
+
+</center>
+
+## Object assignment operator
+
+```{r}
+birth_year <- 1950
+```
+
+
+. . .
+
+|                            | Windows        | Mac              |
+|----------------------------|----------------|------------------|
+| Shortcut     | Alt + -        | Option + -       |
+
+
+## R is case-sensitive
+
+
+```{r error=TRUE}
+
+my_age <- 2020 - birth_year
+
+My_age
+```
+
+##
+
+If something comes in quotes, it is not defined in R. 
+
+
+```{r}
+
+ages <- c(25, my_age, 32)
+
+names <- c("Menglin", "Mine", "Rafael")
+
+data.frame(age = ages, name = names)
+```
+
+
+## Vocabulary
+
+```{r eval=FALSE}
+do(something)
+```
+
+`do()` is a function;   
+`something` is the argument of the function.
+
+. . .
+
+```{r eval=FALSE}
+do(something, colorful)
+```
+
+`do()` is a function;   
+`something` is the first argument of the function;   
+`colorful` is the second argument of the function.
+
+
+
+## Getting Help
+
+In order to get any help we can use `?` followed by function (or object) name. 
+
+```{r eval=FALSE}
+?c
+```
+
+
+## tidyverse_style_guide
+
+>canyoureadthissentence?
+
+## tidyverse_style_guide
+
+:::: {.columns}
+
+::: {.column width="40%"}
+```{r eval = FALSE}
+age <- c(6, 9, 15)
+
+data.frame(age_kid = age)
+```
+:::
+
+::: {.column width="60%"}
+- After function names do not leave any spaces.
+
+- Before and after operators (e.g. <-, =) leave spaces. 
+
+- Put a space after a comma, **not** before. 
+
+- Object names are all lower case, with words separated by an underscore.
+
+:::
+
+::::
+    
+
+## RStudio Setup
+
+<center>
+
+<video width="80%" height="45%%" align = "center" controls>
+  <source src="screencast/01b-rstudio-setup.mp4" type="video/mp4">
+</video>
+
+</center>
+
+## Quarto
+
+<center>
+
+<video width="80%" height="45%%" align = "center" controls>
+  <source src="screencast/01c-intro-quarto.mov" type="video/mp4">
+</video>
+
+</center>
+
+
+## markdown `r fontawesome::fa(name = "markdown")`
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+```
+
+_Hello world_ 
+
+__Hello world__
+
+~~Hello world~~ 
+```
+:::
+
+::: {.column width="60%"}
+_Hello world_ 
+
+__Hello world__
+
+~~Hello world~~ 
+:::
+
+::::
+
+## Quarto parts
+
+```{r}
+#| echo: false
+knitr::include_graphics("img/quarto.001.png")
+```
+
+## Quarto parts
+
+```{r}
+#| echo: false
+knitr::include_graphics("img/quarto.002.png")
+```
+
+## Quarto parts
+
+```{r}
+#| echo: false
+knitr::include_graphics("img/quarto.003.png")
+```
+
+## Quarto parts
+
+```{r}
+#| echo: false
+knitr::include_graphics("img/quarto.004.png")
+```
+
+## Quarto parts
+
+```{r}
+#| echo: false
+knitr::include_graphics("img/quarto.005.png")
+```
+
+## Quarto parts
+
+```{r}
+#| echo: false
+knitr::include_graphics("img/quarto.006.png")
+```
+
+# Getting to Know Data
+
+[Dear Mona, Which State Has the Worst Drivers?](https://fivethirtyeight.com/features/which-state-has-the-worst-drivers/)
+
+```{r}
+library(fivethirtyeight)
+library(tidyverse)
+data("bad_drivers")
+```
+
+## Data Matrices  
+
+```{r echo=FALSE, out.width='100%'}
+knitr::include_graphics('img/data-matrix.png')
+knitr::include_graphics('img/data-matrix-tail.png')
+```
+
+## Data Matrices
+
+- The data matrix has `r ncol(bad_drivers)` __variables__ (state, num_drivers, perc_speeding, perc_not_distracted, perc_no_previous, insurance_premiums, losses). 
+
+- The data matrix has `r nrow(bad_drivers)` __cases__ or __observations__. Each case represents a US state (or District of Columbia). 
+
+## Data documentation
+
+```{r}
+?bad_drivers
+```
+
+`state` State
+
+`num_drivers` Number of drivers involved in fatal collisions per billion miles
+
+`perc_speeding` Percentage of drivers involved in fatal collisions who were speeding
+
+`perc_alcohol` Percentage of drivers involved in fatal collisions who were alcohol-impaired
+
+`perc_not_distracted` Percentage of drivers involved in fatal collisions who were not distracted
+
+##
+
+`perc_no_previous` Percentage of drivers involved in fatal collisions who had not been involved in any previous accidents
+
+`insurance_premiums` Car insurance premiums ($)
+
+`losses` Losses incurred by insurance companies for collisions per insured driver ($)
+
+`Source` National Highway Traffic Safety Administration 2012, National Highway Traffic Safety Administration 2009 & 2012, National Association of Insurance Commissioners 2010 & 2011.
+
+##
+
+```{r}
+head(bad_drivers)
+```
+
+## 
+
+```{r}
+tail(bad_drivers)
+```
+
+##
+
+```{r}
+glimpse(bad_drivers)
+```
+
+
