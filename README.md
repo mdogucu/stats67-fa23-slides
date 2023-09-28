@@ -1,5 +1,5 @@
 ## STATS 67
-<img src="img/logo.png" alt="Logo that reads STATS 67 with an anteater illustration on the background" width="150" align = "right"/>
+<img src="https://www.stats4cs.com/img/logo.png" alt="Logo that reads STATS 67 with an anteater illustration on the background" width="150" align = "right"/>
 
 
   
