@@ -9,9 +9,9 @@ format:
     slide-number: true
     incremental: true
     theme: ["slide-style.scss"]
-    logo: "../../img/logo.png"
+    logo: "logo.png"
     title-slide-attributes: 
-      data-background-image: "../../img/logo.png"
+      data-background-image: "logo.png"
       data-background-size: 12%
       data-background-position: 50% 85%
     include-after-body: clean_title_page.html
@@ -94,7 +94,7 @@ We can add an a figure with a caption and an alternate text
 #| fig-align: center
 #| fig-cap: This is the figure caption
 #| fig-alt: A round logo that reads Stats 67 with an anteater in the background 
-knitr::include_graphics('../../img/logo.png')
+knitr::include_graphics('logo.png')
 ```
 
 ## Incremental Text
@@ -202,3 +202,10 @@ Question to discuss
 Here is an example
 with some math symbols $\alpha, \beta$
 :::
+
+## Footnote
+
+Here is a footnote[^1].
+
+
+[^1]: Some important message
