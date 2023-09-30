@@ -17,22 +17,18 @@ format:
     include-after-body: "../templates/clean_title_page.html"
 ---
 
-```{r echo = FALSE, message = FALSE}
-library(titanic)
+```{r}
+#| echo: false
+#| message: false
+library(bayesrules)
 library(tidyverse)
-library(fivethirtyeight)
 library(emojifont)
 library(openintro)
 library(fGarch)
 library(gganimate)
 theme_set(theme_gray(base_size = 22))
 
-titanic <- titanic_train %>% 
-  mutate(Survived = as.logical(Survived),
-         Sex = as.factor(Sex),
-         Embarked = as.factor(Embarked)) %>% 
-  janitor::clean_names()
-  
+data(hotel_bookings)
 
 ```
 
@@ -154,67 +150,52 @@ In this case, we have two numbers in the middle 7.5 and 8. The average of these 
 
 $$\frac{7.5 + 8}{2} = 7.75$$
 
----
-
-## Mode
-
-::::{.columns}
-
-:::{.column width="50%"}
-<table align = "center">
-
-<thead>
-<th> Observation </th>
-<th> Frequency </th>
-
-</thead>
-
-<tr>
-
-<td> 5.5 </td> <td> 1</td>
-</tr>
-
-<tr>
-<td> 7 </td> <td> 2</td>
-</tr>
-
-<tr>
-<td> 7.2 </td> <td> 1</td>
-</tr>
-
-<tr>
-<td> 7.5 </td> <td> 1</td>
-</tr>
-
-<tr>
-<td> 8 </td> <td> 3</td>
-</tr>
-
-<tr>
-<td> 9 </td> <td> 1</td>
-</tr>
-
-<tr>
-<td> 10 </td> <td> 1</td>
-</tr>
-
-
-</table>
-
-:::
-
-:::{.column width="50%"}
-Mode by definition is the observation that with the highest frequency. In this case, the mode is 8. 
-:::
-
-
-::::
 
 ## Q1, Q3, and Interquartile Range
 
-You can divide the data into four. The median splits the data in half, in other words 50% of the data fall below the median. First quartile (Q1) is the point at which 25% of the data fall below of. Third quartile (Q3) is the point at which 75% of the data fall below of. Q1 and Q3 can be considered 25th and 75th percentiles respectively. 
+You can divide the (ordered) data into four. The median splits the data in half, in other words 50% of the data fall below the median. 
 
-Interquartile Range (IQR) = Q3 - Q1
+**First quartile (Q1)** is the point at which 25% of the data fall below of. Third quartile (Q3) is the point at which 75% of the data fall below of.
+
+Q1 and Q3 can be considered 25th and 75th percentiles respectively. **Interquartile Range (IQR)** = Q3 - Q1 which represents the middle 50% of the data.
+
+## Quantiles / Percentiles / Quartiles
+
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-7rfc{border-color:inherit;font-family:Arial, Helvetica, sans-serif !important;;font-size:28px;text-align:left;
+  vertical-align:top}
+</style>
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-7rfc">Quantile</th>
+    <th class="tg-7rfc">Percentile</th>
+    <th class="tg-7rfc">Special Name</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-7rfc">0.25</td>
+    <td class="tg-7rfc">25th</td>
+    <td class="tg-7rfc">First quartile</td>
+  </tr>
+  <tr>
+    <td class="tg-7rfc">0.5</td>
+    <td class="tg-7rfc">50th</td>
+    <td class="tg-7rfc">Median</td>
+  </tr>
+  <tr>
+    <td class="tg-7rfc">0.75</td>
+    <td class="tg-7rfc">75th</td>
+    <td class="tg-7rfc">Third quartile</td>
+  </tr>
+</tbody>
+</table>
 
 
 ## Standard deviation and Variance
@@ -292,7 +273,7 @@ $\Sigma_{i = 1}^{n} (x_i - \bar x )^2 =$
 $4.9284 + 0.5184 + 0.5184 + 0.2704 + 0.0484 +$ 
 $0.0784 + 0.0784 + 0.0784+ 1.6384 + 5.1984 = 13.356 \text{ hr}^2$
 
-
+Note that $n$ represents the number of observations which means $n = 10$.
 
 ## Sample variance
 
@@ -322,79 +303,90 @@ $$s= \sqrt{1.484} = 1.218195 \text{ hr}$$
 ## Data
 
 ```{r}
-glimpse(titanic)
+glimpse(hotel_bookings)
 ```
 
+## Data 
+
+```{r}
+#| echo: false
+hotel_bookings %>% 
+  select(is_canceled, lead_time) 
+```
+
+`is_canceled` whether the booking was cancelled (0 = FALSE (i.e., not canceled), 1 = TRUE (i.e., not canceled))   
+`lead_time` number of days between booking and arrival
 
 ## Summarizing Categorical Data in R
 
 ```{r}
-count(titanic, survived)
+count(hotel_bookings, is_canceled)
+```
+```{r}
+#| echo: false
+count_summary <- count(hotel_bookings, is_canceled)
 ```
 
-There are 342 people who survived and 549 who did not. 
+There are `r count_summary [2, 2]` people who canceled their booking and `r count_summary [1, 2]` who did not. 
 
 
 ## Summarizing Categorical Data in R
 
 
-There are total 549 + 342 people. We can use this to calculate the proportions
+There are total `r nrow(hotel_bookings)` bookings. We can use this to calculate the proportions
 
-```{r}
-549/(549+342)
+$\frac{`r count_summary [2, 2]`}{`r nrow(hotel_bookings)`}$
 
-342/(549+342)
-```
+$\frac{`r count_summary [1, 2]`}{`r nrow(hotel_bookings)`}$
 
 
 ## Mean in R
 
 ```{r}
-summarize(titanic, mean(fare))
+summarize(hotel_bookings, mean(lead_time))
 ```
 
 
 ## Median in R
 
 ```{r}
-summarize(titanic, median(fare))
+summarize(hotel_bookings, median(lead_time))
 ```
-
-
 
 ## Mode in R 
 
 ```{r}
-count(titanic, fare, sort = TRUE)
+count(hotel_bookings, lead_time, sort = TRUE)
 ```
-
 
 ## Quartiles
 
 You can specify quartiles (Q3)
 
 ```{r}
-summarize(titanic, quantile(fare, 0.75))
+summarize(hotel_bookings, quantile(lead_time, 0.75))
 ```
 
 
 ## Standard Deviation and Variance
 
 ```{r}
-summarize(titanic, sd(fare))
+summarize(hotel_bookings, sd(lead_time))
 ```
 
 ```{r}
-summarize(titanic, var(fare))
+summarize(hotel_bookings, var(lead_time))
 ```
 
 # Summarizing Data with Visuals 
 
 ## Bar plot with counts
 
-```{r echo = FALSE, fig.align='center'}
-ggplot(candy_rankings) +
-  aes(x = chocolate) +
+```{r}
+#| echo: false
+#| fig-align: center
+ggplot(hotel_bookings) +
+  aes(x = is_canceled) +
   geom_bar()
 ```
 
@@ -402,9 +394,11 @@ ggplot(candy_rankings) +
 
 ## Bar plot with proportions
 
-```{r echo = FALSE, fig.align='center'}
-ggplot(candy_rankings) +
-  aes(x = chocolate, y = ..prop.., group = 1) +
+```{r}
+#| echo: false
+#| fig-align: center
+ggplot(hotel_bookings) +
+  aes(x = is_canceled, y = ..prop.., group = 1) +
   geom_bar()
 ```
 
@@ -413,10 +407,13 @@ ggplot(candy_rankings) +
 
 ## Histogram
 
-```{r echo = FALSE, fig.align='center'}
-ggplot(candy_rankings) +
-  aes(x = winpercent) +
-  geom_histogram(binwidth = 3)  
+```{r}
+#| echo: false
+#| fig-align: center
+ggplot(hotel_bookings) +
+  aes(x = lead_time) +
+  geom_histogram(binwidth = 3)   +
+  theme_bw()
 ```
 
 ---
@@ -435,9 +432,9 @@ __gram__: comes from the Greek word _gramma_ which means "that which is drawn". 
 
 Consider the height distribution in our class.
 
-- How would the distribution change if Michael Jordan (198.1 cm) were to join our class?
+- How would the distribution change if Michael Jordan (198.1 cm, 6' 6'') were to join our class?
 
-- How would the distribution change if Tyrion Lannister (135 cm) were to join our class?
+- How would the distribution change if Tyrion Lannister (Peter Dinklage)  (135 cm, 4' 5'') were to join our class?
 
 
 
@@ -445,6 +442,197 @@ Consider the height distribution in our class.
 
 When data display a skewed distribution we rely on median rather than the mean to understand the center of the distribution.
 
+[Exploring Histograms Visually](https://tinlizzie.org/histograms/)
+
 # Boxplot
 
+```{r}
+#| echo: false
+#| fig-align: center
+ggplot(hotel_bookings,
+       aes(y = lead_time)) + 
+  scale_x_discrete( ) +
+  geom_boxplot() + 
+  labs(y = "Lead Time") +
+  theme_classic(base_size = 22) 
+```
 
+## Median
+
+```{r}
+#| echo: false
+#| fig-align: center
+
+median_lead <- median(hotel_bookings$lead_time)
+
+quartiles <- summarize(hotel_bookings, value= quantile(lead_time, c(0.25, 0.50, 0.75, 1)))
+
+q1 <- quartiles[1,1] %>% 
+  pull()
+q3 <- quartiles[3,1] %>% 
+  pull()
+
+iqr = q3 - q1
+min_lead <- min(hotel_bookings$lead_time)
+  
+
+ggplot(hotel_bookings,
+       aes(y = lead_time)) + 
+  scale_x_discrete( ) +
+  geom_boxplot() + 
+  labs(y = "Lead Time",
+       x = "") +
+  theme_classic(base_size = 22) +
+  annotate(geom = "segment",
+           x = 0.8, y = median_lead, 
+           xend = 0.4, yend = median_lead, 
+           color = "#BA4A00",
+           arrow = arrow(type = "closed")) +
+  annotate(geom = "text",
+           x = 0.8, y = median_lead,
+           label = "median ",
+           hjust = "left", color = "#BA4A00",
+           size = 12)
+```
+
+
+## First and Third Quartiles (Q1 and Q3)
+
+```{r}
+#| echo: false
+#| fig-align: center
+
+
+ggplot(hotel_bookings,
+       aes(y = lead_time)) + 
+  scale_x_discrete( ) +
+  geom_boxplot() + 
+  labs(y = "Lead Time",
+       x = "") +
+  theme_classic(base_size = 22) +
+  annotate(geom = "segment",
+           x = 0.8, y = q1, 
+           xend = 0.4, yend = q1, 
+           color = "#BA4A00",
+           arrow = arrow(type = "closed")) +
+  annotate(geom = "text",
+           x = 0.8, y = q1,
+           label =  "Q1",
+           hjust = "left", color = "#BA4A00",
+           size = 10) +
+  annotate(geom = "segment",
+           x = 0.8, y = q3, 
+           xend = 0.4, yend = q3, 
+           color = "#BA4A00",
+           arrow = arrow(type = "closed")) +
+  annotate(geom = "text",
+           x = 0.8, y = q3,
+           label = "Q3",
+           hjust = "left", color = "#BA4A00",
+           size = 10) 
+
+```
+
+## Interquartile Range (IQR)
+
+```{r}
+#| echo: false
+#| fig-align: center
+quartiles <- summarize(hotel_bookings, value= quantile(lead_time, c(0.25, 0.50, 0.75, 1)))
+
+q1 <- quartiles[1,1] %>% 
+  pull()
+q3 <- quartiles[3,1] %>% 
+  pull()
+
+ggplot(hotel_bookings,
+       aes(y = lead_time)) + 
+  scale_x_discrete( ) +
+  geom_boxplot() + 
+  labs(y = "Lead Time",
+       x = "") +
+  theme_classic(base_size = 22) +
+  annotate(geom = "segment",
+           x = 0.5, y = q1, 
+           xend = 0.5, yend = q3, 
+           color = "#BA4A00") +
+  annotate(geom = "text",
+           x = 0.5, y = iqr/2,
+           label =  "IQR",
+           hjust = "left", color = "#BA4A00",
+           size = 10) 
+
+```
+
+## Whiskers
+
+```{r}
+#| echo: false
+#| fig-align: center
+
+
+ggplot(hotel_bookings,
+       aes(y = lead_time)) + 
+  scale_x_discrete( ) +
+  geom_boxplot() + 
+  labs(y = "Lead Time",
+       x = "") +
+  theme_classic(base_size = 22) +
+  annotate(geom = "segment",
+           x = -0.2, y = (q3 + 1.5*iqr), 
+           xend = 0.2, yend = (q3 + 1.5*iqr), 
+           color = "#BA4A00") +
+  annotate(geom = "text",
+           x = 0.4, y = (q3 + 1.5*iqr),
+           label =  "Whiskers",
+           hjust = "left", color = "#BA4A00",
+           size = 8) +
+  annotate(geom = "segment",
+           x = -0.2, y = min_lead, 
+           xend = 0.2, yend = min_lead, 
+           color = "#BA4A00") +
+  annotate(geom = "text",
+           x = 0.4, y = min_lead,
+           label = "Whiskers",
+           hjust = "left", color = "#BA4A00",
+           size = 8) 
+
+```
+
+
+## 
+
+```{r}
+#| echo: false
+#| fig-align: center
+ggplot(hotel_bookings,
+       aes(y = lead_time)) + 
+  scale_x_discrete( ) +
+  geom_boxplot() + 
+  labs(y = "Lead Time",
+       x = "") +
+  theme_classic(base_size = 22) +
+  annotate(geom = "segment",
+           x = -0.2, y = (q3 + 1.5*iqr), 
+           xend = 0.2, yend = (q3 + 1.5*iqr), 
+           color = "#BA4A00") +
+  annotate(geom = "text",
+           x = 0.4, y = (q3 + 1.5*iqr),
+           label =  "Maximum Possible \nReach of whiskers",
+           hjust = "left", color = "#BA4A00",
+           size = 8) +
+  annotate(geom = "segment",
+           x = -0.2, y = (q1 - 1.5*iqr), 
+           xend = 0.2, yend = (q1 - 1.5*iqr) , 
+           color = "#BA4A00") +
+  annotate(geom = "text",
+           x = 0.4, y = (q1 - 1.5*iqr),
+           label = "Minimum Possible \nReach of whiskers",
+           hjust = "left", color = "#BA4A00",
+           size = 8) +
+  ylim(-300, 450)
+
+```
+
+## 
+Whiskers can go as high as Q3 + 1.5 IQR and as low as Q1 - 1.5 IQR. In this instance, we see that whiskers have reached its maximum value, however, since there is no observed data below 0 lead time, the lower whisker is at 0. 
