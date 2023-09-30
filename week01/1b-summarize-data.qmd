@@ -1,6 +1,6 @@
 ---
 title: "Summarizing Data"
-author: "Mine Dogucu"
+author: "Dr. Mine Dogucu"
 execute:
   echo: true
 format: 

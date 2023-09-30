@@ -1,6 +1,6 @@
 ---
 title: "Introduction to Stats 67 and Data"
-author: "Mine Dogucu"
+author: "Dr. Mine Dogucu"
 execute:
   echo: true
 format: 
