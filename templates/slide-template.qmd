@@ -134,7 +134,7 @@ summary(mtcars)
 ```
 
 
-## Code and Output in Deparate Slides
+## Code and Output in Separate Slides
 
 ```{r}
 #| output-location: slide
