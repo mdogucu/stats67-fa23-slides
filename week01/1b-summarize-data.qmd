@@ -23,7 +23,6 @@ format:
 library(bayesrules)
 library(tidyverse)
 library(emojifont)
-library(openintro)
 library(fGarch)
 library(gganimate)
 theme_set(theme_gray(base_size = 22))
