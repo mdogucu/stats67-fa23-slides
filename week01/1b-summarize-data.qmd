@@ -1,0 +1,450 @@
+---
+title: "Summarizing Data"
+author: "Mine Dogucu"
+execute:
+  echo: true
+format: 
+  revealjs:
+    footer: "[stats4cs.com](https://stats4cs.com)"
+    slide-number: true
+    incremental: true
+    theme: ["../templates/slide-style.scss"]
+    logo: "https://www.stats4cs.com/img/logo.png"
+    title-slide-attributes: 
+      data-background-image: "https://www.stats4cs.com/img/logo.png"
+      data-background-size: 5%
+      data-background-position: 50% 85%
+    include-after-body: "../templates/clean_title_page.html"
+---
+
+```{r echo = FALSE, message = FALSE}
+library(titanic)
+library(tidyverse)
+library(fivethirtyeight)
+library(emojifont)
+library(openintro)
+library(fGarch)
+library(gganimate)
+theme_set(theme_gray(base_size = 22))
+
+titanic <- titanic_train %>% 
+  mutate(Survived = as.logical(Survived),
+         Sex = as.factor(Sex),
+         Embarked = as.factor(Embarked)) %>% 
+  janitor::clean_names()
+  
+
+```
+
+
+# Summarizing Data with Numbers
+
+
+We will only summarize a single variable at a time but later we will talk about relationship between two variables.
+
+## Summarizing Categorical Data
+
+Categorical data are often summarized with a frequency table. __Counts__ or __proportions__ are used to summarize categorical variables. 
+
+<table align = "center">
+<thead>
+  <th> </th>
+  <th>TRUE </th>
+  <th> FALSE </th>
+  <th> Total Count </th>
+
+</thead>
+
+<tr>
+<td>fruity </td>
+<td> 47</td>
+<td> 38</td>
+<td> 85</td>
+
+
+</tr>
+
+</table>
+
+<br>
+
+<table align = "center" >
+<thead>
+  <th> </th>
+  <th>TRUE </th>
+  <th> FALSE </th>
+  <th> Total Proportion </th>
+
+</thead>
+
+<tr>
+<td>fruity </td>
+<td> 0.5529412</td>
+<td> 0.4470588</td>
+<td> 1</td>
+
+</tr>
+</table>
+
+## Summarizing Numerical Data
+
+Consider the following data which represents the number of hours slept for 10 people who were surveyed.
+
+<table>
+
+<tr>
+
+<td> 7 </td>
+<td> 7.5 </td>
+<td> 8 </td>
+<td> 5.5 </td>
+<td> 10 </td>
+<td> 7.2 </td>
+<td> 7 </td>
+<td> 8 </td>
+<td> 9 </td>
+<td> 8 </td>
+
+
+</tr>
+
+
+
+
+</table>
+
+## Mean
+
+$$\bar x = \frac{7+7.5+8+5.5+10+7.2+7+8+9+8}{10} = 7.72$$
+
+The mean is calculated by summing the observed values and then dividing by the number of observations.
+
+
+$$\bar x = \frac{x_1 + x_2+.... x_n}{n}$$
+
+
+where $\bar x$ represents the mean of observed values, $x_1$, $x_2$, ... $x_n$ represent the n observed values.
+
+## Median
+
+If all the observations are listed from smallest to largest (or vice versa), the median is the observation that is in the middle. 
+
+<table>
+
+<tr>
+
+<td> 5.5 </td>
+<td> 7 </td>
+<td> 7 </td>
+<td> 7.2 </td>
+<td> 7.5 </td>
+<td> 8 </td>
+<td> 8 </td>
+<td> 8 </td>
+<td> 9 </td>
+<td> 10 </td>
+
+
+</tr>
+
+
+</table>
+
+In this case, we have two numbers in the middle 7.5 and 8. The average of these numbers would be the median. In this case, the median is 7.75. 
+
+$$\frac{7.5 + 8}{2} = 7.75$$
+
+---
+
+## Mode
+
+::::{.columns}
+
+:::{.column width="50%"}
+<table align = "center">
+
+<thead>
+<th> Observation </th>
+<th> Frequency </th>
+
+</thead>
+
+<tr>
+
+<td> 5.5 </td> <td> 1</td>
+</tr>
+
+<tr>
+<td> 7 </td> <td> 2</td>
+</tr>
+
+<tr>
+<td> 7.2 </td> <td> 1</td>
+</tr>
+
+<tr>
+<td> 7.5 </td> <td> 1</td>
+</tr>
+
+<tr>
+<td> 8 </td> <td> 3</td>
+</tr>
+
+<tr>
+<td> 9 </td> <td> 1</td>
+</tr>
+
+<tr>
+<td> 10 </td> <td> 1</td>
+</tr>
+
+
+</table>
+
+:::
+
+:::{.column width="50%"}
+Mode by definition is the observation that with the highest frequency. In this case, the mode is 8. 
+:::
+
+
+::::
+
+## Q1, Q3, and Interquartile Range
+
+You can divide the data into four. The median splits the data in half, in other words 50% of the data fall below the median. First quartile (Q1) is the point at which 25% of the data fall below of. Third quartile (Q3) is the point at which 75% of the data fall below of. Q1 and Q3 can be considered 25th and 75th percentiles respectively. 
+
+Interquartile Range (IQR) = Q3 - Q1
+
+
+## Standard deviation and Variance
+
+
+Let's take a detour. Consider Dr. Dogucu teaching three classes. All of these classes have 5 students. Below are midterm results from these classes. 
+
+Class 1: 80 80 80 80 80  
+Class 2: 76 78 80 82 84  
+Class 3: 60 70 80 90 100  
+
+
+What do you notice about midterm results?
+
+## 
+
+All of these classes have an average of 80 points. But the data differ! In order to explain how these are different we examine how far off each observed value is from the mean on average. In class 1 all students are at the mean value so there is no variance. Class 2 students deviate from the mean slightly on average. Class 3 has the highest deviation from the mean on average. 
+
+## Standard deviation and Variance {.smaller}
+
+
+<table align = "center">
+<thead>
+
+<th> $x_i$ </th> <th>  $x_i - \bar{x}$ </th> <th>  $(x_i - \bar{x})^2$ </th>
+</thead>
+
+<tr> 
+<td>5.5 </td> <td> 5.5-7.72 = -2.22 hr</td> <td> (-2.2 hr)<sup>2</sup> = 4.9284 hr <sup>2</sup> </td>
+</tr>
+
+<tr> 
+<td>7 </td> <td> 7-7.72 = -0.72 hr</td> <td> (-0.72 hr)<sup>2</sup> = 0.5184 hr <sup>2</sup></td>
+</tr>
+
+<tr> 
+<td>7 </td> <td> 7-7.72 = -0.72 hr</td> <td> (-0.72 hr)<sup>2</sup> = 0.5184 hr <sup>2</sup></td>
+</tr>
+
+<tr> 
+<td>7.2 </td> <td> 7.2-7.72 = -0.52 hr</td> <td> (-0.52 hr)<sup>2</sup> = 0.2704 hr <sup>2</sup></td>
+</tr>
+
+<tr> 
+<td>7.5 </td> <td> 7.5-7.72 = -0.22 hr</td> <td> (-0.22 hr)<sup>2</sup> = 0.0484 hr <sup>2</sup></td>
+</tr>
+
+<tr> 
+<td>8 </td> <td> 8-7.72 = 0.28 hr</td> <td> (0.28 hr)<sup>2</sup> = 0.0784 hr <sup>2</sup></td>
+</tr>
+
+<tr> 
+<td>8 </td>  <td> 8-7.72 = 0.28 hr</td> <td> (0.28 hr)<sup>2</sup> = 0.0784 hr <sup>2</sup></td>
+</tr>
+
+<tr> 
+<td>8 </td> <td> 8-7.72 = 0.28 hr</td> <td> (0.28 hr)<sup>2</sup> = 0.0784 hr <sup>2</sup></td>
+</tr>
+
+<tr> 
+<td>9 </td> <td> 9-7.72 = 1.28 hr</td> <td> (1.28 hr)<sup>2</sup> = 1.6384 hr <sup>2</sup></td>
+</tr>
+
+<tr> 
+<td>10 </td> <td> 10-7.72 = 2.28 hr</td> <td> (2.28 hr)<sup>2</sup> = 5.1984 hr <sup>2</sup></td>
+</tr>
+
+</table>
+
+## Total squared distance from the mean
+
+
+$\Sigma_{i = 1}^{n} (x_i - \bar x )^2 =$
+
+$4.9284 + 0.5184 + 0.5184 + 0.2704 + 0.0484 +$ 
+$0.0784 + 0.0784 + 0.0784+ 1.6384 + 5.1984 = 13.356 \text{ hr}^2$
+
+
+
+## Sample variance
+
+
+$$s^2 = \frac{\Sigma_{i = 1}^{n} (x_i - \bar x )^2}{n-1}$$ 
+
+
+
+<br>
+
+$$s^2= \frac{13.356}{10-1} = 1.484\text{ hr}^2$$
+
+
+## Sample standard deviation
+
+
+$$s = \sqrt{\frac{\Sigma_{i = 1}^{n} (x_i - \bar x )^2}{n-1}}$$
+
+
+<br>
+
+$$s= \sqrt{1.484} = 1.218195 \text{ hr}$$
+
+
+# Summarizing Data with Numbers in R
+
+## Data
+
+```{r}
+glimpse(titanic)
+```
+
+
+## Summarizing Categorical Data in R
+
+```{r}
+count(titanic, survived)
+```
+
+There are 342 people who survived and 549 who did not. 
+
+
+## Summarizing Categorical Data in R
+
+
+There are total 549 + 342 people. We can use this to calculate the proportions
+
+```{r}
+549/(549+342)
+
+342/(549+342)
+```
+
+
+## Mean in R
+
+```{r}
+summarize(titanic, mean(fare))
+```
+
+
+## Median in R
+
+```{r}
+summarize(titanic, median(fare))
+```
+
+
+
+## Mode in R 
+
+```{r}
+count(titanic, fare, sort = TRUE)
+```
+
+
+## Quartiles
+
+You can specify quartiles (Q3)
+
+```{r}
+summarize(titanic, quantile(fare, 0.75))
+```
+
+
+## Standard Deviation and Variance
+
+```{r}
+summarize(titanic, sd(fare))
+```
+
+```{r}
+summarize(titanic, var(fare))
+```
+
+# Summarizing Data with Visuals 
+
+## Bar plot with counts
+
+```{r echo = FALSE, fig.align='center'}
+ggplot(candy_rankings) +
+  aes(x = chocolate) +
+  geom_bar()
+```
+
+---
+
+## Bar plot with proportions
+
+```{r echo = FALSE, fig.align='center'}
+ggplot(candy_rankings) +
+  aes(x = chocolate, y = ..prop.., group = 1) +
+  geom_bar()
+```
+
+
+---
+
+## Histogram
+
+```{r echo = FALSE, fig.align='center'}
+ggplot(candy_rankings) +
+  aes(x = winpercent) +
+  geom_histogram(binwidth = 3)  
+```
+
+---
+
+## Fun fact 
+
+__histo__ comes from the Greek word _histos_ that literally means "anything set up right".
+
+__gram__: comes from the Greek word _gramma_ which means "that which is drawn". [^1]
+
+
+[^1]: Online Etymology Dictionary
+
+
+## Histogram
+
+Consider the height distribution in our class.
+
+- How would the distribution change if Michael Jordan (198.1 cm) were to join our class?
+
+- How would the distribution change if Tyrion Lannister (135 cm) were to join our class?
+
+
+
+## Note
+
+When data display a skewed distribution we rely on median rather than the mean to understand the center of the distribution.
+
+# Boxplot
+
+

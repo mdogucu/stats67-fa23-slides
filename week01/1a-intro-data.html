@@ -8,7 +8,7 @@
 <link href="1a-intro-data_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="1a-intro-data_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="1a-intro-data_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.353">
+  <meta name="generator" content="quarto-1.3.450">
 
   <meta name="author" content="Mine Dogucu">
   <title>Introduction to Stats 67 and Data</title>
@@ -479,7 +479,7 @@ Find a difference.</p>
 <section id="object-assignment-operator" class="slide level2">
 <h2>Object assignment operator</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>birth_year <span class="ot">&lt;-</span> <span class="dv">1950</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>my_apples <span class="ot">&lt;-</span> <span class="dv">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
 <table>
@@ -503,11 +503,13 @@ Find a difference.</p>
 <section id="r-is-case-sensitive" class="slide level2">
 <h2>R is case-sensitive</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>my_age <span class="ot">&lt;-</span> <span class="dv">2020</span> <span class="sc">-</span> birth_year</span>
-<span id="cb2-2"><a href="#cb2-2"></a></span>
-<span id="cb2-3"><a href="#cb2-3"></a>My_age</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>My_apples <span class="ot">&lt;-</span> <span class="dv">2020</span> <span class="sc">-</span> birth_year</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
-<pre><code>Error in eval(expr, envir, enclos): object 'My_age' not found</code></pre>
+<pre><code>Error in eval(expr, envir, enclos): object 'birth_year' not found</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>My_apples</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 'My_apples' not found</code></pre>
 </div>
 </div>
 </section>
@@ -515,29 +517,29 @@ Find a difference.</p>
 <h2></h2>
 <p>If something comes in quotes, it is not defined in R.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>ages <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">25</span>, my_age, <span class="dv">32</span>)</span>
-<span id="cb4-2"><a href="#cb4-2"></a></span>
-<span id="cb4-3"><a href="#cb4-3"></a>names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Menglin"</span>, <span class="st">"Mine"</span>, <span class="st">"Rafael"</span>)</span>
-<span id="cb4-4"><a href="#cb4-4"></a></span>
-<span id="cb4-5"><a href="#cb4-5"></a><span class="fu">data.frame</span>(<span class="at">age =</span> ages, <span class="at">name =</span> names)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>n_apples <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">7</span>, my_apples, <span class="dv">3</span>)</span>
+<span id="cb6-2"><a href="#cb6-2"></a></span>
+<span id="cb6-3"><a href="#cb6-3"></a>names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Menglin"</span>, <span class="st">"Gloria"</span>, <span class="st">"Robert"</span>)</span>
+<span id="cb6-4"><a href="#cb6-4"></a></span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="fu">data.frame</span>(<span class="at">person =</span> names, <span class="at">apple_count =</span> n_apples)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  age    name
-1  25 Menglin
-2  70    Mine
-3  32  Rafael</code></pre>
+<pre><code>   person apple_count
+1 Menglin           7
+2  Gloria           4
+3  Robert           3</code></pre>
 </div>
 </div>
 </section>
 <section id="vocabulary" class="slide level2">
 <h2>Vocabulary</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">do</span>(something)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">do</span>(something)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>do()</code> is a function;<br>
 <code>something</code> is the argument of the function.</p>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">do</span>(something, colorful)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">do</span>(something, colorful)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>do()</code> is a function;<br>
 <code>something</code> is the first argument of the function;<br>
@@ -548,7 +550,7 @@ Find a difference.</p>
 <h2>Getting Help</h2>
 <p>In order to get any help we can use <code>?</code> followed by function (or object) name.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>?c</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>?c</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="tidyverse_style_guide" class="slide level2">
@@ -562,9 +564,12 @@ Find a difference.</p>
 <div class="columns">
 <div class="column" style="width:40%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>age <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">9</span>, <span class="dv">15</span>)</span>
-<span id="cb9-2"><a href="#cb9-2"></a></span>
-<span id="cb9-3"><a href="#cb9-3"></a><span class="fu">data.frame</span>(<span class="at">age_kid =</span> age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>n_apples <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">7</span>, my_apples, <span class="dv">3</span>)</span>
+<span id="cb11-2"><a href="#cb11-2"></a></span>
+<span id="cb11-3"><a href="#cb11-3"></a>names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Menglin"</span>, <span class="st">"Gloria"</span>, <span class="st">"Robert"</span>)</span>
+<span id="cb11-4"><a href="#cb11-4"></a></span>
+<span id="cb11-5"><a href="#cb11-5"></a><span class="fu">data.frame</span>(<span class="at">person =</span> names, </span>
+<span id="cb11-6"><a href="#cb11-6"></a>           <span class="at">apple_count =</span> n_apples)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="width:60%;">
 <ul>
@@ -612,35 +617,35 @@ __Hello world__
 <section id="quarto-parts" class="slide level2">
 <h2>Quarto parts</h2>
 
-<img data-src="img/quarto.001.png" class="r-stretch"></section>
+<img data-src="img/quarto.001.png" width="960" class="r-stretch"></section>
 <section id="quarto-parts-1" class="slide level2">
 <h2>Quarto parts</h2>
 
-<img data-src="img/quarto.002.png" class="r-stretch"></section>
+<img data-src="img/quarto.002.png" width="960" class="r-stretch"></section>
 <section id="quarto-parts-2" class="slide level2">
 <h2>Quarto parts</h2>
 
-<img data-src="img/quarto.003.png" class="r-stretch"></section>
+<img data-src="img/quarto.003.png" width="960" class="r-stretch"></section>
 <section id="quarto-parts-3" class="slide level2">
 <h2>Quarto parts</h2>
 
-<img data-src="img/quarto.004.png" class="r-stretch"></section>
+<img data-src="img/quarto.004.png" width="960" class="r-stretch"></section>
 <section id="quarto-parts-4" class="slide level2">
 <h2>Quarto parts</h2>
 
-<img data-src="img/quarto.005.png" class="r-stretch"></section>
+<img data-src="img/quarto.005.png" width="960" class="r-stretch"></section>
 <section id="quarto-parts-5" class="slide level2">
 <h2>Quarto parts</h2>
 
-<img data-src="img/quarto.006.png" class="r-stretch"></section></section>
+<img data-src="img/quarto.006.png" width="960" class="r-stretch"></section></section>
 <section>
 <section id="getting-to-know-data" class="title-slide slide level1 center">
 <h1>Getting to Know Data</h1>
 <p><a href="https://fivethirtyeight.com/features/which-state-has-the-worst-drivers/">Dear Mona, Which State Has the Worst Drivers?</a></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">library</span>(fivethirtyeight)</span>
-<span id="cb11-2"><a href="#cb11-2"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb11-3"><a href="#cb11-3"></a><span class="fu">data</span>(<span class="st">"bad_drivers"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">library</span>(fivethirtyeight)</span>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb13-3"><a href="#cb13-3"></a><span class="fu">data</span>(<span class="st">"bad_drivers"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="data-matrices" class="slide level2">
@@ -664,7 +669,7 @@ __Hello world__
 <section id="data-documentation" class="slide level2">
 <h2>Data documentation</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>?bad_drivers</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>?bad_drivers</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>state</code> State</p>
 <p><code>num_drivers</code> Number of drivers involved in fatal collisions per billion miles</p>
@@ -682,7 +687,7 @@ __Hello world__
 <section id="section-3" class="slide level2">
 <h2></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">head</span>(bad_drivers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">head</span>(bad_drivers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 8
   state      num_drivers perc_speeding perc_alcohol perc_not_distracted
@@ -701,7 +706,7 @@ __Hello world__
 <section id="section-4" class="slide level2">
 <h2></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">tail</span>(bad_drivers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">tail</span>(bad_drivers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 8
   state         num_drivers perc_speeding perc_alcohol perc_not_distracted
@@ -720,7 +725,7 @@ __Hello world__
 <section id="section-5" class="slide level2">
 <h2></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">glimpse</span>(bad_drivers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">glimpse</span>(bad_drivers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 51
 Columns: 8
@@ -758,7 +763,7 @@ $ losses              &lt;dbl&gt; 145.08, 133.93, 110.35, 142.39, 165.63, 139.91
 <p>We cannot take averages or find maximum or minimum of these variables.</p>
 <p>Categorical variables have <strong>levels</strong>. For instance <code>chocolate</code> and <code>fruity</code> both have two levels as <code>TRUE</code> and <code>FALSE</code>.</p>
 
-<img data-src="img/diagram_small.png" class="r-stretch quarto-figure-center"></section>
+<img data-src="img/diagram_small.png" width="113" class="r-stretch quarto-figure-center"></section>
 <section id="categorical-variables" class="slide level2">
 <h2>Categorical Variables</h2>
 <p>If the levels of the categorical variable has a comparable ordering then it is called an <strong>ordinal variable</strong>.</p>
@@ -776,7 +781,7 @@ $ losses              &lt;dbl&gt; 145.08, 133.93, 110.35, 142.39, 165.63, 139.91
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="img/diagram.png"></p>
+<p><img data-src="img/diagram.png" style="width:80.0%"></p>
 </figure>
 </div>
 </div>

@@ -97,7 +97,7 @@ What do you think statistics is about and what will we learn in this course? The
 ## Object assignment operator
 
 ```{r}
-birth_year <- 1950
+my_apples <- 4
 ```
 
 
@@ -111,11 +111,11 @@ birth_year <- 1950
 ## R is case-sensitive
 
 
-```{r error=TRUE}
+```{r}
+#| error: true
+My_apples <- 2020 - birth_year
 
-my_age <- 2020 - birth_year
-
-My_age
+My_apples
 ```
 
 ##
@@ -125,11 +125,11 @@ If something comes in quotes, it is not defined in R.
 
 ```{r}
 
-ages <- c(25, my_age, 32)
+n_apples <- c(7, my_apples, 3)
 
-names <- c("Menglin", "Mine", "Rafael")
+names <- c("Menglin", "Gloria", "Robert")
 
-data.frame(age = ages, name = names)
+data.frame(person = names, apple_count = n_apples)
 ```
 
 
@@ -173,9 +173,12 @@ In order to get any help we can use `?` followed by function (or object) name.
 
 ::: {.column width="40%"}
 ```{r eval = FALSE}
-age <- c(6, 9, 15)
+n_apples <- c(7, my_apples, 3)
 
-data.frame(age_kid = age)
+names <- c("Menglin", "Gloria", "Robert")
+
+data.frame(person = names, 
+           apple_count = n_apples)
 ```
 :::
 
@@ -425,6 +428,9 @@ Numeric variables that can take infinitely many numbers are said to be __continu
 ##
 
 ```{r echo = FALSE, fig.align='center'}
+#| echo: false
+#| fig-align: center
+#| out-width: 80%
 diagram <- grViz("
     digraph {
         # graph aesthetics
