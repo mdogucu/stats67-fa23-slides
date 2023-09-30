@@ -353,12 +353,6 @@ summarize(hotel_bookings, mean(lead_time))
 summarize(hotel_bookings, median(lead_time))
 ```
 
-## Mode in R 
-
-```{r}
-count(hotel_bookings, lead_time, sort = TRUE)
-```
-
 ## Quartiles
 
 You can specify quartiles (Q3)
@@ -387,7 +381,8 @@ summarize(hotel_bookings, var(lead_time))
 #| fig-align: center
 ggplot(hotel_bookings) +
   aes(x = is_canceled) +
-  geom_bar()
+  geom_bar() +
+  theme_minimal(base_size = 22)
 ```
 
 ---
@@ -399,7 +394,8 @@ ggplot(hotel_bookings) +
 #| fig-align: center
 ggplot(hotel_bookings) +
   aes(x = is_canceled, y = ..prop.., group = 1) +
-  geom_bar()
+  geom_bar() +
+  theme_minimal(base_size = 22)
 ```
 
 
@@ -410,10 +406,9 @@ ggplot(hotel_bookings) +
 ```{r}
 #| echo: false
 #| fig-align: center
-ggplot(hotel_bookings) +
-  aes(x = lead_time) +
+ggplot(hotel_bookings, aes(x = lead_time)) +
   geom_histogram(binwidth = 3)   +
-  theme_bw()
+  theme_minimal(base_size = 22)
 ```
 
 ---
@@ -635,4 +630,172 @@ ggplot(hotel_bookings,
 ```
 
 ## 
+
 Whiskers can go as high as Q3 + 1.5 IQR and as low as Q1 - 1.5 IQR. In this instance, we see that whiskers have reached its maximum value, however, since there is no observed data below 0 lead time, the lower whisker is at 0. 
+
+## Meet Palmer Penguins[^1]
+
+
+
+```{r}
+#| echo: false
+#| fig-align: center
+knitr::include_graphics("img/penguins.png")
+```
+
+
+[^1]: Penguin artworks by @allison_horst.
+
+##
+
+```{r}
+#| echo: false
+#| fig-align: center
+knitr::include_graphics("img/penguin_bill.png")
+```
+
+## Data
+
+```{r}
+#| echo: false
+library(palmerpenguins)
+```
+
+```{r}
+glimpse(penguins)
+```
+
+
+## 
+
+```{r}
+#| echo: false
+#| fig-align: center
+ggplot(penguins, aes(x = species, y = bill_length_mm)) +
+  geom_boxplot() +
+  theme_minimal(base_size = 22) +
+  labs(x = "Species",
+       y = "Bill Length (mm)")
+```
+
+What can you conclude from this plot?
+
+## Scatterplot
+
+```{r}
+#| echo: false
+#| fig-align: center
+ggplot(penguins, aes(x = body_mass_g,
+                     y = bill_length_mm)) +
+  geom_point() +
+  labs(x = "Body mass (g)",
+       y = "Bill length (mm)") +
+  theme_minimal(base_size = 22)
+```
+
+What can you conclude from this plot?
+
+
+## Scatterplot
+
+::::{.columns}
+
+:::{.column width="70%"}
+```{r}
+#| echo: false
+#| fig-align: center
+ggplot(penguins, aes(x = body_mass_g,
+                     y = bill_length_mm,
+                     color = species)) +
+  geom_point() +
+  labs(x = "Body mass (g)",
+       y = "Bill length (mm)") +
+  theme_minimal(base_size = 22)
+```
+:::
+
+:::{.column width="30%"}
+
+- What can you conclude from this plot? 
+- How many variables are represented in this plot? 
+- Are they numeric or categorical?
+:::
+
+::::
+
+# Summarizing Data with Visuals in R
+
+##
+
+1. Pick your data frame
+2. Pick variables for the axes (or other aesthetics)
+3. Specify the geom (i.e., plot type)
+
+##
+
+```{r}
+#| fig-align: center
+#| output-location: column
+ggplot(hotel_bookings)
+```
+
+##
+
+```{r}
+#| fig-align: center
+#| output-location: column
+ggplot(hotel_bookings, 
+       aes(x = lead_time))
+```
+
+##
+
+```{r}
+#| fig-align: center
+#| output-location: column
+ggplot(hotel_bookings, 
+       aes(x = lead_time)) +
+  geom_histogram()
+```
+
+
+## Box plot
+
+```{r}
+#| fig-align: center
+#| output-location: column
+#| code-line-numbers: "|1|2|3"
+ggplot(penguins, 
+       aes(x = species, 
+           y = bill_length_mm)) +
+  geom_boxplot()
+```
+
+## Scatter plot
+
+```{r}
+#| fig-align: center
+#| output-location: column
+#| code-line-numbers: "|1|2|3|4"
+ggplot(penguins, 
+       aes(x = body_mass_g, 
+           y = bill_length_mm)) +
+  geom_point()
+```
+
+## Scatter plot
+
+```{r}
+#| fig-align: center
+#| output-location: column
+#| code-line-numbers: "4"
+ggplot(penguins, 
+       aes(x = body_mass_g, 
+           y = bill_length_mm,
+           color = species)) +
+  geom_point()
+```
+
+
+
+
