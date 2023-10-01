@@ -443,10 +443,19 @@ Find a difference.</p>
 </div>
 <p><a href="https://stats4cs.com">The course website</a></p>
 </section>
+<section id="poll-everywhere" class="slide level2">
+<h2>Poll Everywhere</h2>
+<div class="font75">
+<p><a href="https://pollev.com/minedogucu800">PollEv.com/minedogucu800</a></p>
+</div>
+</section>
 <section id="what-is-statistics" class="slide level2">
 <h2>What is Statistics?</h2>
 <p>Think 💭 - Pair 👫🏽 - Share 💬</p>
-<p>What do you think statistics is about and what will we learn in this course? There is no correct or wrong answer.</p>
+<p>What do you think statistics is about and what will we learn in this course? There is no right or wrong answer.</p>
+<div class="font75">
+<p><a href="https://pollev.com/minedogucu800">PollEv.com/minedogucu800</a></p>
+</div>
 </section>
 <section id="how-to-be-successful-in-this-course" class="slide level2">
 <h2>How to be successful in this course</h2>
@@ -581,6 +590,22 @@ Find a difference.</p>
 </div>
 </div>
 </section>
+<section id="section-2" class="slide level2">
+<h2></h2>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>You can let RStudio do the indentation for your code.</p>
+</div>
+</div>
+</div>
+</section>
 <section id="rstudio-setup" class="slide level2">
 <h2>RStudio Setup</h2>
 <center>
@@ -641,6 +666,22 @@ __Hello world__
 <section id="slides-for-this-course" class="slide level2">
 <h2>Slides for this course</h2>
 <p>Slides that you are currently looking at are also written in Quarto. You can take a look at them on <a href="https://github.com/mdogucu/stats67-fa23-slides">GitHub repo</a> for the course website.</p>
+</section>
+<section id="section-3" class="slide level2">
+<h2></h2>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>At the beginning of the quarter, we will provide starter <code>.qmd</code> files for you for lectures and discussions. Some of the code in these files may or may not make sense as it might be beyond the scope of this course. As you learn more about R, you’ll sometimes have to start coding from scratch without any starter help. You should download these files and render them and use them to take notes.</p>
+</div>
+</div>
+</div>
 </section></section>
 <section>
 <section id="getting-to-know-data" class="title-slide slide level1 center">
@@ -681,14 +722,14 @@ __Hello world__
 <p><code>perc_alcohol</code> Percentage of drivers involved in fatal collisions who were alcohol-impaired</p>
 <p><code>perc_not_distracted</code> Percentage of drivers involved in fatal collisions who were not distracted</p>
 </section>
-<section id="section-2" class="slide level2">
+<section id="section-4" class="slide level2">
 <h2></h2>
 <p><code>perc_no_previous</code> Percentage of drivers involved in fatal collisions who had not been involved in any previous accidents</p>
 <p><code>insurance_premiums</code> Car insurance premiums ($)</p>
 <p><code>losses</code> Losses incurred by insurance companies for collisions per insured driver ($)</p>
 <p><code>Source</code> National Highway Traffic Safety Administration 2012, National Highway Traffic Safety Administration 2009 &amp; 2012, National Association of Insurance Commissioners 2010 &amp; 2011.</p>
 </section>
-<section id="section-3" class="slide level2">
+<section id="section-5" class="slide level2">
 <h2></h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">head</span>(bad_drivers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -707,7 +748,7 @@ __Hello world__
 </div>
 </div>
 </section>
-<section id="section-4" class="slide level2">
+<section id="section-6" class="slide level2">
 <h2></h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">tail</span>(bad_drivers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -726,7 +767,7 @@ __Hello world__
 </div>
 </div>
 </section>
-<section id="section-5" class="slide level2">
+<section id="section-7" class="slide level2">
 <h2></h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">glimpse</span>(bad_drivers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -779,7 +820,7 @@ $ losses              &lt;dbl&gt; 145.08, 133.93, 110.35, 142.39, 165.63, 139.91
 <p>Consider a variable <code>n_kids</code> which represents number of kids somebody has. Then this variable can take values (0, 1, 2, …). Notice that this variable can take only integer values. This variable is said to be <strong>discrete</strong> since it does not take on infinitely many numbers that we are not able to count.</p>
 <p>Numeric variables that can take infinitely many numbers are said to be <strong>continuous</strong>. Consider somebody’s height in cm. This is a continuous variable. Even though we might say somebody is 173 cm, in reality the height could be 170.612476314631 cm. So height can take infinitely many values.</p>
 </section>
-<section id="section-6" class="slide level2">
+<section id="section-8" class="slide level2">
 <h2></h2>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">

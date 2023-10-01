@@ -65,11 +65,23 @@ The most important thing about this course
 
 [The course website](https://stats4cs.com)
 
+## Poll Everywhere
+
+:::{.font75}
+[PollEv.com/minedogucu800](https://pollev.com/minedogucu800)
+
+:::
+
 ## What is Statistics?
 
 Think 💭 - Pair 👫🏽 - Share 💬
 
-What do you think statistics is about and what will we learn in this course? There is no correct or wrong answer.
+What do you think statistics is about and what will we learn in this course? There is no right or wrong answer.
+
+:::{.font75}
+[PollEv.com/minedogucu800](https://pollev.com/minedogucu800)
+
+:::
 
 ## How to be successful in this course
 
@@ -81,6 +93,8 @@ What do you think statistics is about and what will we learn in this course? The
 
 - Be kind
 - Be honest
+
+
 
 # Getting to Know the Toolbox
 
@@ -194,6 +208,16 @@ data.frame(person = names,
 :::
 
 ::::
+
+##
+
+::: callout-tip
+
+You can let RStudio do the indentation for your code.
+
+:::
+
+
     
 
 ## RStudio Setup
@@ -288,6 +312,17 @@ knitr::include_graphics("img/quarto.006.png")
 ## Slides for this course
 
 Slides that you are currently looking at are also written in Quarto. You can take a look at them on [GitHub repo](https://github.com/mdogucu/stats67-fa23-slides) for the course website.
+
+##
+
+::: callout-tip
+
+At the beginning of the quarter, we will provide starter `.qmd` files for you for lectures and discussions.
+Some of the code in these files may or may not make sense as it might be beyond the scope of this course.
+As you learn more about R, you'll sometimes have to start coding from scratch without any starter help.
+You should download these files and render them and use them to take notes.
+:::
+
 
 # Getting to Know Data
 
@@ -419,7 +454,6 @@ If the levels of the categorical variable has a comparable ordering then it is c
 e.g. variable scholarship_status might have three levels as no scholarship, partial scholarship and full scholarship. We can order these levels from less to more or vice versa. 
 
 If there is no ordering then a categorical variable would be called a __nominal variable__. e.g. state names.
-
 
 
 ## Numeric Variables
