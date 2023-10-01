@@ -63,7 +63,7 @@ Find a difference.
 The most important thing about this course
 :::
 
-[The course website](stats4cs.com)
+[The course website](https://stats4cs.com)
 
 ## What is Statistics?
 
@@ -284,6 +284,10 @@ knitr::include_graphics("img/quarto.005.png")
 #| echo: false
 knitr::include_graphics("img/quarto.006.png")
 ```
+
+## Slides for this course
+
+Slides that you are currently looking at are also written in Quarto. You can take a look at them on [GitHub repo](https://github.com/mdogucu/stats67-fa23-slides) for the course website.
 
 # Getting to Know Data
 
