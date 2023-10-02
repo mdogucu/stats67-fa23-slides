@@ -1,0 +1,17 @@
+---
+title: "Summarize Data"
+author: "Mine Dogucu"
+---
+
+Start the lecture notes by running the code that is already provided. 
+
+```{r}
+library(bayesrules)
+library(tidyverse)
+library(palmerpenguins)
+data(hotel_bookings)
+data(penguins)
+remove(penguins_raw)
+```
+
+In the rest of this document you can take notes as you listen to the lecture.
