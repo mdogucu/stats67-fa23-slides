@@ -1,0 +1,30 @@
+---
+title: "Testing Poll Everywhere"
+author: "Dr. Mine Dogucu"
+execute:
+  echo: true
+format: 
+  revealjs:
+    footer: "[stats4cs.com](https://stats4cs.com)"
+    slide-number: true
+    incremental: true
+    theme: ["../templates/slide-style.scss"]
+    logo: "https://www.stats4cs.com/img/logo.png"
+    title-slide-attributes: 
+      data-background-image: "https://www.stats4cs.com/img/logo.png"
+      data-background-size: 5%
+      data-background-position: 50% 85%
+    include-after-body: "../templates/clean_title_page.html"
+---
+
+## Response link
+
+<iframe src="https://pollev-embeds.com/multiple_choice_polls/tKStU4aKHKplTeNFsKQsZ/respond" width="800px" height="600px"></iframe>
+
+## Poll EV page
+
+<iframe src="https://pollev-embeds.com/minedogucu800" width="800px" height="600px"></iframe>
+
+## Live Presentation View
+
+<iframe src="https://embed.polleverywhere.com/multiple_choice_polls/sx5Y7dUbSW7hZWWIkw0G9?controls=none&short_poll=true" width="800px" height="600px"></iframe>
