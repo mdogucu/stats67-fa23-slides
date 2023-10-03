@@ -127,7 +127,7 @@ my_apples <- 4
 
 ```{r}
 #| error: true
-My_apples <- 2020 - birth_year
+My_apples <- 4
 
 My_apples
 ```
@@ -158,7 +158,8 @@ do(something)
 
 . . .
 
-```{r eval=FALSE}
+```{r}
+#| eval: false
 do(something, colorful)
 ```
 
@@ -172,7 +173,8 @@ do(something, colorful)
 
 In order to get any help we can use `?` followed by function (or object) name. 
 
-```{r eval=FALSE}
+```{r}
+#| eval: false
 ?c
 ```
 
