@@ -127,8 +127,6 @@ my_apples <- 4
 
 ```{r}
 #| error: true
-My_apples <- 4
-
 My_apples
 ```
 
