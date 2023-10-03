@@ -631,6 +631,32 @@ ggplot(hotel_bookings,
 ## 
 
 Whiskers can go as high as Q3 + 1.5 IQR and as low as Q1 - 1.5 IQR. In this instance, we see that whiskers have reached its maximum value, however, since there is no observed data below 0 lead time, the lower whisker is at 0. 
+We can suspect any observed value greater than the maximum reach of whiskers or any observed value less than the minimum reach of whiskers as **outliers**.
+
+## Outliers
+
+```{r}
+#| echo: false
+#| fig-align: center
+
+
+ggplot(hotel_bookings,
+       aes(y = lead_time)) + 
+  scale_x_discrete( ) +
+  geom_boxplot() + 
+  labs(y = "Lead Time",
+       x = "") +
+  theme_classic(base_size = 22) +
+  annotate(geom = "text",
+           x = 0.1, y = (q3 + 2*iqr),
+           label =  "Potential Outliers",
+           hjust = "left", color = "#BA4A00",
+           size = 8) 
+
+```
+
+
+
 
 ## Meet Palmer Penguins[^1]
 
