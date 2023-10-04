@@ -313,7 +313,7 @@ hotel_bookings %>%
   select(is_canceled, lead_time) 
 ```
 
-`is_canceled` whether the booking was cancelled (0 = FALSE (i.e., not canceled), 1 = TRUE (i.e., not canceled))   
+`is_canceled` whether the booking was cancelled (0 = FALSE (i.e., not canceled), 1 = TRUE (i.e., canceled))   
 `lead_time` number of days between booking and arrival
 
 ## Summarizing Categorical Data in R
