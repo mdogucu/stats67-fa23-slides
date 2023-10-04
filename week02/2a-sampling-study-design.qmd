@@ -1,0 +1,347 @@
+---
+title: "Sampling and Study Design"
+author: "Dr. Mine Dogucu"
+execute:
+  echo: true
+format: 
+  revealjs:
+    footer: "[stats4cs.com](https://stats4cs.com)"
+    slide-number: true
+    incremental: true
+    theme: ["../templates/slide-style.scss"]
+    logo: "https://www.stats4cs.com/img/logo.png"
+    title-slide-attributes: 
+      data-background-image: "https://www.stats4cs.com/img/logo.png"
+      data-background-size: 5%
+      data-background-position: 50% 85%
+    include-after-body: "../templates/clean_title_page.html"
+---
+
+```{r echo = FALSE, message = FALSE}
+library(tidyverse)
+library(gridExtra)
+options(scipen = 999)
+```
+
+# Sampling
+
+## Research question
+
+Every research project aims to answer a research question (or multiple questions).
+
+::: {.callout-tip icon=false}
+## Example
+Do UCI students who exercise regularly have higher GPA?
+::: 
+
+We will use this research question throughout the examples in the lecture.
+
+## Population
+
+Each research question aims to examine a __population__. 
+
+::: {.callout-tip icon=false}
+## Example
+
+Population for this research question is UCI students.
+
+:::
+
+## Data Collection
+
+Data are collected to answer research questions. 
+There are different methods to collect data.
+For instance, data can be collected 
+
+- in-person or online (if collecting from human subjects)
+- on-site or off-site (e.g. rain fall measures vs. moon image tracking)
+- with different tools such as surveys, motion sensors (e.g. marathon finish lines) 
+
+## Data Collection - Ethics
+
+When collecting data from human and animal research subjects we need to consider ethics. 
+
+In universities, the rights of the human and animal research subjects are protected by the Institutional Review Board (IRB) of each university. 
+If interested (highly recommended) you can read about UCI's [Institutional Review Board](https://research.uci.edu/compliance/human-research-protections/index.html))
+
+##
+
+::: {.callout-tip icon=false}
+## Example
+
+Consider that we design a survey with the following questions to study the research question.
+
+- Do you exercise at least once every week?
+
+- What is your GPA?
+
+:::
+
+## Sampling
+
+A population is a collection of elements which the research question aims to study. 
+However it is often costly and sometimes impossible to study the whole population. 
+Often a subset of the population is selected to be studied. Sample is the the subset of the population that is studied. 
+The goal is to have a sample that is __representative__ of the population so that the findings of the study can generalize to the population.
+
+
+::: {.callout-tip icon=false}
+
+## Example
+
+Since it would be almost impossible to give the survey to ALL UCI students, we can give it to a sample of students.
+
+:::
+
+
+There are different sampling methods to consider.
+
+## Convenience (Availability) Sampling
+
+Convenience sampling occurs when a specific sample is selected because the sample is easy to access.
+
+::: {.callout-tip icon=false}
+
+## Example
+
+- Stand in front of Langson Library
+- Give the survey to 100 UCI students
+
+:::
+
+. . .
+
+This could introduce (sampling) __bias__ and the findings may not generalize to the population. It is possible that those in front of the library
+
+- may study more and thus may have higher GPA.
+- may be more active than those who study at home/dorm.
+
+## 
+
+::: {.callout-tip icon=false}
+
+## Additional Example
+
+A scientist is interested in counting the number of different species of bacteria in San Diego Creek. She takes a bucket of water from San Diego Creek where she happens to be standing and counts the different specifies of bacteria. The bacteria in the bucket make up the __sample__ and the bacteria in San Diego Creek make up the __population__. The scientist is using the convenience sampling method.
+
+:::
+
+## Simple Random Sample
+
+When simple random sampling technique is used any element of the population has an equal chance of being selected to the sample. 
+
+::: {.callout-tip icon=false}
+
+## Example
+
+The researcher can    
+
+- reach out to the registrar to get student emails;  
+- randomly select 100 students; 
+- email them the survey.
+
+:::
+
+. . .
+
+Assume that the 100 selected students respond.
+
+**Population**: All UCI students  
+**Sample**: 100 students who have responded
+
+
+## Simple Random Sampling in R
+
+```{r}
+sample(1:100, 3, replace = FALSE) # <1>
+```
+
+1. This allows us to sample 3 numbers from 1 to 100 without replacement, meaning a number that is selected cannot be twice.
+
+. . . 
+
+
+To generalize:
+
+```{r}
+#| eval: false
+sample(x = 1:N, size = n, replace = FALSE)
+```
+
+This code will take a random sample of size $n$ from the population consisting of the numbers in the interval $[1, N]$
+
+. . .
+
+Side note: This is not truly random but that's beyond the scope of this class. Here is a [fun (short) reading](https://engineering.mit.edu/engage/ask-an-engineer/can-a-computer-generate-a-truly-random-number/) about it. Philosophers also discuss if [true randomness exists or not](https://philosophy.stackexchange.com/questions/29364/does-true-randomness-actually-exist). 
+
+
+## Non-response Bias
+
+Even when simple random sampling is used, if participants are unwilling to participate in studies then the results can have **nonresponse bias**.
+
+::: {.callout-tip icon=false}
+
+## Example
+
+It is unlikely that 100 students will respond. Assume that 86 respond. 
+
+It is possible that those 14 who did not respond
+
+- may be busy exercising and did not have the time to respond.
+- may be busy studying and did not have the time to respond. 
+
+:::
+
+
+##
+
+::: {.callout-tip icon=false}
+## Additional Example
+
+A social media company shows a survey to some its users on the timeline. Many users ignore the survey and do not take it. There is a high non-response rate and thus the results cannot be generalized to the population.
+
+:::
+
+## Quiz Question
+
+## Cluster Sampling 
+
+## Stratified Sampling 
+
+
+# Study Design
+
+## Anecdotal Evidence
+
+Anecdotal evidence is an observation that is not systematic and haphazard. 
+
+::: {.callout-tip icon=false}
+
+## Example
+
+We might meet a junior student who got 100 points in all UCI exams, homework assignments, and quizzes that they have taken and they say that they exercise regularly. Even though the data are factually correct (i.e., high GPA and regular exercise routine.) this does not
+
+:::
+
+Anecdotal evidence is not a scientific method to answer research questions. We need rigorously designed studies to make generalizations and/or to establish causal relationships.
+
+## Observational Study
+
+In observational studies, researchers study the research question without exposing the cases (or subset of a sample) to any treatment or intervention. In observational studies causal relationships between variables cannot be established.
+
+
+::: {.callout-tip icon=false}
+
+## Example
+
+Based on the survey, even if we observe that UCI students who exercise regularly have higher GPA, we cannot conclude that exercising regularly increases GPA.
+
+:::
+
+
+## Relationship between two variables
+
+If two variables are related to each other in some way we would call them __associated__.
+
+If two variables are not related to each other in any way we would call them __independent__.
+
+
+
+## Relationship between two variables
+
+When we examine the relationship between two variables, we often want to know if the relationship between them is causal. In other words, does one variable cause the other? For instance, is exercising the reason for higher GPA? We don't know!
+
+When we suspect that two variables have a causal relationship we can say
+
+The __explanatory variable__ (e.g. exercising) might causally affect the __response variable__ (e.g. GPA).
+
+. . .
+
+Relationship between two variables does not imply one causes the other. 
+
+## Relationship between two variables
+
+Explanatory variables are denoted by $x$ and the response variable is denoted by $y$. You can remember this from e**X**planatory variable is $x$. Exercising may e**X**plain high GPA. 
+
+##
+
+
+```{r echo = FALSE, fig.align='center', out.width='50%'}
+knitr::include_graphics("img/confounding.png")
+```
+
+A __confounding variable__ (e.g. time management skills) has a correlation with the the explanatory and the response variable.
+
+
+## Experiment Design
+
+In __experiments__, researchers assign cases to treatments/interventions.
+
+. . .
+
+In __randomized experiments__, researchers randomly assign cases  to treatments/interventions. In order to establish causal link between variables, we need randomized experiments. 
+
+##
+
+::: {.callout-tip icon=false}
+
+## Example 
+
+~~Do UCI students who exercise regularly have higher GPA?~~
+
+Does exercising regularly increase GPA for UCI students?
+
+
+
+```{r echo=FALSE, out.width='70%', fig.align='center'}
+knitr::include_graphics('img/experiment.png')
+```
+
+Image Copyright Derenik Haghverdian. Used with permission
+
+:::
+
+
+##
+
+::: {.callout-tip icon=false}
+
+## Note
+
+Random sampling and random assignment (i.e., random allocation) serve different purposes. 
+
+:::{.nonincremental}
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+
+
+### Random sampling
+
+- method of choosing sample from the population
+
+- the goal is to establish generalizability
+
+
+:::
+
+:::{.column width="50%"}
+
+### Random allocation
+
+- method of assigning the sample to different treatment groups
+
+- the goal is to establish causality.
+:::
+
+::::
+
+:::
+
+:::
+
+
+
+
