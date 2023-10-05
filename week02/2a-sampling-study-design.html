@@ -537,11 +537,12 @@ Dr.&nbsp;Mine Dogucu
 </div>
 </div>
 </div>
-<div class="fragment">
+</section>
+<section id="section-2" class="slide level2">
+<h2></h2>
 <p>Assume that the 100 selected students respond.</p>
 <p><strong>Population</strong>: All UCI students<br>
 <strong>Sample</strong>: 100 students who have responded</p>
-</div>
 </section>
 <section id="simple-random-sampling-in-r" class="slide level2">
 <h2>Simple Random Sampling in R</h2>
@@ -551,12 +552,12 @@ Dr.&nbsp;Mine Dogucu
 <dl class="code-annotation-container-grid">
 <dt class="fragment" data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
 <dd class="fragment">
-<span data-code-annotation="1" data-code-lines="1" data-code-cell="annotated-cell-1">This allows us to sample 3 numbers from 1 to 100 without replacement, meaning a number that is selected cannot be twice.</span>
+<span data-code-cell="annotated-cell-1" data-code-annotation="1" data-code-lines="1">This allows us to sample 3 numbers from 1 to 100 without replacement, meaning a number that is selected cannot be twice.</span>
 </dd>
 </dl>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 51 20 37</code></pre>
+<pre><code>[1] 79 98 55</code></pre>
 </div>
 </div>
 <div class="fragment">
@@ -589,7 +590,7 @@ Dr.&nbsp;Mine Dogucu
 </div>
 </div>
 </section>
-<section id="section-2" class="slide level2">
+<section id="section-3" class="slide level2">
 <h2></h2>
 <div class="callout callout-tip no-icon callout-titled callout-style-default">
 <div class="callout-body">
@@ -663,7 +664,7 @@ Dr.&nbsp;Mine Dogucu
 <h2>Relationship between two variables</h2>
 <p>Explanatory variables are denoted by <span class="math inline">\(x\)</span> and the response variable is denoted by <span class="math inline">\(y\)</span>. You can remember this from e<strong>X</strong>planatory variable is <span class="math inline">\(x\)</span>. Exercising may e<strong>X</strong>plain high GPA.</p>
 </section>
-<section id="section-3" class="slide level2">
+<section id="section-4" class="slide level2">
 <h2></h2>
 
 <img data-src="img/confounding.png" style="width:50.0%" class="r-stretch quarto-figure-center"><p>A <strong>confounding variable</strong> (e.g.&nbsp;time management skills) has a correlation with the the explanatory and the response variable.</p>
@@ -675,7 +676,7 @@ Dr.&nbsp;Mine Dogucu
 <p>In <strong>randomized experiments</strong>, researchers randomly assign cases to treatments/interventions. In order to establish causal link between variables, we need randomized experiments.</p>
 </div>
 </section>
-<section id="section-4" class="slide level2">
+<section id="section-5" class="slide level2">
 <h2></h2>
 <div class="callout callout-tip no-icon callout-titled callout-style-default">
 <div class="callout-body">
@@ -699,7 +700,7 @@ Dr.&nbsp;Mine Dogucu
 </div>
 </div>
 </section>
-<section id="section-5" class="slide level2">
+<section id="section-6" class="slide level2">
 <h2></h2>
 <div class="callout callout-tip no-icon callout-titled callout-style-default">
 <div class="callout-body">
@@ -728,11 +729,257 @@ Dr.&nbsp;Mine Dogucu
 </div>
 </div>
 </div>
+</section>
+<section id="blocking" class="slide level2">
+<h2>Blocking</h2>
+<p>A doctor has developed a drug called drug <code>i.d.s.</code> to treat some disease. She wants to know if patients who take drug <code>i.d.s.</code> is free of the disease for at least a year.</p>
+<div class="fragment">
+<p>The doctor suspects that the drug may affect adults and kids differently.</p>
+</div>
+<div class="fragment">
+<p>If researchers suspect that the an additional variable that may influence the response variable then they may use <strong>blocks</strong>.</p>
+</div>
+</section>
+<section id="blocking-1" class="slide level2">
+<h2>Blocking</h2>
 
-<img src="https://www.stats4cs.com/img/logo.png" class="slide-logo r-stretch"><div class="footer footer-default">
+<img data-src="img/blocking.png" style="width:80.0%" class="r-stretch quarto-figure-center"><p>Image Copyright Federica Ricci. Used with permission.</p>
+</section>
+<section id="ab-testing" class="slide level2">
+<h2>A/B testing</h2>
+<ul>
+<li class="fragment"><p>A/B testing is a randomized experiment that compares two versions (A and B) of a single variable.</p></li>
+<li class="fragment"><p>It is commonly used on measuring online activities such as revenue per user, click through rates for online ads, number of returning users.</p></li>
+</ul>
+<div class="fragment">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/ab_testing.png" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="more-vocabulary-about-experiments" class="slide level2">
+<h2>More Vocabulary about Experiments</h2>
+<p>A <strong>placebo</strong> is a fake treatment. If a patient shows an improvement by taking a placebo then this is called a <strong>placebo effect</strong>.</p>
+<div class="fragment">
+<p>In <strong>blind</strong> studies, patients do not know what treatment they receive. In <strong>double blind</strong> studies patients who receive and the doctors who provide the treatment do not know the type of the treatment.</p>
+</div>
+</section>
+<section id="section-7" class="slide level2">
+<h2></h2>
+<div class="font75">
+<p>If there was no variance there would be no need for statistics.</p>
+</div>
+</section>
+<section id="what-if" class="slide level2">
+<h2>What if?</h2>
+<ul>
+<li class="fragment"><p>We want to understand average number of sleep Irvine residents get. What if everyone in Irvine slept 8 hours every night? (<code>sleep</code> = {8, 8,…, 8})</p></li>
+<li class="fragment"><p>We want to predict who will graduate college. What if everyone graduated college? (<code>graduate</code> = {TRUE, TRUE,…, TRUE})</p></li>
+</ul>
+</section>
+<section id="section-8" class="slide level2">
+<h2></h2>
+<ul>
+<li class="fragment"><p>We want to understand if Android users spend more time on their phones when compared to iOS users. What if everyone spent 3 hours per day on their phones? (<code>time</code> = {3, 3,…, 3}, <code>os</code> = {Android, Android, …. iOS})</p></li>
+<li class="fragment"><p>We want to understand, if birth height and weight are positively associated in babies. What if every baby was 7.5 lbs? (<code>weight</code> = {7.5, 7.5,…, 7.5}, <code>height</code> = {20, 22,…, 18})</p></li>
+</ul>
+</section>
+<section id="section-9" class="slide level2">
+<h2></h2>
+<p>In all these fake scenarios there would be no <strong>variance</strong> in <code>sleep</code>, <code>graduate</code>, <code>time</code>, <code>weight</code>. These variables would all be constants thus would not even be a <strong>vari</strong>able.</p>
+<div class="font50">
+<p>Things vary. We use statistics in research studies to understand <strong>how</strong> variables vary and often we want to know <strong>how</strong> they <strong>covary</strong> with other variables.</p>
+</div>
+</section>
+<section id="section-10" class="slide level2">
+<h2></h2>
+<p>To make the connection between research questions of studies and statistics, we will take small steps and begin with writing research questions using notation.</p>
+</section>
+<section id="section-11" class="slide level2">
+<h2></h2>
+<p><svg aria-hidden="true" role="img" viewbox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#e56646;overflow:visible;position:relative;"><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"></path></svg> <strong>Research Question</strong> Do UCI students sleep on average 8 hours on a typical night?</p>
+<div class="fragment">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#e56646;overflow:visible;position:relative;"><path d="M64 256V160H224v96H64zm0 64H224v96H64V320zm224 96V320H448v96H288zM448 256H288V160H448v96zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64z"></path></svg> <strong>Variable</strong> <code>sleep</code> (8,7,9,7.5, …)</p>
+</div>
+<div class="fragment">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#e56646;overflow:visible;position:relative;"><path d="M0 128C0 92.7 28.7 64 64 64H256h48 16H576c35.3 0 64 28.7 64 64V384c0 35.3-28.7 64-64 64H320 304 256 64c-35.3 0-64-28.7-64-64V128zm320 0V384H576V128H320zM178.3 175.9c-3.2-7.2-10.4-11.9-18.3-11.9s-15.1 4.7-18.3 11.9l-64 144c-4.5 10.1 .1 21.9 10.2 26.4s21.9-.1 26.4-10.2l8.9-20.1h73.6l8.9 20.1c4.5 10.1 16.3 14.6 26.4 10.2s14.6-16.3 10.2-26.4l-64-144zM160 233.2L179 276H141l19-42.8zM448 164c11 0 20 9 20 20v4h44 16c11 0 20 9 20 20s-9 20-20 20h-2l-1.6 4.5c-8.9 24.4-22.4 46.6-39.6 65.4c.9 .6 1.8 1.1 2.7 1.6l18.9 11.3c9.5 5.7 12.5 18 6.9 27.4s-18 12.5-27.4 6.9l-18.9-11.3c-4.5-2.7-8.8-5.5-13.1-8.5c-10.6 7.5-21.9 14-34 19.4l-3.6 1.6c-10.1 4.5-21.9-.1-26.4-10.2s.1-21.9 10.2-26.4l3.6-1.6c6.4-2.9 12.6-6.1 18.5-9.8l-12.2-12.2c-7.8-7.8-7.8-20.5 0-28.3s20.5-7.8 28.3 0l14.6 14.6 .5 .5c12.4-13.1 22.5-28.3 29.8-45H448 376c-11 0-20-9-20-20s9-20 20-20h52v-4c0-11 9-20 20-20z"></path></svg> <strong>Research Question Using Notation</strong> <span class="math inline">\(\mu \stackrel{?}{=} 8\)</span></p>
+</div>
+<div class="fragment">
+<p>The parameter we want to infer about is <strong>a single mean</strong>.</p>
+</div>
+</section>
+<section id="section-12" class="slide level2">
+<h2></h2>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>If you want to type math notation correctly on Gradescope or R Markdown out correctly as <span class="math inline">\(\mu\)</span> then you can write</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="sc">$</span><span class="er">$</span>\mu<span class="sc">$</span><span class="er">$</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The double dollar signs at the beginning and at the end let Gradescope know that you are writing a math equation.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="section-13" class="slide level2">
+<h2></h2>
+<p><svg aria-hidden="true" role="img" viewbox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#e56646;overflow:visible;position:relative;"><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"></path></svg> <strong>Research Question</strong> Do the majority of Americans approve allowing DACA immigrants to become citizens?</p>
+<div class="fragment">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#e56646;overflow:visible;position:relative;"><path d="M64 256V160H224v96H64zm0 64H224v96H64V320zm224 96V320H448v96H288zM448 256H288V160H448v96zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64z"></path></svg> <strong>Variable</strong> <code>approve</code> (yes, yes, yes, no, yes, no, no)</p>
+</div>
+<div class="fragment">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#e56646;overflow:visible;position:relative;"><path d="M0 128C0 92.7 28.7 64 64 64H256h48 16H576c35.3 0 64 28.7 64 64V384c0 35.3-28.7 64-64 64H320 304 256 64c-35.3 0-64-28.7-64-64V128zm320 0V384H576V128H320zM178.3 175.9c-3.2-7.2-10.4-11.9-18.3-11.9s-15.1 4.7-18.3 11.9l-64 144c-4.5 10.1 .1 21.9 10.2 26.4s21.9-.1 26.4-10.2l8.9-20.1h73.6l8.9 20.1c4.5 10.1 16.3 14.6 26.4 10.2s14.6-16.3 10.2-26.4l-64-144zM160 233.2L179 276H141l19-42.8zM448 164c11 0 20 9 20 20v4h44 16c11 0 20 9 20 20s-9 20-20 20h-2l-1.6 4.5c-8.9 24.4-22.4 46.6-39.6 65.4c.9 .6 1.8 1.1 2.7 1.6l18.9 11.3c9.5 5.7 12.5 18 6.9 27.4s-18 12.5-27.4 6.9l-18.9-11.3c-4.5-2.7-8.8-5.5-13.1-8.5c-10.6 7.5-21.9 14-34 19.4l-3.6 1.6c-10.1 4.5-21.9-.1-26.4-10.2s.1-21.9 10.2-26.4l3.6-1.6c6.4-2.9 12.6-6.1 18.5-9.8l-12.2-12.2c-7.8-7.8-7.8-20.5 0-28.3s20.5-7.8 28.3 0l14.6 14.6 .5 .5c12.4-13.1 22.5-28.3 29.8-45H448 376c-11 0-20-9-20-20s9-20 20-20h52v-4c0-11 9-20 20-20z"></path></svg> <strong>Research Question Using Notation</strong> <span class="math inline">\(\pi \stackrel{?}{&gt;} 0.5\)</span></p>
+</div>
+<div class="fragment">
+<p>The parameter we want to infer about is <strong>a single proportion</strong>.</p>
+</div>
+</section>
+<section id="section-14" class="slide level2">
+<h2></h2>
+<p><svg aria-hidden="true" role="img" viewbox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#e56646;overflow:visible;position:relative;"><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"></path></svg> <strong>Research Question</strong> Is California March 2020 unemployment rate different than US March 2020 unemployment rate which is at 4.4%?</p>
+<div class="fragment">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#e56646;overflow:visible;position:relative;"><path d="M64 256V160H224v96H64zm0 64H224v96H64V320zm224 96V320H448v96H288zM448 256H288V160H448v96zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64z"></path></svg> <strong>Variable</strong> <code>unemployed_CA</code> (no, no, yes, no, yes, no, no…)</p>
+</div>
+<div class="fragment">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#e56646;overflow:visible;position:relative;"><path d="M0 128C0 92.7 28.7 64 64 64H256h48 16H576c35.3 0 64 28.7 64 64V384c0 35.3-28.7 64-64 64H320 304 256 64c-35.3 0-64-28.7-64-64V128zm320 0V384H576V128H320zM178.3 175.9c-3.2-7.2-10.4-11.9-18.3-11.9s-15.1 4.7-18.3 11.9l-64 144c-4.5 10.1 .1 21.9 10.2 26.4s21.9-.1 26.4-10.2l8.9-20.1h73.6l8.9 20.1c4.5 10.1 16.3 14.6 26.4 10.2s14.6-16.3 10.2-26.4l-64-144zM160 233.2L179 276H141l19-42.8zM448 164c11 0 20 9 20 20v4h44 16c11 0 20 9 20 20s-9 20-20 20h-2l-1.6 4.5c-8.9 24.4-22.4 46.6-39.6 65.4c.9 .6 1.8 1.1 2.7 1.6l18.9 11.3c9.5 5.7 12.5 18 6.9 27.4s-18 12.5-27.4 6.9l-18.9-11.3c-4.5-2.7-8.8-5.5-13.1-8.5c-10.6 7.5-21.9 14-34 19.4l-3.6 1.6c-10.1 4.5-21.9-.1-26.4-10.2s.1-21.9 10.2-26.4l3.6-1.6c6.4-2.9 12.6-6.1 18.5-9.8l-12.2-12.2c-7.8-7.8-7.8-20.5 0-28.3s20.5-7.8 28.3 0l14.6 14.6 .5 .5c12.4-13.1 22.5-28.3 29.8-45H448 376c-11 0-20-9-20-20s9-20 20-20h52v-4c0-11 9-20 20-20z"></path></svg> <strong>Research Question Using Notation</strong> <span class="math inline">\(\pi \stackrel{?}{=} 0.044\)</span></p>
+</div>
+<div class="fragment">
+<p>The parameter we want to infer about is <strong>a single proportion</strong>.</p>
+</div>
+</section>
+<section id="section-15" class="slide level2">
+<h2></h2>
+<p><svg aria-hidden="true" role="img" viewbox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#e56646;overflow:visible;position:relative;"><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"></path></svg> <strong>Research Question</strong> Are there more STEM majors at UCI than non-STEM majors?</p>
+<div class="fragment">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#e56646;overflow:visible;position:relative;"><path d="M64 256V160H224v96H64zm0 64H224v96H64V320zm224 96V320H448v96H288zM448 256H288V160H448v96zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64z"></path></svg> <strong>Variable</strong> <code>STEM</code> (TRUE, FALSE, FALSE, TRUE, FALSE, TRUE, TRUE…)</p>
+</div>
+<div class="fragment">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#e56646;overflow:visible;position:relative;"><path d="M0 128C0 92.7 28.7 64 64 64H256h48 16H576c35.3 0 64 28.7 64 64V384c0 35.3-28.7 64-64 64H320 304 256 64c-35.3 0-64-28.7-64-64V128zm320 0V384H576V128H320zM178.3 175.9c-3.2-7.2-10.4-11.9-18.3-11.9s-15.1 4.7-18.3 11.9l-64 144c-4.5 10.1 .1 21.9 10.2 26.4s21.9-.1 26.4-10.2l8.9-20.1h73.6l8.9 20.1c4.5 10.1 16.3 14.6 26.4 10.2s14.6-16.3 10.2-26.4l-64-144zM160 233.2L179 276H141l19-42.8zM448 164c11 0 20 9 20 20v4h44 16c11 0 20 9 20 20s-9 20-20 20h-2l-1.6 4.5c-8.9 24.4-22.4 46.6-39.6 65.4c.9 .6 1.8 1.1 2.7 1.6l18.9 11.3c9.5 5.7 12.5 18 6.9 27.4s-18 12.5-27.4 6.9l-18.9-11.3c-4.5-2.7-8.8-5.5-13.1-8.5c-10.6 7.5-21.9 14-34 19.4l-3.6 1.6c-10.1 4.5-21.9-.1-26.4-10.2s.1-21.9 10.2-26.4l3.6-1.6c6.4-2.9 12.6-6.1 18.5-9.8l-12.2-12.2c-7.8-7.8-7.8-20.5 0-28.3s20.5-7.8 28.3 0l14.6 14.6 .5 .5c12.4-13.1 22.5-28.3 29.8-45H448 376c-11 0-20-9-20-20s9-20 20-20h52v-4c0-11 9-20 20-20z"></path></svg> <strong>Research Question Using Notation</strong> <span class="math inline">\(\pi_{STEM} \stackrel{?}{&gt;} 0.5\)</span></p>
+</div>
+<div class="fragment">
+<p>The parameter we want to infer about is <strong>a single proportion</strong>.</p>
+</div>
+</section>
+<section id="section-16" class="slide level2">
+<h2></h2>
+<p><svg aria-hidden="true" role="img" viewbox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#e56646;overflow:visible;position:relative;"><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"></path></svg> <strong>RQ</strong> Do STEM (s) majors have higher or lower (different) income after graduation when compared to non-STEM (n) majors?</p>
+<div class="fragment">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#e56646;overflow:visible;position:relative;"><path d="M64 256V160H224v96H64zm0 64H224v96H64V320zm224 96V320H448v96H288zM448 256H288V160H448v96zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64z"></path></svg> <strong>Variables</strong> explanatory: <code>STEM</code> (TRUE, FALSE, FALSE, TRUE,…)<br>
+response: <code>income</code>(40000, 20000, 65490, 115000,…)</p>
+</div>
+<div class="fragment">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#e56646;overflow:visible;position:relative;"><path d="M0 128C0 92.7 28.7 64 64 64H256h48 16H576c35.3 0 64 28.7 64 64V384c0 35.3-28.7 64-64 64H320 304 256 64c-35.3 0-64-28.7-64-64V128zm320 0V384H576V128H320zM178.3 175.9c-3.2-7.2-10.4-11.9-18.3-11.9s-15.1 4.7-18.3 11.9l-64 144c-4.5 10.1 .1 21.9 10.2 26.4s21.9-.1 26.4-10.2l8.9-20.1h73.6l8.9 20.1c4.5 10.1 16.3 14.6 26.4 10.2s14.6-16.3 10.2-26.4l-64-144zM160 233.2L179 276H141l19-42.8zM448 164c11 0 20 9 20 20v4h44 16c11 0 20 9 20 20s-9 20-20 20h-2l-1.6 4.5c-8.9 24.4-22.4 46.6-39.6 65.4c.9 .6 1.8 1.1 2.7 1.6l18.9 11.3c9.5 5.7 12.5 18 6.9 27.4s-18 12.5-27.4 6.9l-18.9-11.3c-4.5-2.7-8.8-5.5-13.1-8.5c-10.6 7.5-21.9 14-34 19.4l-3.6 1.6c-10.1 4.5-21.9-.1-26.4-10.2s.1-21.9 10.2-26.4l3.6-1.6c6.4-2.9 12.6-6.1 18.5-9.8l-12.2-12.2c-7.8-7.8-7.8-20.5 0-28.3s20.5-7.8 28.3 0l14.6 14.6 .5 .5c12.4-13.1 22.5-28.3 29.8-45H448 376c-11 0-20-9-20-20s9-20 20-20h52v-4c0-11 9-20 20-20z"></path></svg> <strong>Research Question Using Notation</strong> <span class="math inline">\(\mu_{s} \stackrel{?}{=} \mu_{n}\)</span> or <span class="math inline">\(\mu_{s} - \mu_{n} \stackrel{?}{=}0\)</span></p>
+</div>
+<div class="fragment">
+<p>We want to infer about <strong>difference of two means</strong>.</p>
+</div>
+</section>
+<section id="section-17" class="slide level2">
+<h2></h2>
+<p><svg aria-hidden="true" role="img" viewbox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#e56646;overflow:visible;position:relative;"><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"></path></svg> <strong>RQ</strong> Do Democrats and Republicans approve legal abortion at same rates?</p>
+<div class="fragment">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#e56646;overflow:visible;position:relative;"><path d="M64 256V160H224v96H64zm0 64H224v96H64V320zm224 96V320H448v96H288zM448 256H288V160H448v96zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64z"></path></svg> <strong>Variables</strong> explanatory: <code>party</code> (D, D, R, R,…)<br>
+response: <code>approve</code>(TRUE, FALSE, FALSE, TRUE,…)</p>
+</div>
+<div class="fragment">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#e56646;overflow:visible;position:relative;"><path d="M0 128C0 92.7 28.7 64 64 64H256h48 16H576c35.3 0 64 28.7 64 64V384c0 35.3-28.7 64-64 64H320 304 256 64c-35.3 0-64-28.7-64-64V128zm320 0V384H576V128H320zM178.3 175.9c-3.2-7.2-10.4-11.9-18.3-11.9s-15.1 4.7-18.3 11.9l-64 144c-4.5 10.1 .1 21.9 10.2 26.4s21.9-.1 26.4-10.2l8.9-20.1h73.6l8.9 20.1c4.5 10.1 16.3 14.6 26.4 10.2s14.6-16.3 10.2-26.4l-64-144zM160 233.2L179 276H141l19-42.8zM448 164c11 0 20 9 20 20v4h44 16c11 0 20 9 20 20s-9 20-20 20h-2l-1.6 4.5c-8.9 24.4-22.4 46.6-39.6 65.4c.9 .6 1.8 1.1 2.7 1.6l18.9 11.3c9.5 5.7 12.5 18 6.9 27.4s-18 12.5-27.4 6.9l-18.9-11.3c-4.5-2.7-8.8-5.5-13.1-8.5c-10.6 7.5-21.9 14-34 19.4l-3.6 1.6c-10.1 4.5-21.9-.1-26.4-10.2s.1-21.9 10.2-26.4l3.6-1.6c6.4-2.9 12.6-6.1 18.5-9.8l-12.2-12.2c-7.8-7.8-7.8-20.5 0-28.3s20.5-7.8 28.3 0l14.6 14.6 .5 .5c12.4-13.1 22.5-28.3 29.8-45H448 376c-11 0-20-9-20-20s9-20 20-20h52v-4c0-11 9-20 20-20z"></path></svg> <strong>Research Question Using Notation</strong> <span class="math inline">\(\pi_{d} \stackrel{?}{=} \pi_{r}\)</span> or <span class="math inline">\(\pi_{d} - \pi_{r} \stackrel{?}{=}0\)</span></p>
+</div>
+<div class="fragment">
+<p>We want to infer about <strong>difference of two proportions</strong>.</p>
+</div>
+</section>
+<section id="section-18" class="slide level2">
+<h2></h2>
+<div align="center">
+
+<table>
+<colgroup>
+<col style="width: 31%">
+<col style="width: 23%">
+<col style="width: 23%">
+<col style="width: 23%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Parameter of Interest</th>
+<th>Response</th>
+<th>Explanatory</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Single Mean</td>
+<td><span class="math inline">\(\mu\)</span></td>
+<td>Numeric</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Difference of Two Means</td>
+<td><span class="math inline">\(\mu_1 - \mu_2\)</span></td>
+<td>Numeric</td>
+<td>Binary</td>
+</tr>
+<tr class="odd">
+<td>Single Proportion</td>
+<td><span class="math inline">\(\pi\)</span></td>
+<td>Binary</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Difference of Two Proportions</td>
+<td><span class="math inline">\(\pi_1 - \pi_2\)</span></td>
+<td>Binary</td>
+<td>Binary</td>
+</tr>
+</tbody>
+</table>
+<p>A categorical variable with two levels is called a <strong>binary</strong> variable.</p>
+</div></section>
+<section id="section-19" class="slide level2">
+<h2></h2>
+<p>Later on we will also learn</p>
+<div align="center">
+
+<table>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter of Interest</th>
+<th>Response</th>
+<th>Explanatory</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\beta_1\)</span></td>
+<td>Numeric</td>
+<td>Categorical and/or Numeric</td>
+</tr>
+</tbody>
+</table>
+<p><img src="https://www.stats4cs.com/img/logo.png" class="slide-logo"></p>
+<div class="footer footer-default">
 <p><a href="https://stats4cs.com">stats4cs.com</a></p>
 </div>
-</section></section>
+</div></section></section>
     </div>
   </div>
 

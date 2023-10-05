@@ -142,7 +142,7 @@ The researcher can
 
 :::
 
-. . .
+## 
 
 Assume that the 100 selected students respond.
 
@@ -342,6 +342,231 @@ Random sampling and random assignment (i.e., random allocation) serve different 
 
 :::
 
+## Blocking
+
+A doctor has developed a drug called drug `i.d.s.` to treat some disease. She wants to know if patients who take drug `i.d.s.` is free of the disease for at least a year.
+
+. . .
+
+The doctor suspects that the drug may affect adults and kids differently.
+
+. . .
+
+If researchers suspect that the an additional variable that may influence the response variable then they may use __blocks__.
 
 
+
+## Blocking
+
+
+```{r}
+#| echo: false
+#| out-width: 80%
+#| fig-align: center
+knitr::include_graphics('img/blocking.png')
+```
+
+Image Copyright Federica Ricci. Used with permission.
+
+
+## A/B testing 
+
+- A/B testing is a randomized experiment that compares two versions (A and B) of a single variable. 
+
+- It is commonly used on measuring online activities such as revenue per user, click through rates for online ads, number of returning users.
+
+. . .
+
+```{r echo = FALSE, fig.align='center', out.width='50%'}
+knitr::include_graphics("img/ab_testing.png")
+```
+
+
+## More Vocabulary about Experiments
+
+A __placebo__ is a fake treatment. If a patient shows an improvement by taking a placebo then this is called a __placebo effect__.
+
+. . .
+
+In __blind__ studies, patients do not know what treatment they receive. In __double blind__ studies patients who receive and the doctors who provide the treatment do not know the type of the treatment. 
+
+##
+
+::: {.font75}
+
+If there was no variance there would be no need for statistics.
+
+:::
+
+## What if?
+
+- We want to understand average number of sleep Irvine residents get.  What if everyone in Irvine slept 8 hours every night? (`sleep` = {8, 8,..., 8})
+
+
+
+- We want to predict who will graduate college. What if everyone graduated college? (`graduate` = {TRUE, TRUE,..., TRUE})
+
+##
+
+- We want to understand if Android users spend more time on their phones when compared to iOS users. What if everyone spent 3 hours per day on their phones? (`time` = {3, 3,..., 3}, `os` = {Android, Android, .... iOS})
+
+
+- We want to understand, if birth height and weight are positively associated in babies. What if every baby was 7.5 lbs? (`weight` = {7.5, 7.5,..., 7.5}, `height` = {20, 22,..., 18})
+
+##
+
+In all these fake scenarios there would be no **variance** in `sleep`, `graduate`, `time`, `weight`. These variables would all be constants thus would not even be a **vari**able.
+
+:::{.font50}
+
+Things vary. We use statistics in research studies to understand **how** variables vary and often we want to know **how** they **covary** with other variables. 
+
+:::
+
+##
+
+To make the connection between research questions of studies and statistics, we will take small steps and begin with writing research questions using notation.
+
+##
+
+`r fontawesome::fa(name = "search", fill = "#e56646")` **Research Question** Do UCI students sleep on average 8 hours on a typical night? 
+
+
+. . .
+
+`r fontawesome::fa(name = "table", fill = "#e56646")` **Variable** `sleep` (8,7,9,7.5, ...)
+
+. . .
+
+`r fontawesome::fa(name = "language", fill = "#e56646")` **Research Question Using Notation** $\mu \stackrel{?}{=} 8$
+
+
+. . .
+
+The parameter we want to infer about is **a single mean**.
+
+##
+
+::: {.callout-tip }
+
+If you want to type math notation correctly on Gradescope or R Markdown out correctly as $\mu$ then you can write 
+
+```{r eval = FALSE}
+$$\mu$$
+```
+
+The double dollar signs at the beginning and at the end let Gradescope know that you are writing a math equation.
+
+:::
+
+##
+
+`r fontawesome::fa(name = "search", fill = "#e56646")` **Research Question** Do the majority of Americans approve allowing DACA immigrants to become citizens?
+
+. . .
+
+`r fontawesome::fa(name = "table", fill = "#e56646")` **Variable** `approve` (yes, yes, yes, no, yes, no, no)
+
+. . .
+
+`r fontawesome::fa(name = "language", fill = "#e56646")` **Research Question Using Notation** $\pi \stackrel{?}{>} 0.5$ 
+
+. . .
+
+The parameter we want to infer about is **a single proportion**.
+
+##
+
+`r fontawesome::fa(name = "search", fill = "#e56646")` **Research Question** Is California March 2020 unemployment rate different than US March 2020 unemployment rate which is at 4.4%?
+
+. . .
+
+`r fontawesome::fa(name = "table", fill = "#e56646")` **Variable** `unemployed_CA` (no, no, yes, no, yes, no, no...)
+
+. . .
+
+`r fontawesome::fa(name = "language", fill = "#e56646")` **Research Question Using Notation** $\pi \stackrel{?}{=} 0.044$
+
+. . .
+
+
+The parameter we want to infer about is **a single proportion**.
+
+## 
+
+`r fontawesome::fa(name = "search", fill = "#e56646")` **Research Question** Are there more STEM majors at UCI than non-STEM majors?
+
+. . .
+
+`r fontawesome::fa(name = "table", fill = "#e56646")` **Variable** `STEM` (TRUE, FALSE, FALSE, TRUE, FALSE, TRUE, TRUE...)
+
+. . .
+
+`r fontawesome::fa(name = "language", fill = "#e56646")` **Research Question Using Notation** $\pi_{STEM} \stackrel{?}{>} 0.5$
+
+
+. . .
+
+The parameter we want to infer about is **a single proportion**.
+
+##
+
+`r fontawesome::fa(name = "search", fill = "#e56646")` **RQ** Do STEM (s) majors have higher or lower (different) income after graduation when compared to non-STEM (n) majors?
+
+. . .
+
+`r fontawesome::fa(name = "table", fill = "#e56646")` **Variables** explanatory: `STEM` (TRUE, FALSE, FALSE, TRUE,...)  
+response: `income`(40000, 20000, 65490, 115000,...)
+
+. . .
+
+`r fontawesome::fa(name = "language", fill = "#e56646")` **Research Question Using Notation** $\mu_{s} \stackrel{?}{=} \mu_{n}$ or $\mu_{s} - \mu_{n}  \stackrel{?}{=}0$ 
+
+. . .
+
+We want to infer about **difference of two means**.
+
+##
+
+`r fontawesome::fa(name = "search", fill = "#e56646")` **RQ** Do Democrats and Republicans approve legal abortion at same rates?
+
+. . .
+
+`r fontawesome::fa(name = "table", fill = "#e56646")` **Variables** explanatory: `party` (D, D, R, R,...)  
+response: `approve`(TRUE, FALSE, FALSE, TRUE,...)
+
+. . .
+
+`r fontawesome::fa(name = "language", fill = "#e56646")` **Research Question Using Notation** $\pi_{d} \stackrel{?}{=} \pi_{r}$ or $\pi_{d} -  \pi_{r} \stackrel{?}{=}0$ 
+
+
+. . .
+
+We want to infer about **difference of two proportions**.
+
+
+##
+
+
+<div align="center">
+
+|                               | Parameter of Interest | Response              |Explanatory            |
+|-------------------------------|-----------------------|-----------------------|-----------------------|
+| Single Mean                   | $\mu$                 | Numeric               |
+| Difference of Two Means       | $\mu_1 - \mu_2$       | Numeric               |Binary                 |
+| Single Proportion             | $\pi$                 | Binary                |
+| Difference of Two Proportions | $\pi_1 - \pi_2$       | Binary                |Binary                 |
+
+
+A categorical variable with two levels is called a __binary__ variable.
+
+##
+
+Later on we will also learn
+
+<div align = "center">
+
+| Parameter of Interest | Response              |Explanatory                |
+|-----------------------|-----------------------|-----------------------    |
+| $\beta_1$             | Numeric               | Categorical and/or Numeric|
 
