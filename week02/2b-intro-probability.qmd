@@ -1,0 +1,354 @@
+---
+title: "Introduction to Probability"
+author: "Dr. Mine Dogucu"
+execute:
+  echo: true
+format: 
+  revealjs:
+    footer: "[stats4cs.com](https://stats4cs.com)"
+    slide-number: true
+    incremental: true
+    theme: ["../templates/slide-style.scss"]
+    logo: "https://www.stats4cs.com/img/logo.png"
+    title-slide-attributes: 
+      data-background-image: "https://www.stats4cs.com/img/logo.png"
+      data-background-size: 5%
+      data-background-position: 50% 85%
+    include-after-body: "../templates/clean_title_page.html"
+---
+
+## Random process
+
+In random processes there is more than one possible outcome and the deterministic prediction of the outcome is difficult.
+
+e.g. flip of a coin  
+e.g. roll of a die
+
+
+
+
+## Sample Space
+
+**Sample space** is the set of all possible outcomes of a random process.
+
+. . .
+
+::: {.callout-tip icon=false}
+
+## Examples
+
+In a single roll of a die:
+
+$S = \{ 1, 2, 3, 4, 5, 6\}$
+
+In flipping a single coin twice:
+
+$S = \{ HH, TT, HT, TH\}$
+
+:::
+
+```{r fig.align='right', out.width="10%", echo = FALSE}
+knitr::include_graphics("https://cdn.pixabay.com/photo/2014/04/03/00/37/die-308887_960_720.png")
+
+```
+
+
+## Event
+
+An __event__ is a subset of the sample space.
+
+::: {.callout-tip icon=false}
+
+## Examples
+
+Let A represent the event that a single roll die results in an **even** number.
+
+$A = \{2, 4, 6 \}$
+
+
+Let B represent the event that a single roll die results in an **odd** number.
+
+$B = \{1, 3, 5 \}$
+
+
+Let C represent the event that a single roll die results in a **prime** number.
+
+$C = \{2, 3, 5 \}$
+
+:::
+
+## Venn Diagram
+
+```{r fig.align='center', out.width="60%", echo = FALSE}
+knitr::include_graphics("img/venn.jpg")
+
+
+```
+
+
+## Complement of an Event
+
+
+**Definition** Complement of an event is the set of all outcomes in the sample space that are not in the event itself.
+
+::: {.callout-tip icon=false}
+
+## Example
+
+Complement of event $C$ is the set of outcomes in a roll die that are not prime.
+
+**Notation** $C^c$
+
+**Pronunciation** C complement
+
+$C^c = \{1, 4, 6\}$
+
+:::
+
+
+
+## Mutually Exclusive or Disjoint Events
+
+
+
+**Definition** Mutually exclusive or disjoint events are two events that cannot happen at the same time.
+
+::: {.callout-tip icon=false}
+
+## Examples
+
+Events A and B are mutually exclusive because an outcome of a roll of a die cannot be even *and* odd.
+
+Events A and C are *not* mutually exclusive because 2 is both an even number and a prime number so event A and C can happen simultaneously. 
+
+:::
+
+
+
+
+## Events and Set Notation
+
+<br>
+<br>
+<div align ="center">
+
+```{r echo = FALSE}
+
+set_table <- data.frame(Description = c("Union", "Intersection"),
+                        Notation = c("\\(A \\cup C\\)", 
+                                   "\\(A \\cap C\\)"),
+                        Reading = c("A or C", "A and C"),
+                        Elements = c("{2, 3, 4, 5, 6}",
+                        "{2}"))
+
+
+
+kableExtra::kable(set_table, "html", escape = FALSE)
+
+``` 
+
+</div>
+
+
+## Defining Probability
+
+**Frequentist definition**
+
+The probability of an outcome is defined to be the proportion of times the outcome is observed under high number of repetitions of the random process.
+
+
+##
+
+Assume that we are repeating the random process of a coin flip and are recording $X$, the number of heads in $n$ coin flips. Then
+
+$$P(H) = \lim_{n\to\infty}\frac{X}{n}$$
+
+$$P(H) =\frac{1}{2}$$
+---
+
+## Defining Probability
+
+
+**Bayesian definition**
+
+When defining probability in addition to considering number of times an outcome occurs, Bayesians consider prior information that they have about an outcome. 
+
+More on this in Stats 115.
+
+
+## Axioms of Probability
+
+
+1) The probability of any event is between zero and one:
+
+. . .
+
+$$0 \leq P(A) \leq 1$$
+
+. . .
+
+2) The probabilities must add up to 1.
+
+. . .
+
+$$P(S) = 1$$
+
+##
+
+3) The probability of mutually exclusive events is additive. 
+
+. . .
+
+$$\bigcup\limits_{i=1}^{\infty} A_{i} = \Sigma_{i =1}^\infty P(A_i)$$
+
+
+## Probability of Complementary Events
+
+$P(A) + P(A^c) = 1$
+
+. . .
+
+::: {.callout-tip icon=false}
+
+## Example
+
+If we know the the probability that somebody owns a bike is 0.08, then we would know that the probability that somebody does not own a bike is 0.92.
+
+:::
+
+
+## Independence and Multiplication Rule
+
+Two processes are independent if knowing about the outcome of one does not help predict the outcome of the other. 
+
+::: {.callout-tip icon=false}
+
+## Example
+
+two flips of a single coin
+
+:::
+
+## 
+
+If events A and B are from two independent processes, then
+
+$$P(A \cap B) = P(A) \times P(B)$$
+
+. . .
+
+Probability of getting two heads in two flips of a single coin is
+
+$\frac{1}{2} \times \frac{1}{2} = \frac{1}{4}$
+
+## Data - GSS 2018
+
+The General Social Survey (GSS) is a sociological survey that has been regularly conducted since 1972. It is a comprehensive survey that provides information on experiences of residents of the United States. 
+
+## 
+
+<table align = "center">
+<thead>
+  <tr>
+    <th colspan="2" rowspan="2"></th>
+    <th colspan="3">Belief in Life After Death</th>
+  </tr>
+  <tr>
+    <td>Yes</td>
+    <td>No<br></td>
+    <td>Total<br></td>
+
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td rowspan="3">College Science Course<br></td>
+    <td>Yes</td>
+    <td>375</td>
+    <td>75</td>
+    <td>450</td>
+
+  </tr>
+  <tr>
+    <td>No</td>
+    <td>485</td>
+    <td>115</td>
+    <td>600</td>
+
+  </tr>
+  
+  <tr>
+    <td>Total</td>
+    <td>860</td>
+    <td>190</td>
+    <td>1050</td>
+
+  </tr>
+</tbody>
+</table>
+
+
+
+## Events
+
+Let B represent an event that a randomly selected person in this sample believes in life after death.
+
+. . .
+
+Let C represent an event that a randomly selected person in this sample took a college level science course. 
+
+
+## Joint Probability
+
+Note that events $B$ and $C$ are not mutually exclusive. A randomly selected person can believe in life after death and might have taken a college science course. $B \cap C \neq \emptyset$.
+
+. . .
+
+$P(B \cap C) = \frac{375}{1050}$
+
+. . .
+
+Note that $P(B\cap C) = P(C\cap B)$. Order does _not_ matter.
+
+
+## Marginal Probability
+
+
+$P(B)$ represents a __marginal probability__. So do $P(C)$, $P(B^C)$ and $P(C^C)$. In order to calculate these probabilities we could only use the values in the margins of the contingency table, hence the name. 
+
+$P(B) = \frac{860}{1050}$  
+$P(C) = \frac{450}{1050}$
+
+
+## Conditional Probability
+
+
+$P(B|C)$ represents a __conditional probability__. So do $P(B^c|C)$, $P(C| B)$ and $P(C|B^c)$. To calculate the probabilities we focus on the row or the column of the given information. We _reduce_ the sample space to this given information. 
+
+. . .
+
+Probability that a randomly selected person believes in life after death given that they have taken a college science course  
+$P(B|C) = \frac{375}{450}$
+
+
+
+## Conditional Probability
+
+The order matters!
+
+$P(\text{has a dog | like dogs}) \neq$ $P(\text{like dogs | has a dog})$
+
+
+## Addition Rule
+
+
+
+$P(B\cup C) = P(B) + P(C) - P(B \cap C)$
+
+. . .
+
+$P(B\cup C) = \frac{860}{1050} + \frac{450}{1050} -\frac{375}{1050} = \frac{935}{1050}$
+
+. . .
+
+$P(B\cup C) = \frac{375}{1050} + \frac{75}{1050} +\frac{485}{1050} = \frac{935}{1050}$
