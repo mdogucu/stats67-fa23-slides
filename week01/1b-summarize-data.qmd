@@ -421,6 +421,82 @@ __gram__: comes from the Greek word _gramma_ which means "that which is drawn". 
 
 [^1]: Online Etymology Dictionary
 
+##
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| fig.height: 6
+#| cache: true
+set.seed(12345)
+
+symmetric <- rnorm(n = 10000, mean = 0, sd = 1)
+
+right_skewed <- rsnorm(n = 10000, mean = 0, sd = 1, xi = 20)
+
+left_skewed <- rsnorm(n = 10000, mean = 0, sd = 1, xi = -20)
+
+type <- c(
+  rep("left-skewed", 10000),
+  rep("symmetric", 10000),
+  rep("right-skewed", 10000)
+)
+
+x <- c(left_skewed,
+       symmetric,
+       right_skewed)
+
+data <- tibble(x = x,
+                  type = type)
+
+```
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+```{r}
+#| echo: false
+data %>% 
+  filter(type == "left-skewed") %>% 
+  ggplot(aes(x = x)) +
+  geom_histogram() +
+  labs(title = "Left skewed") +
+  theme_classic(base_size = 22) 
+```
+
+:::
+
+:::{.column width="50%"}
+
+```{r}
+#| echo: false
+data %>% 
+  filter(type == "symmetric") %>% 
+  ggplot(aes(x = x)) +
+  geom_histogram() +
+  labs(title = "Symmetric") +
+  theme_classic(base_size = 22)
+```
+:::
+
+:::{.column width="50%"}
+
+```{r}
+#| echo: false
+data %>% 
+  filter(type == "right-skewed") %>% 
+  ggplot(aes(x = x)) +
+  geom_histogram() +
+  labs(title = "Right skewed") +
+  theme_classic(base_size = 22)
+```
+
+:::
+
+::::
+
 
 ## Histogram
 
