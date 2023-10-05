@@ -206,8 +206,27 @@ A social media company shows a survey to some its users on the timeline. Many us
 
 ## Cluster Sampling 
 
+In cluster sampling the population is divided into group (i.e, clusters). The sample consists of elements in randomly selected clusters. 
+
+::: {.callout-tip icon=false}
+
+## Example
+
+The researchers may get a list of classes taught at UCI. They randomly select 10 classes. All the students in those 10 classes will be in the sample.
+
+:::
+
 ## Stratified Sampling 
 
+In stratified sampling the population is first divided into groups (i.e., stratas) and then the sample is selected randomly within each strata.
+
+::: {.callout-tip icon=false}
+
+## Example
+
+The researchers suspect that exercising patterns might be different across different class years. Thus they want to make sure that the sample includes first-years, sophomores, juniors, and seniors. They get a list of students with class year information from the registrar. They then randomly select 25 students who are first years, 25 sophomores, 25 juniors, and 25 seniors.
+
+:::
 
 # Study Design
 
