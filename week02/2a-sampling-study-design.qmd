@@ -61,7 +61,7 @@ For instance, data can be collected
 
 When collecting data from human and animal research subjects we need to consider ethics. 
 
-In universities, the rights of the human and animal research subjects are protected by the Institutional Review Board (IRB) of each university. 
+In universities, rights of the human and animal research subjects are protected by the Institutional Review Board (IRB) of each university. 
 If interested (highly recommended) you can read about UCI's [Institutional Review Board](https://research.uci.edu/compliance/human-research-protections/index.html))
 
 ##
@@ -84,6 +84,7 @@ However it is often costly and sometimes impossible to study the whole populatio
 Often a subset of the population is selected to be studied. Sample is the the subset of the population that is studied. 
 The goal is to have a sample that is __representative__ of the population so that the findings of the study can generalize to the population.
 
+. . .
 
 ::: {.callout-tip icon=false}
 
@@ -156,7 +157,7 @@ Assume that the 100 selected students respond.
 sample(1:100, 3, replace = FALSE) # <1>
 ```
 
-1. This allows us to sample 3 numbers from 1 to 100 without replacement, meaning a number that is selected cannot be twice.
+1. This allows us to sample 3 numbers from 1 to 100 without replacement, meaning a number can only be selected once.
 
 . . . 
 
@@ -208,6 +209,8 @@ A social media company shows a survey to some its users on the timeline. Many us
 
 In cluster sampling the population is divided into group (i.e, clusters). The sample consists of elements in randomly selected clusters. 
 
+. . .
+
 ::: {.callout-tip icon=false}
 
 ## Example
@@ -219,6 +222,8 @@ The researchers may get a list of classes taught at UCI. They randomly select 10
 ## Stratified Sampling 
 
 In stratified sampling the population is first divided into groups (i.e., stratas) and then the sample is selected randomly within each strata.
+
+. . .
 
 ::: {.callout-tip icon=false}
 
@@ -234,6 +239,8 @@ The researchers suspect that exercising patterns might be different across diffe
 
 Anecdotal evidence is an observation that is not systematic and haphazard. 
 
+. . .
+
 ::: {.callout-tip icon=false}
 
 ## Example
@@ -241,6 +248,8 @@ Anecdotal evidence is an observation that is not systematic and haphazard.
 We might meet a junior student who got 100 points in all UCI exams, homework assignments, and quizzes that they have taken and they say that they exercise regularly. Even though the data are factually correct (i.e., high GPA and regular exercise routine.) this does not
 
 :::
+
+. . .
 
 Anecdotal evidence is not a scientific method to answer research questions. We need rigorously designed studies to make generalizations and/or to establish causal relationships.
 
@@ -561,7 +570,7 @@ The parameter we want to infer about is **a single mean**.
 
 ::: {.callout-tip }
 
-If you want to type math notation correctly on Gradescope or R Markdown out correctly as $\mu$ then you can write 
+If you want to type math notation correctly on Gradescope or Quarto out correctly as $\mu$ then you can write 
 
 ```{r eval = FALSE}
 $$\mu$$

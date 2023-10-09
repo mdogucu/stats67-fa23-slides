@@ -8,7 +8,7 @@
 <link href="2a-sampling-study-design_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="2a-sampling-study-design_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="2a-sampling-study-design_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.433">
+  <meta name="generator" content="quarto-1.3.450">
 
   <meta name="author" content="Dr.&nbsp;Mine Dogucu">
   <title>Sampling and Study Design</title>
@@ -447,7 +447,7 @@ Dr.&nbsp;Mine Dogucu
 <section id="data-collection---ethics" class="slide level2">
 <h2>Data Collection - Ethics</h2>
 <p>When collecting data from human and animal research subjects we need to consider ethics.</p>
-<p>In universities, the rights of the human and animal research subjects are protected by the Institutional Review Board (IRB) of each university. If interested (highly recommended) you can read about UCI’s <a href="https://research.uci.edu/compliance/human-research-protections/index.html">Institutional Review Board</a>)</p>
+<p>In universities, rights of the human and animal research subjects are protected by the Institutional Review Board (IRB) of each university. If interested (highly recommended) you can read about UCI’s <a href="https://research.uci.edu/compliance/human-research-protections/index.html">Institutional Review Board</a>)</p>
 </section>
 <section id="section" class="slide level2">
 <h2></h2>
@@ -469,6 +469,7 @@ Dr.&nbsp;Mine Dogucu
 <section id="sampling-1" class="slide level2">
 <h2>Sampling</h2>
 <p>A population is a collection of elements which the research question aims to study. However it is often costly and sometimes impossible to study the whole population. Often a subset of the population is selected to be studied. Sample is the the subset of the population that is studied. The goal is to have a sample that is <strong>representative</strong> of the population so that the findings of the study can generalize to the population.</p>
+<div class="fragment">
 <div class="callout callout-tip no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -480,6 +481,7 @@ Dr.&nbsp;Mine Dogucu
 </div>
 </div>
 <p>There are different sampling methods to consider.</p>
+</div>
 </section>
 <section id="convenience-availability-sampling" class="slide level2">
 <h2>Convenience (Availability) Sampling</h2>
@@ -552,12 +554,12 @@ Dr.&nbsp;Mine Dogucu
 <dl class="code-annotation-container-grid">
 <dt class="fragment" data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
 <dd class="fragment">
-<span data-code-annotation="1" data-code-cell="annotated-cell-1" data-code-lines="1">This allows us to sample 3 numbers from 1 to 100 without replacement, meaning a number that is selected cannot be twice.</span>
+<span data-code-lines="1" data-code-annotation="1" data-code-cell="annotated-cell-1">This allows us to sample 3 numbers from 1 to 100 without replacement, meaning a number can only be selected once.</span>
 </dd>
 </dl>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 76 17 81</code></pre>
+<pre><code>[1] 67 36 10</code></pre>
 </div>
 </div>
 <div class="fragment">
@@ -609,6 +611,7 @@ Dr.&nbsp;Mine Dogucu
 <section id="cluster-sampling" class="slide level2">
 <h2>Cluster Sampling</h2>
 <p>In cluster sampling the population is divided into group (i.e, clusters). The sample consists of elements in randomly selected clusters.</p>
+<div class="fragment">
 <div class="callout callout-tip no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -619,10 +622,12 @@ Dr.&nbsp;Mine Dogucu
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="stratified-sampling" class="slide level2">
 <h2>Stratified Sampling</h2>
 <p>In stratified sampling the population is first divided into groups (i.e., stratas) and then the sample is selected randomly within each strata.</p>
+<div class="fragment">
 <div class="callout callout-tip no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -630,6 +635,7 @@ Dr.&nbsp;Mine Dogucu
 </div>
 <div class="callout-content">
 <p>The researchers suspect that exercising patterns might be different across different class years. Thus they want to make sure that the sample includes first-years, sophomores, juniors, and seniors. They get a list of students with class year information from the registrar. They then randomly select 25 students who are first years, 25 sophomores, 25 juniors, and 25 seniors.</p>
+</div>
 </div>
 </div>
 </div>
@@ -642,6 +648,7 @@ Dr.&nbsp;Mine Dogucu
 <section id="anecdotal-evidence" class="slide level2">
 <h2>Anecdotal Evidence</h2>
 <p>Anecdotal evidence is an observation that is not systematic and haphazard.</p>
+<div class="fragment">
 <div class="callout callout-tip no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -652,7 +659,10 @@ Dr.&nbsp;Mine Dogucu
 </div>
 </div>
 </div>
+</div>
+<div class="fragment">
 <p>Anecdotal evidence is not a scientific method to answer research questions. We need rigorously designed studies to make generalizations and/or to establish causal relationships.</p>
+</div>
 </section>
 <section id="observational-study" class="slide level2">
 <h2>Observational Study</h2>
@@ -878,7 +888,7 @@ Dr.&nbsp;Mine Dogucu
 <p><strong>Tip</strong></p>
 </div>
 <div class="callout-content">
-<p>If you want to type math notation correctly on Gradescope or R Markdown out correctly as <span class="math inline">\(\mu\)</span> then you can write</p>
+<p>If you want to type math notation correctly on Gradescope or Quarto out correctly as <span class="math inline">\(\mu\)</span> then you can write</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="sc">$</span><span class="er">$</span>\mu<span class="sc">$</span><span class="er">$</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
