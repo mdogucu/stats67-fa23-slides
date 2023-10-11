@@ -21,8 +21,6 @@ format:
 #| echo: false
 #| message: false
 library(tidyverse)
-
-theme_set(theme_bw(base_size = 22))
 ```
 
 ## Random Variables
