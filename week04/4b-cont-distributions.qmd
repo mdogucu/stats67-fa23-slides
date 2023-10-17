@@ -1,0 +1,471 @@
+---
+title: "Continuous Distributions"
+author: "Dr. Mine Dogucu"
+execute:
+  echo: true
+format: 
+  revealjs:
+    footer: "[stats4cs.com](https://stats4cs.com)"
+    slide-number: true
+    incremental: true
+    theme: ["../templates/slide-style.scss"]
+    logo: "https://www.stats4cs.com/img/logo.png"
+    title-slide-attributes: 
+      data-background-image: "https://www.stats4cs.com/img/logo.png"
+      data-background-size: 5%
+      data-background-position: 50% 85%
+    include-after-body: "../templates/clean_title_page.html"
+---
+
+```{r}
+#| echo: false
+#| message: false
+library(tidyverse)
+```
+
+# Bernoulli Distribution
+
+## Trial
+
+Assume a random process with only two outcomes. e.g. a medical test of a disease with positive or negative result. A trial can be thought of a single medical test given to one person.
+
+
+## Success
+
+We are interested in $p$ which represents the proportion of people in the population with this disease. 
+
+A success of a trial is in this case getting a positive test result.
+
+. . .
+
+Consider a disease that is found in 8% of the population. Then the probability of success would be 0.08.
+
+. . .
+
+We denote success with 1 and failure with 0.
+
+$P(X=1) = 0.08$   
+$P(X=0) = 1 - 0.08 = 0.92$ 
+
+
+## Bernoulli Distribution
+
+If X is a random variable that takes value 1 with probability of success $\pi$ and 0 with probability $1-\pi$, then X follows a Bernoulli distribution.
+
+
+$X \sim \text{Bernoulli} (\pi)$
+
+Expected Value, $\mu = \pi$
+
+Variance, $\sigma^2 = \pi(1-\pi)$
+
+# Geometric Distribution
+
+## Example
+
+According to a [Gallup survey](https://news.gallup.com/poll/1576/abortion.aspx) (May 2023) the latest trend shows that 13% of people think that abortion should be illegal in all circumstances. A journalist is writing an article and wants to include different opinions. What is the probability that the first person to think that abortion should be illegal in all circumstances is the third person the journalist approaches? The journalist is finding people randomly.
+
+##
+
+Success is finding someone who thinks that abortion should be illegal in all circumstances
+
+Probability of success is finding such person = $\pi$ = 0.13
+
+. . .
+
+$(1 - 0.13) \times (1-0.13) \times 0.13 = 0.098397$
+
+
+## Geometric Distribution
+
+Let X be the number of failures needed __before__ the first success is observed in independent trials. $X$ follows a geometric distribution
+
+$S = \{0, 1, 2, 3, 4, ...\}$
+
+. . .
+
+$X \sim \text{Geometric} (\pi)$
+
+. . .
+
+$f(x) = (1-p)^x(p)$  
+
+$P(X = 2) = f(2) = (1-0.13)^2(0.13)$
+
+
+## Geometric pmf in R
+
+```{r}
+dgeom(x = 2, prob = 0.13)
+```
+
+
+## Geometric pmf when $p = 0.13$
+
+```{r echo = FALSE, message = FALSE, fig.align="center", fig.height = 5}
+
+x <- seq(0,30)
+y <- dgeom(x, 0.13)
+
+data <- data.frame(x = x,
+                   y = y)
+
+data %>% 
+  ggplot() +
+  aes(x = x, y = y) +
+  geom_segment(data = data, 
+               aes(x = x, y = 0, 
+                   xend = x, yend = y)) +
+  labs(x = expression(paste("x")),
+       y = expression(paste("f(x)"))) +
+  theme_bw() +
+  theme(text = element_text(size = 20)) 
+
+```
+
+
+## Cumulative Distribution Function
+
+The journalist wants to find a person who thinks that abortion should be illegal in all circumstances. What is the probability that the journalist will have to reach out to 3 people at most before she is able to find such a person.
+
+Possible scenarios:
+
+The journalist finds success at the 1st person - $P(X = 0)$
+
+The journalist finds success at the 2nd person - $P(X = 1)$
+
+The journalist finds success at the 3rd person - $P(X = 2)$
+
+
+## Cumulative Distribution Function
+
+$P(X = 0) + P(X = 1) + P(X = 2) = P(X \leq2)$
+
+. . .
+
+$[0.13] + [(1-0.13) \cdot 0.13] + [(1-0.13) \cdot (1-0.13) \cdot 0.13]$
+$= 0.341497$
+
+. . .
+
+```{r}
+dgeom(x = 0, prob = 0.13) +
+  dgeom(x = 1, prob = 0.13) +
+  dgeom(x = 2, prob = 0.13)
+```
+
+. . .
+
+```{r}
+pgeom(q = 2, prob = 0.13)
+```
+
+
+## Expected Value
+
+How many failures would we expect before a success is found? 
+
+$E(X)=\frac{1-\pi}{\pi} = \frac{1-0.13}{0.13} = 6.692308$
+
+. . .
+
+## Variance
+
+If the reporter was to repeat this process would she always need 6.692308 failures before a success is found or would there be variance?
+
+. . .
+
+$Var(X) = \frac{1-p}{p^2} = \frac{1-0.13}{0.13^2} = 51.47929$
+
+
+# Binomial Distribution
+
+## Conditions
+
+- The trials have to be independent from each other.
+- The probability of success has to be the same for each trial.
+- The number of trials is fixed. 
+- Each trial outcome is either a success or a failure.
+
+
+## Binomial Distribution
+
+The random variable X represents the number of successes in $n$ trials where in independent trial the probability of success is $\pi$.
+
+. . .
+
+$X\sim \text{Binomial}(n, \pi)$
+
+. . .
+
+$P(X = x) = f(x) = {n \choose x}\pi^{x} (1-\pi)^{n-x}$
+
+. . .
+
+$S = \{0,1,2...,n\}$
+
+. . .
+
+$E(X) = n\pi$
+
+. . .
+
+$Var(X) = n\pi(1-\pi)$
+
+
+##
+
+__Example__
+
+A vet has been assigned to work at a farm where 70% of the animals have been infected by avian influenza. The vet selects 10 random animals to inspect. What is the probability that 3 of the  selected animals are infected? 
+
+. . .
+
+$n = 10$, $x = 3$, $\pi = 0.70$
+
+. . .
+
+$P(X = 3) = f(3) = {10 \choose 3}0.70^{3} (1-0.70)^{10-3}$
+
+. . .
+
+$P(X = 3)= \frac{10!}{3!7!}0.70^30.30^7=0.009001692$
+
+. . .
+
+```{r}
+dbinom(x = 3, size = 10, prob = 0.70)
+```
+
+
+## pmf when $n = 10$ and $\pi = 0.70$
+
+
+```{r echo = FALSE, message = FALSE, fig.align="center", fig.height = 5}
+
+x <- seq(0,10)
+y <- dbinom(x, size = 10 , prob = 0.70)
+
+data <- data.frame(x = x,
+                   y = y)
+
+data %>% 
+  ggplot() +
+  aes(x = x, y = y) +
+  geom_segment(data = data, 
+               aes(x = x, y = 0, 
+                   xend = x, yend = y)) +
+  labs(x = expression(paste("x")),
+       y = expression(paste("f(x)"))) +
+      scale_x_continuous(breaks=seq(0,10)) +
+  theme_bw() +
+  theme(text = element_text(size = 20)) 
+
+```
+
+```{r}
+dbinom(x = 0:10, size = 10, prob = 0.70)
+```
+
+## Cumulative Probability Function
+
+What is the probability that at most three of the ten selected animals are infected? 
+
+$P(X \leq 3) = P(X = 0) + P(X = 1) + P(X = 2) + P(X = 3)$
+
+. . .
+
+$\frac{10!}{10!0!}0.70^{0}0.30^{10} + \frac{10!}{9!1!}0.70^{1}0.30^9 + \frac{10!}{8!2!}0.70^{2}0.30^8 + \frac{10!}{7!3!}0.70^{3}0.30^7$
+
+. . .
+
+
+```{r}
+dbinom(x = 0, size = 10, prob = 0.70) +
+  dbinom(x = 1, size = 10, prob = 0.70) +
+  dbinom(x = 2, size = 10, prob = 0.70) +
+  dbinom(x = 3, size = 10, prob = 0.70)
+
+```
+
+
+## Cumulative Probability Function
+
+$P(X \leq 3)$
+
+```{r}
+pbinom(q = 3, size = 10, prob = 0.70)
+```
+
+
+## Expected Value 
+
+What is the expected value of number of infected animals in 10 selected animals?
+
+. . .
+
+$E(X) = n\pi$  
+$E(X) = 10\times0.70=7$
+
+
+
+## Variance
+
+What is the variance of number of infected animals in 10 selected animals?
+
+. . .
+
+$Var(X) = n\pi(1-\pi)$
+
+$Var(X) = 10\times0.7(1-0.7) = 2.1$
+
+
+# Poisson Distribution
+
+## Poisson Distribution
+
+Let $X$ represent the number of occurrences of an event within a  __fixed__ time or space.
+
+. . .
+
+$X \sim Poisson (\lambda)$
+
+. . .
+
+$P(X = x) = f(x) =\frac{\lambda^x}{x!} e^{-\lambda}$ 
+
+. . .
+
+$S = \{0,1,2....\}$
+
+. . .
+
+$E(X) = Var(X) = \lambda$
+
+
+## Probability Mass Function 
+
+```{r echo = FALSE, message = FALSE, fig.align="center", fig.width=10}
+library(tidyverse)
+theme_set(theme_gray(base_size = 22))
+
+x <- rep(seq(0, 20), 3)
+lambda <- c(rep(1, 21), rep (5, 21), rep(10, 21))
+
+
+y <- dpois(x, lambda)
+
+data <- data.frame(x = x,
+                   y = y,
+                   lambda = lambda)
+
+data$lambda <- 
+  factor(data$lambda,
+         levels = c("1", "5", "10"),
+         labels =
+           c(expression(paste(lambda, " = 1")),
+             expression(paste(lambda, " = 5")),
+             expression(paste(lambda, " = 10"))))
+
+data %>% 
+  ggplot() +
+  aes(x = x, y = y) +
+  geom_segment(data = data, 
+               aes(x = x, y = 0, 
+                   xend = x, yend = y)) +
+  facet_wrap(data$lambda, 
+             labeller = label_parsed) +
+  labs(x = expression(paste("x")),
+       y = expression(paste("f(X = x)")))
+
+```
+
+
+## Pangolins
+
+<center>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/5BgDCDVZk8A" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+</center>
+
+## Pangolins
+
+
+It is estimated that one pangolin is snatched from the wild every five minutes ([TRAFFIC](https://www.traffic.org/what-we-do/species/pangolins/)).
+
+##
+
+What is the probability that 7 pangolins will be snatched from the wild in the next hour? (Note: fixed time here is an hour)
+
+. . .
+
+$P(X = 7) = f(7) = ?$
+
+. . .
+
+$E(X) = \lambda = 1 \times 12 = 12$
+
+. . .
+
+$P(X = 7) = f(7) = \frac{12^7}{7!} e^{-12} = 0.04368219$
+
+```{r}
+((12^7)/factorial(7))*exp(-12)
+```
+
+. . .
+
+```{r}
+dpois(x = 7, lambda = 12)
+```
+
+
+## pmf when $\lambda = 12$
+
+
+```{r echo = FALSE, message = FALSE, fig.align="center", fig.height = 5}
+
+x <- seq(0,30)
+y <- dpois(x, 12)
+
+data <- data.frame(x = x,
+                   y = y)
+
+data %>% 
+  ggplot() +
+  aes(x = x, y = y) +
+  geom_segment(data = data, 
+               aes(x = x, y = 0, 
+                   xend = x, yend = y)) +
+  labs(x = expression(paste("x")),
+       y = expression(paste("f(x)")))
+
+```
+
+
+## cdf 
+
+What is the probability that less than 3 pangolins will be snatched from the wild in the next hour?
+
+. . .
+
+$P(X < 3) = P(X \leq 2) = P(X = 0) + P(X = 1) + P(X = 2)$
+
+```{r}
+dpois(x = 0, lambda = 12) + 
+  dpois(x = 1, lambda = 12) +
+  dpois(x = 2, lambda = 12)
+
+
+
+```
+
+. . .
+
+```{r}
+ppois(q = 2, lambda = 12)
+```
+
+
+
