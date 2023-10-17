@@ -29,6 +29,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="4a-cont-rv_files/libs/revealjs/dist/theme/quarto.css">
   <link href="4a-cont-rv_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -336,7 +401,106 @@ Dr.&nbsp;Mine Dogucu
 </div>
 
 </section>
-<section id="continuous-random-variables" class="slide level2">
+<section>
+<section id="discrete-random-variables-review" class="title-slide slide level1 center">
+<h1>Discrete Random Variables Review</h1>
+
+</section>
+<section id="discrete-random-variables" class="slide level2">
+<h2>Discrete Random Variables</h2>
+<p>A <strong>discrete random</strong> variable has a countable number of possible numeric outcomes.</p>
+<div class="fragment">
+<p>Probability mass function (pmf):</p>
+<p><span class="math inline">\(P(X = x) = f(x)\)</span></p>
+</div>
+<div class="fragment">
+<p>Cumulative distribution function (cdf):</p>
+<p><span class="math inline">\(P(X \leq x) = F(x)\)</span></p>
+</div>
+<div class="fragment">
+<p><span class="math inline">\(E(X) = \sum_{S} x f(x)\)</span></p>
+</div>
+<div class="fragment">
+<p><span class="math inline">\(Var(X)= E(X^2) - [E(X)]^2\)</span></p>
+</div>
+</section>
+<section id="bernoulli-distribution" class="slide level2">
+<h2>Bernoulli Distribution</h2>
+<p>If X is a random variable that takes value 1 with probability of success <span class="math inline">\(p\)</span> and 0 with probability <span class="math inline">\(1-p\)</span>, then X follows a Bernoulli distribution.</p>
+<p><span class="math inline">\(S = \{0, 1 \}\)</span></p>
+<p><span class="math inline">\(X \sim \text{Bernoulli} (p)\)</span></p>
+<div class="fragment">
+<p><span class="math inline">\(E(X) = \mu = p\)</span></p>
+</div>
+<div class="fragment">
+<p><span class="math inline">\(Var(X)=\sigma^2 = p(1-p)\)</span></p>
+</div>
+</section>
+<section id="geometric-distribution" class="slide level2">
+<h2>Geometric Distribution</h2>
+<p>Let X be the number of failures needed <strong>before</strong> the first success is observed in independent trials. <span class="math inline">\(X\)</span> follows a geometric distribution</p>
+<div class="columns">
+<div class="column">
+<p><span class="math inline">\(S = \{0, 1, 2, 3, 4, ...\}\)</span></p>
+<p><span class="math inline">\(X \sim \text{Geometric} (p)\)</span></p>
+<p><span class="math inline">\(f(x) = (1-p)^x(p)\)</span></p>
+<p><span class="math inline">\(E(X)=\frac{1-p}{p}\)</span></p>
+<p><span class="math inline">\(Var(X) = \frac{1-p}{p^2}\)</span></p>
+</div><div class="column">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">dgeom</span>(x, prob) <span class="co">#pmf</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">pgeom</span>(q, prob) <span class="co">#cdf</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="binomial-distribution" class="slide level2">
+<h2>Binomial Distribution</h2>
+<p>The random variable X represents the number of successes in <span class="math inline">\(n\)</span> trials where in independent trial the probability of success is <span class="math inline">\(p\)</span>.</p>
+<div class="columns">
+<div class="column">
+<p><span class="math inline">\(S = \{0, 1, ..., n \}\)</span></p>
+<p><span class="math inline">\(X\sim \text{Binomial}(n, p)\)</span></p>
+<p><span class="math inline">\(P(X = x) = f(x) = {n \choose x}p^{x} (1-p)^{n-x}\)</span></p>
+<p><span class="math inline">\(E(X) = np\)</span></p>
+<p><span class="math inline">\(Var(X) = np(1-p)\)</span></p>
+</div><div class="column">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">dbinom</span>(x, size, prob) <span class="co">#pmf</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">pbinom</span>(q, size, prob) <span class="co">#cdf</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="poisson-distribution" class="slide level2">
+<h2>Poisson Distribution</h2>
+<p>Let <span class="math inline">\(X\)</span> represent the number of occurrences of an event within a <strong>fixed</strong> time or space.</p>
+<div class="columns">
+<div class="column">
+<p><span class="math inline">\(S = \{0, 1, 2, 3, 4, ...\}\)</span></p>
+<p><span class="math inline">\(X \sim Poisson (\lambda)\)</span></p>
+<p><span class="math inline">\(P(X = x) = f(x) =\frac{\lambda^x}{x!} e^{-\lambda}\)</span></p>
+<p><span class="math inline">\(E(X) = Var(X) = \lambda\)</span></p>
+</div><div class="column">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">dpois</span>(x, lambda) <span class="co">#pmf</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">ppois</span>(q, lambda) <span class="co">#cdf</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="continuous-random-variables" class="title-slide slide level1 center">
+<h1>Continuous Random Variables</h1>
+
+</section>
+<section id="continuous-random-variables-1" class="slide level2">
 <h2>Continuous Random Variables</h2>
 <p>A continuous random variable <span class="math inline">\(X\)</span> would have a sample space ( <span class="math inline">\(S_X\)</span> ) that is uncountably infinite.</p>
 <div class="fragment">
@@ -354,8 +518,18 @@ Dr.&nbsp;Mine Dogucu
 <p><span class="math display">\[\int_{x \ \epsilon \ S_X} f(x)dx = 1\]</span></p>
 </div>
 <div class="fragment">
-<p><span class="math display">\[P(X\ \epsilon \ B) = \int_{x \ \epsilon \ B} f(x)dx\]</span></p>
+<p><span class="math display">\[P(a \leq X \leq b) = \int_a^b{x} f(x)dx\]</span></p>
 </div>
+</section>
+<section id="cumulative-distribution-function" class="slide level2">
+<h2>Cumulative Distribution Function</h2>
+<p>Let <span class="math inline">\(X\)</span> be a continuous random variable. Then the cumulative distribution function <span class="math inline">\(F(x) = P(x \leq X)\)</span> defined as:</p>
+<p><span class="math display">\[F(x) = P(x \leq X) = \int_{-\infty}^x f(t) dt\]</span></p>
+<ol type="1">
+<li class="fragment"><span class="math inline">\(\frac{d}{dx}F = f\)</span></li>
+<li class="fragment"><span class="math inline">\(P(a \leq X \leq b) = F (b)− F(a)\)</span></li>
+<li class="fragment"><span class="math inline">\(P(X \geq a)= 1 − F (a) = \int_a^\infty f (x)dx\)</span></li>
+</ol>
 </section>
 <section id="example---pdf" class="slide level2">
 <h2>Example - pdf</h2>
@@ -375,7 +549,7 @@ Dr.&nbsp;Mine Dogucu
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="4a-cont-rv_files/figure-revealjs/unnamed-chunk-2-1.png" width="960"></p>
+<p><img data-src="4a-cont-rv_files/figure-revealjs/unnamed-chunk-8-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -410,7 +584,7 @@ Dr.&nbsp;Mine Dogucu
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="4a-cont-rv_files/figure-revealjs/unnamed-chunk-4-1.png" width="960"></p>
+<p><img data-src="4a-cont-rv_files/figure-revealjs/unnamed-chunk-10-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -438,7 +612,7 @@ Dr.&nbsp;Mine Dogucu
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="4a-cont-rv_files/figure-revealjs/unnamed-chunk-5-1.png" width="960"></p>
+<p><img data-src="4a-cont-rv_files/figure-revealjs/unnamed-chunk-11-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -479,7 +653,7 @@ Dr.&nbsp;Mine Dogucu
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="4a-cont-rv_files/figure-revealjs/unnamed-chunk-8-1.png" width="960"></p>
+<p><img data-src="4a-cont-rv_files/figure-revealjs/unnamed-chunk-14-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -510,7 +684,7 @@ Dr.&nbsp;Mine Dogucu
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="4a-cont-rv_files/figure-revealjs/unnamed-chunk-10-1.png" width="960"></p>
+<p><img data-src="4a-cont-rv_files/figure-revealjs/unnamed-chunk-16-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -556,12 +730,38 @@ Dr.&nbsp;Mine Dogucu
 </div>
 <div class="fragment">
 <p><span class="math inline">\(Var(X) = 0.4- 0.6^2 = 0.04\)</span></p>
-<p><img src="https://www.stats4cs.com/img/logo.png" class="slide-logo"></p>
-<div class="footer footer-default">
+</div>
+</section></section>
+<section>
+<section id="exercises-with-some-review-included" class="title-slide slide level1 center">
+<h1>Exercises with Some Review Included</h1>
+
+</section>
+<section id="section" class="slide level2">
+<h2></h2>
+
+<img data-src="4a-cont-rv_files/figure-revealjs/unnamed-chunk-17-1.png" width="960" class="r-stretch"><p>Is the function depicted with the plot above a pdf? Why/not?</p>
+</section>
+<section id="section-1" class="slide level2">
+<h2></h2>
+<ol type="a">
+<li class="fragment"><p>A lottery game requires players to guess six numbers from 1 to 49. If a player guessed all the six numbers then they win the lottery of the week. What is the probability that a player will win the lottery? </p></li>
+<li class="fragment"><p>What is the expected number of weeks until the first win for a player?</p></li>
+<li class="fragment"><p>What is the variance?</p></li>
+</ol>
+</section>
+<section id="section-2" class="slide level2">
+<h2></h2>
+<p>A customer service agent receives on average 2 calls every 5 minutes.</p>
+<ol type="a">
+<li class="fragment"><p>What is the probability that they will receive 0 calls in the next 5 minutes?</p></li>
+<li class="fragment"><p>What is the probability that they will receive more than 2 calls in the next 5 minutes?</p></li>
+</ol>
+
+<img src="https://www.stats4cs.com/img/logo.png" class="slide-logo r-stretch"><div class="footer footer-default">
 <p><a href="https://stats4cs.com">stats4cs.com</a></p>
 </div>
-</div>
-</section>
+</section></section>
     </div>
   </div>
 

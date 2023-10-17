@@ -17,7 +17,165 @@ format:
     include-after-body: "../templates/clean_title_page.html"
 ---
 
+# Discrete Random Variables Review
 
+## Discrete Random Variables
+
+A **discrete random** variable has a countable number of possible numeric outcomes.
+
+. . .
+
+Probability mass function (pmf):
+
+$P(X = x) = f(x)$
+
+. . .
+
+Cumulative distribution function (cdf):
+
+$P(X \leq x) = F(x)$
+
+. . .
+
+$E(X) = \sum_{S} x f(x)$
+
+. . .
+
+$Var(X)= E(X^2) - [E(X)]^2$
+
+
+
+
+
+## Bernoulli Distribution
+
+If X is a random variable that takes value 1 with probability of success $p$ and 0 with probability $1-p$, then X follows a Bernoulli distribution.
+
+$S = \{0, 1 \}$
+
+
+$X \sim \text{Bernoulli} (p)$
+
+. . .
+
+$E(X) = \mu = p$
+
+. . .
+
+$Var(X)=\sigma^2 = p(1-p)$
+
+
+
+## Geometric Distribution
+
+Let X be the number of failures needed __before__ the first success is observed in independent trials. $X$ follows a geometric distribution
+
+::::{.columns}
+
+:::{.column}
+$S = \{0, 1, 2, 3, 4, ...\}$
+
+$X \sim \text{Geometric} (p)$
+
+$f(x) = (1-p)^x(p)$  
+
+$E(X)=\frac{1-p}{p}$
+
+$Var(X) = \frac{1-p}{p^2}$
+
+:::
+
+:::{.column}
+```{r eval = FALSE}
+dgeom(x, prob) #pmf
+```
+
+
+```{r eval = FALSE}
+pgeom(q, prob) #cdf
+```
+:::
+::::
+
+
+
+
+## Binomial Distribution
+
+The random variable X represents the number of successes in $n$ trials where in independent trial the probability of success is $p$.
+
+::::{.columns}
+
+:::{.column}
+
+$S = \{0, 1, ..., n \}$
+
+$X\sim \text{Binomial}(n, p)$
+
+$P(X = x) = f(x) = {n \choose x}p^{x} (1-p)^{n-x}$
+
+
+$E(X) = np$  
+
+
+$Var(X) = np(1-p)$
+
+:::
+
+:::{.column}
+
+```{r eval = FALSE}
+dbinom(x, size, prob) #pmf
+```
+
+
+```{r eval = FALSE}
+pbinom(q, size, prob) #cdf
+```
+
+:::
+
+::::
+
+
+## Poisson Distribution
+
+Let $X$ represent the number of occurrences of an event within a  __fixed__ time or space.
+
+::::{.columns}
+
+:::{.column}
+
+$S = \{0, 1, 2, 3, 4, ...\}$
+
+
+$X \sim Poisson (\lambda)$
+
+
+$P(X = x) = f(x) =\frac{\lambda^x}{x!} e^{-\lambda}$ 
+
+
+
+$E(X) = Var(X) = \lambda$
+
+:::
+
+:::{.column}
+
+```{r eval = FALSE}
+dpois(x, lambda) #pmf
+```
+
+
+```{r eval = FALSE}
+ppois(q, lambda) #cdf
+```
+
+:::
+
+::::
+
+# Continuous Random Variables
 ## Continuous Random Variables
 
 A continuous random variable $X$ would have a sample space ( $S_X$ ) that is uncountably infinite. 
@@ -44,8 +202,18 @@ $$\int_{x \ \epsilon \ S_X} f(x)dx = 1$$
 
 . . .
 
-$$P(X\ \epsilon \ B) = \int_{x \ \epsilon \ B} f(x)dx$$
+$$P(a \leq X \leq b) = \int_a^b{x} f(x)dx$$
 
+## Cumulative Distribution Function
+
+Let $X$ be a continuous random variable. Then the cumulative distribution function $F(x) = P(x \leq X)$ defined as:
+
+
+$$F(x) = P(x \leq X) = \int_{-\infty}^x f(t) dt$$
+
+1. $\frac{d}{dx}F = f$
+2. $P(a \leq X \leq b) = F (b)− F(a)$
+3. $P(X \geq a)= 1 − F (a) = \int_a^\infty f (x)dx$
 
 ## Example - pdf
 
@@ -355,3 +523,40 @@ $E(X^2) = 12\big[\frac{x^5}{5} -\frac{x^6}{6}\bigg\rvert_0^1\big] = 0.4$
 . . .
 
 $Var(X) = 0.4- 0.6^2 = 0.04$
+
+# Exercises with Some Review Included
+
+##
+
+```{r}
+#| echo: false
+data.frame (x = c(0, 0.5, 1),
+                y = c(0, 2, 0)) %>% 
+  ggplot(aes(x = x, y = y)) +
+  geom_line() +
+  labs(y = "f(x)") +
+  theme_bw(base_size = 18)
+
+```
+
+Is the function depicted with the plot above a pdf? Why/not?
+
+##
+
+
+a. A lottery game requires players to guess six numbers from 1 to 49. If a player guessed all the six numbers then they win the lottery of the week. What is the probability that a player will win the lottery?
+\vspace{3cm}
+
+b. What is the expected number of weeks until the first win for a player?
+
+c. What is the variance?
+
+## 
+
+A customer service agent receives on average 2 calls every 5 minutes. 
+
+a. What is the probability that they will receive 0 calls in the next 5 minutes?
+
+
+b. What is the probability that they will receive more than 2 calls in the next 5 minutes?
+
