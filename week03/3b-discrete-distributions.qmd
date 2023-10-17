@@ -421,7 +421,7 @@ dpois(x = 7, lambda = 12)
 ```
 
 
-### pmf when $\lambda = 12$
+## pmf when $\lambda = 12$
 
 
 ```{r echo = FALSE, message = FALSE, fig.align="center", fig.height = 5}
