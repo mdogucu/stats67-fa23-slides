@@ -17,6 +17,12 @@ format:
     include-after-body: "../templates/clean_title_page.html"
 ---
 
+```{r}
+library(tidyverse)
+library(gridExtra)
+```
+
+
 # Exponential Distribution
 
 ## pdf
@@ -83,7 +89,9 @@ Suppose your waiting time (in minutes) for a bus is $X \sim Exp(0.1)$.
 
 . . .
 
-.pull-right[
+
+
+:::{.pull-right}
 
 ```{r echo = FALSE, message = FALSE, fig.align="center", fig.height = 4, message = FALSE, warning = FALSE}
 
@@ -95,10 +103,7 @@ ggplot(data = data.frame(x = c(0, 30)), aes(x)) +
 
 ```
 
-]
-
-
-
+:::
 
 . . .
 
@@ -129,7 +134,7 @@ You show up at the bus stop. What is the probability that you will wait for 10 m
 . . .
 
 
-.pull-right[
+:::{.pull-right}
 
 ```{r echo = FALSE, message = FALSE, fig.align="center", fig.height =4, warning = FALSE}
 
@@ -151,8 +156,7 @@ ggplot(data = data.frame(x = c(0, 30)), aes(x)) +
 ```
 
 
-
-]
+:::
 
 . . .
 
@@ -171,7 +175,7 @@ What is the probability that you will wait for the bus less than 10 minutes?
 
 . . .
 
-.pull-right[
+:::{.pull-right}
 
 ```{r echo = FALSE, message = FALSE, fig.align="center", fig.height =4, warning = FALSE}
 
@@ -194,7 +198,7 @@ ggplot(data = data.frame(x = c(0, 30)), aes(x)) +
               color = "#e56646") 
 ```
 
-]
+:::
 
 
 Cumulative probability!
@@ -218,7 +222,7 @@ pexp(q = 10, rate = 0.1)
 
 What is the probability that you will wait between 10 to 20 minutes for the bus?
 
-.pull-right[
+:::{.pull-right}
 
 ```{r echo = FALSE, message = FALSE, fig.align="center", fig.height =4, warning = FALSE}
 
@@ -241,7 +245,7 @@ ggplot(data = data.frame(x = c(0, 30)), aes(x)) +
               color = "#e56646") 
 ```
 
-]
+:::
 
 
 $P(10<X<20) = ?$
@@ -292,8 +296,9 @@ $Var(X) = \frac{1}{0.1^2} = 100 \text{ minutes}^2$
 
 ## 
 
-.pull-left[
+::::{.columns}
 
+:::{.column}
 __Poisson__
 
 `r fontawesome::fa(name = "bus")`
@@ -304,9 +309,9 @@ Number of events (bus)
 
 Every ten minutes we expect __1 bus__
 
-]
+:::
 
-.pull-right[
+:::{.column}
 
 __Exponential__
 
@@ -318,11 +323,1091 @@ Time between two events
 
 We expect to wait __10 minutes__ for a bus
 
-]
+:::
 
+::::
 
 
 
 # Normal Distribution
 
+```{r}
+#| echo: false
+plot_norm_x_prob <- function(value, mean, sd, end = 3, lower = TRUE){
+  
+  x <- seq(mean-(end*sd),mean+(end*sd), 0.01)
+  
+  y <- dnorm(x, mean = mean, sd = sd)
+  
+  data <- data.frame(x = x, y = y)
+  
+  data_line <- data.frame(x = value, y = dnorm(value, mean, sd), 
+                          label = paste("x = ", value))
+  
+  if (lower == TRUE){
+    p <- qplot(x, y, data = data, 
+          geom = "line") +
+      geom_ribbon(data = subset(data, x > (mean-(end*sd)) & x < value),
+                  aes(ymax = y), 
+                  ymin = 0,
+                  fill = "#e56646", 
+                  colour = NA, 
+                  alpha = 0.5) +
+      ylab("") 
+
+  }
+  
+  if (lower == FALSE){
+    p <- qplot(x, y, data = data, 
+          geom = "line") +
+      geom_ribbon(data = subset(data, x < (mean+(end*sd)) & x > value),
+                  aes(ymax = y), 
+                  ymin = 0,
+                  fill = "#e56646", 
+                  colour = NA, 
+                  alpha = 0.5) +
+      ylab("")
+  }
+  
+p
+}
+
+plot_norm_x <- function(value, mean, sd, end = 3){
+  data_norm <-  data.frame(x = c(mean-(end*sd), mean+(end*sd)))
+  
+  data_line <- data.frame(x = value, y = dnorm(value, mean, sd), 
+                          label = paste("x = ", value))
+  ggplot(data_norm, 
+         aes(x)) +
+    stat_function(fun = dnorm, n = 1001, args = list(mean = mean, sd = sd)) + 
+    ylab("") +
+    geom_segment(data = data_line, aes(x = value, y = 0, xend = x, yend = y), color = "#e56646") +
+    geom_text(data = data_line, aes(x = x, y = 0, label = label), color = "#e56646") +
+    labs(title =  bquote("N("*mu == .(mean) ~ "," ~ sigma == .(sd)*")"))
+}
+
+
+
+plot_norm_z <- function(value, mean, sd, end = 3){
+  
+  data_norm <-  data.frame(x = c(mean-(end*sd), mean+(end*sd)))
+  data_z <- data.frame(x = c(-end,end))
+
+  
+  data_line_z <- data.frame(z = (value-mean)/sd, y = dnorm((value-mean)/sd), 
+                            label = paste("z = ", (value-mean)/sd))
+  
+ggplot(data_z, 
+               aes(x)) +
+    stat_function(fun = dnorm, n = 1001, args = list(mean = 0, sd = 1)) + 
+    xlab("z")+
+    ylab("") +
+    geom_segment(data = data_line_z, aes(x = z, y = 0, xend = z, yend = y), color = "#e56646") +
+    geom_text(data = data_line_z, aes(x = z, y = 0, label = label), color = "#e56646") +
+  labs(title =  bquote("N("*mu == 0 ~ "," ~ sigma == 1*")"))
+
+  
+}
+```
+
+## pdf
+
+$X \sim \mathcal{N}(\mu, \sigma^2)$
+
+. . .
+
+$f(x) = \frac{1}{\sigma \sqrt{2\pi}}{e^{-(x-\mu)^2/2\sigma^2}}$
+
+. . .
+
+$E(X) = \mu$
+
+. . .
+
+$Var(X) = \sigma^2$
+
+
+
+
+## Characteristics
+
+::::{.columns}
+
+:::{.column}
+
+```{r echo = FALSE, fig.height=4, fig.align='center'}
+plot_norm_x_prob(100, 100, 15) +
+  theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank(),
+        axis.title.y=element_blank(),
+        axis.text.y=element_blank(),
+        axis.ticks.y=element_blank())
+
+```
+:::
+
+:::{.column}
+Mean = Median = Mode   
+
+$P(X \leq \mu) = 0.5$
+
+:::
+
+::::
+
+## Parameters
+
+
+```{r echo = FALSE, fig.align='center'}
+p1 <- 
+  ggplot(data = data.frame(x = c(0, 200)), 
+         aes(x)) +
+  stat_function(fun = dnorm, n = 1001, args = list(mean = 100, sd = 15)) + 
+  ylab("") +
+  labs(title = bquote(N(100, 15^2)))
+
+p2 <- 
+  ggplot(data = data.frame(x = c(0, 200)), 
+         aes(x)) +
+  stat_function(fun = dnorm, n = 1001, args = list(mean = 100, sd = 30)) + 
+  ylab("") +
+  labs(title = bquote(N(100, 30^2)))
+
+p3 <- 
+  ggplot(data = data.frame(x = c(0, 200)), 
+         aes(x)) +
+  stat_function(fun = dnorm, n = 1001, args = list(mean = 90, sd = 15)) + 
+  ylab("") +
+  labs(title = bquote(N(90, 15^2)))
+
+
+p4 <- 
+  ggplot(data = data.frame(x = c(0, 200)), 
+         aes(x)) +
+  stat_function(fun = dnorm, n = 1001, args = list(mean = 90, sd = 30)) + 
+  ylab("") +
+  labs(title = bquote(N(90, 30^2)))
+
+grid.arrange(p1, p2, p3, p4, ncol = 2, nrow = 2)
+```
+
+##
+
+68.26895% of the data are within 1 standard deviation of the mean.
+
+
+```{r fig.align= 'center', echo = FALSE}
+mean <- 100
+sd <- 15
+end <- 3.5
+
+data_line1 <- data.frame(x = mean-sd, y = dnorm(mean-sd, mean, sd), 
+                          label = paste("\U03bc", "-","\U03c3" ))
+data_line2 <- data.frame(x = mean+sd, y = dnorm(mean+sd, mean, sd), 
+                          label = paste("\U03bc", "+","\U03c3" ))
+
+x <- seq(mean-(end*sd),mean+(end*sd), 0.01)
+  
+  y <- dnorm(x, mean = mean, sd = sd)
+  
+  data <- data.frame(x = x, y = y)
+  
+
+  
+
+qplot(x, y, data = data, 
+          geom = "line") +
+      geom_ribbon(data = subset(data, x > (mean-(1*sd)) & x < (mean+(1*sd))),
+                  aes(ymax = y), 
+                  ymin = 0,
+                  fill = "#e56646", 
+                  colour = NA, 
+                  alpha = 0.5) +
+      ylab("") +
+    geom_text(data = data_line1, aes(x = x, y = -0.001, label = label), color = "#e56646") +
+    geom_text(data = data_line2, aes(x = x, y = -0.001, label = label), color = "#e56646") +
+    theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank(),
+        axis.title.y=element_blank(),
+        axis.text.y=element_blank(),
+        axis.ticks.y=element_blank(),
+
+)
+
+
+
+
+```
+
+
+
+##
+
+
+95.44997% of the data are within 2 standard deviations of the mean.
+
+
+```{r fig.align= 'center', echo = FALSE}
+mean <- 100
+sd <- 15
+end <- 3.5
+
+data_line1 <- data.frame(x = mean-2*sd, y = dnorm(mean-(2*sd), mean, (2*sd)), 
+                          label = paste("\U03bc", "-2","\U03c3" ))
+data_line2 <- data.frame(x = mean+2*sd, y = dnorm(mean+(2*sd), mean, sd), 
+                          label = paste("\U03bc", "+2","\U03c3" ))
+
+x <- seq(mean-(end*sd),mean+(end*sd), 0.01)
+  
+y <- dnorm(x, mean = mean, sd = sd)
+  
+data <- data.frame(x = x, y = y)
+  
+
+  
+
+qplot(x, y, data = data, 
+          geom = "line") +
+      geom_ribbon(data = subset(data, x > (mean-(2*sd)) & x < (mean+(2*sd))),
+                  aes(ymax = y), 
+                  ymin = 0,
+                  fill = "#e56646", 
+                  colour = NA, 
+                  alpha = 0.5) +
+      ylab("") +
+    geom_text(data = data_line1, aes(x = x, y = -0.001, label = label), color = "#e56646") +
+    geom_text(data = data_line2, aes(x = x, y = -0.001, label = label), color = "#e56646") +
+    theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank(),
+        axis.title.y=element_blank(),
+        axis.text.y=element_blank(),
+        axis.ticks.y=element_blank(),
+
+)
+
+
+
+
+```
+
+
+##
+
+99.73002% of the data are within 3 standard deviations of the mean.
+
+```{r fig.align= 'center', echo = FALSE}
+mean <- 100
+sd <- 15
+end <- 3.5
+
+data_line1 <- data.frame(x = mean-3*sd, y = dnorm(mean-(3*sd), mean, (3*sd)), 
+                          label = paste("\U03bc", "-3","\U03c3" ))
+data_line2 <- data.frame(x = mean+3*sd, y = dnorm(mean+(3*sd), mean, sd), 
+                          label = paste("\U03bc", "+3","\U03c3" ))
+
+x <- seq(mean-(end*sd),mean+(end*sd), 0.01)
+  
+y <- dnorm(x, mean = mean, sd = sd)
+  
+data <- data.frame(x = x, y = y)
+  
+
+  
+
+qplot(x, y, data = data, 
+          geom = "line") +
+      geom_ribbon(data = subset(data, x > (mean-(3*sd)) & x < (mean+(3*sd))),
+                  aes(ymax = y), 
+                  ymin = 0,
+                  fill = "#e56646", 
+                  colour = NA, 
+                  alpha = 0.5) +
+      ylab("") +
+    geom_text(data = data_line1, aes(x = x, y = -0.001, label = label), color = "#e56646") +
+    geom_text(data = data_line2, aes(x = x, y = -0.001, label = label), color = "#e56646") +
+    theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank(),
+        axis.title.y=element_blank(),
+        axis.text.y=element_blank(),
+        axis.ticks.y=element_blank(),
+
+)
+
+
+
+
+```
+
+
+## Example 
+
+Midterm exam scores are normally distributed with a mean of 80 and standard deviation of 5 points.
+
+. . .
+
+:::{.pull-right}
+
+
+$$X \sim N(80, 5^2)$$
+
+
+```{r echo = FALSE, message = FALSE, fig.align="center", fig.height = 4, message = FALSE, warning = FALSE}
+
+theme_set(theme_gray(base_size = 22))
+
+
+ggplot(data = data.frame(x = c(65, 95)), aes(x)) +
+  stat_function(fun = dnorm, 
+                n = 101, 
+                args = list(mean = 80, sd = 5)) +
+  labs(y = "f(x)")
+
+```
+
+
+:::
+
+. . .
+
+:::{.pull-left}
+
+$f(78)$ =
+
+
+
+```{r}
+dnorm(x = 78, mean = 80, sd = 5)
+```
+
+$f(92)$ =
+
+
+```{r}
+dnorm(x = 92, mean = 80, sd = 5)
+```
+
+:::
+
+## Calculating Probability
+
+What is the probability that a student scores below 73 points?
+
+
+:::{.pull-right}
+
+```{r echo = FALSE, warning = FALSE, fig.height = 4}
+mean <- 80
+sd <- 5
+end <- 3.5
+
+data_line1 <- data.frame(x = mean-3*sd, y = dnorm(mean-(3*sd), mean, (3*sd)), 
+                          label = paste("\U03bc", "-3","\U03c3" ))
+data_line2 <- data.frame(x = mean+3*sd, y = dnorm(mean+(3*sd), mean, sd), 
+                          label = paste("\U03bc", "+3","\U03c3" ))
+
+x <- seq(mean-(end*sd),mean+(end*sd), 0.01)
+  
+y <- dnorm(x, mean = mean, sd = sd)
+  
+data <- data.frame(x = x, y = y)
+  
+qplot(x, y, data = data, 
+          geom = "line") +
+      geom_ribbon(data = subset(data, x < 73),
+                  aes(ymax = y), 
+                  ymin = 0,
+                  fill = "#e56646", 
+                  colour = NA, 
+                  alpha = 0.5) +
+      ylab("f(x)") 
+
+```
+
+
+:::
+
+:::{.pull-left}
+
+```{r}
+pnorm(q = 73, mean = 80, sd = 5)
+```
+
+
+<br>
+
+If a student scores 73 points, the student's percentile rank is `r pnorm(73, mean = 80, sd = 5)*100`%
+
+:::
+
+## Calculating Probability
+
+What is the probability that a student scores above 78 points?
+
+:::{.pull-right}
+
+```{r echo = FALSE, warning = FALSE, fig.height = 4}
+mean <- 80
+sd <- 5
+end <- 3.5
+
+data_line1 <- data.frame(x = mean-3*sd, y = dnorm(mean-(3*sd), mean, (3*sd)), 
+                          label = paste("\U03bc", "-3","\U03c3" ))
+data_line2 <- data.frame(x = mean+3*sd, y = dnorm(mean+(3*sd), mean, sd), 
+                          label = paste("\U03bc", "+3","\U03c3" ))
+
+x <- seq(mean-(end*sd),mean+(end*sd), 0.01)
+  
+y <- dnorm(x, mean = mean, sd = sd)
+  
+data <- data.frame(x = x, y = y)
+  
+qplot(x, y, data = data, 
+          geom = "line") +
+      geom_ribbon(data = subset(data, x >78),
+                  aes(ymax = y), 
+                  ymin = 0,
+                  fill = "#e56646", 
+                  colour = NA, 
+                  alpha = 0.5) +
+      ylab("f(x)") 
+
+```
+
+:::
+
+:::{.pull-left}
+
+```{r}
+1 - pnorm(q = 78, mean = 80, sd = 5)
+```
+
+
+```{r}
+pnorm(q = 78, mean = 80, sd = 5, 
+      lower.tail = FALSE)
+```
+
+:::
+
+## How many standard deviations away from the mean?
+
+Krishna scored 85 points on the midterm. How many standard deviations is Krishna's score away from the mean?
+
+$\frac{85-80}{5} = 1$
+
+. . .
+
+Hira scored 77.5 points on the midterm. How many standard deviations is Hira's score away from the mean?
+
+$\frac{77.5-80}{5} = -0.5$
+
+
+## Z-score
+
+$$Z = \frac{X-\mu}{\sigma} $$
+
+
+## Calculating z-scores
+
+We can calculate Z-scores regardless of the distribution of the data. In other words, data do not need to be normally distributed. Z-scores only show how many standard deviations a value is away from the mean.
+
+
+## Interpreting z-scores
+
+If we know that the data follow a normal distribution then we can use z-scores for probabilistic interpretations.
+
+
+
+## Normal Distribution vs. Standard Normal (z) Distribution
+
+::::{.columns}
+
+:::{.column}
+
+```{r echo = FALSE, fig.height=5, fig.width=5, fig.align = 'center'}
+plot_norm_x(90, mean = 80, sd = 5)
+```
+
+:::
+
+:::{.column}
+
+```{r echo = FALSE, fig.height=5, fig.width=5, fig.align = 'center'}
+plot_norm_z(2, mean = 0, sd = 1)
+```
+:::
+::::
+
+##
+
+::::{.columns}
+
+:::{.column}
+
+__Normal Distribution__
+
+```{r fig.height=5, fig.width=5, fig.align = 'center'}
+pnorm(q = 90, mean = 80, sd = 5)
+```
+
+:::
+
+
+
+:::{.column}
+
+__Standard Normal (z) Distribution__
+
+```{r fig.height=5, fig.width=5, fig.align = 'center'}
+pnorm(q = 2, mean = 0, sd = 1)
+```
+
+:::
+::::
+
+
+## SAT scores - z scores
+
+Let X represent the SAT scores and $X \sim N(1100, 200^2)$
+
+. . .
+
+What is the Z-score of a student who scores 1500?
+
+$z = \frac{1500-1100}{200} = 2$
+
+
+## SAT scores - probability
+
+What is the percentile rank of a student who scores 1500?
+
+```{r echo = FALSE, fig.align='center', fig.height=5}
+
+plot_norm_x_prob(1500, mean = 1100, sd = 200)
+
+```
+
+
+
+## SAT scores - probability
+
+What is the percentile rank of a student who scores 1500?
+
+
+. . .
+
+::::{.columns}
+
+:::{.column}
+
+```{r}
+pnorm(q = 1500, 
+      mean = 1100, 
+      sd = 200)
+```
+
+
+If you know the order of arguments:
+
+```{r}
+pnorm(1500, 1100, 200)
+```
+
+:::
+
+
+
+:::{.column}
+
+```{r}
+pnorm(2, 
+      mean = 0, 
+      sd = 1)
+```
+
+The default `mean` is 0 and `sd` is 1.
+
+```{r}
+pnorm(2)
+```
+
+:::
+
+::::
+
+##
+
+What percentage of test takers score between 800 and 1400?
+
+. . .
+
+$P(800<X<1400) =P(X<1400) - P(X<800)$
+
+. . .
+
+```{r echo = FALSE, warning = FALSE, fig.height = 3.75, fig.align='center'}
+mean <- 1100
+sd <- 200
+end <- 3.5
+
+data_line1 <- data.frame(x = mean-3*sd, y = dnorm(mean-(3*sd), mean, (3*sd)), 
+                          label = paste("\U03bc", "-3","\U03c3" ))
+data_line2 <- data.frame(x = mean+3*sd, y = dnorm(mean+(3*sd), mean, sd), 
+                          label = paste("\U03bc", "+3","\U03c3" ))
+
+x <- seq(mean-(end*sd),mean+(end*sd), 0.01)
+  
+y <- dnorm(x, mean = mean, sd = sd)
+  
+data <- data.frame(x = x, y = y)
+  
+qplot(x, y, data = data, 
+          geom = "line") +
+      geom_ribbon(data = subset(data, x < 1400 & x > 800),
+                  aes(ymax = y), 
+                  ymin = 0,
+                  fill = "#e56646", 
+                  colour = NA, 
+                  alpha = 0.5) +
+      ylab("f(x)") 
+
+```
+
+. . .
+
+```{r}
+pnorm(q = 1400, mean = 1100, sd = 200) -
+  pnorm(q = 800, mean = 1100, sd = 200) 
+```
+
+
+
+## Known probability unknown x
+
+If College Board wanted to send a congratulatory email to the top 10% in the SATs, above what SAT score should they consider sending the email to?
+
+. . .
+
+::::{.columns}
+
+:::{.column}
+
+```{r echo = FALSE, fig.height=4, fig.align='center'}
+
+data_text <- data.frame(x = 1356,
+                        y = -0.0001,
+                        label = "x = ?")
+
+data_text2 <- data.frame(x = 1420,
+                        y = 0.00025,
+                        label = "10%")
+
+plot_norm_x_prob(1356.31, 1100, 200)  +
+   geom_text(data = data_text, 
+             aes(x = x, 
+                 y = y, 
+                 label = label), 
+             color = "#e56646") +
+   geom_text(data = data_text2, 
+             aes(x = x, 
+                 y = y, 
+                 label = label), 
+             color = "#e56646") 
+  
+```
+
+:::
+
+
+:::{.column}
+
+```{r}
+qnorm(p = 0.90, 
+      mean = 1100, 
+      sd = 200) 
+```
+
+:::
+
+::::
+
+
+
 # Continuous Uniform Distribution
+
+## pdf 
+
+$X \sim \mathcal{U}(a,b)$
+
+:::{.pull-left}
+
+```{r echo = FALSE, fig.align = 'center', out.width ="90%"}
+knitr::include_graphics("img/uniform_pdf.png")
+```
+
+:::
+
+:::{.pull-right}
+
+```{r echo = FALSE, message = FALSE, fig.align="center", fig.height = 4, message = FALSE, warning = FALSE}
+library(tidyverse)
+theme_set(theme_gray(base_size = 22))
+
+
+data <- data.frame (x_label = rep (c("a", "b")),
+                   x = rep (c(0,1)),
+                   y_label = c("1/(b-a)", "1/(b-a)"),
+                   y = c(1,1))
+
+ggplot(data, aes(x = x, y = y)) + 
+  geom_line ()+
+  scale_x_continuous(breaks = data$x, 
+                     labels = data$x_label) +
+  scale_y_continuous(breaks = data$y, 
+                     labels = data$y_label) +
+  labs(y = "f(x)")
+```
+
+:::
+
+
+## Expected Value
+
+$E(X) = \int_{x \ \epsilon \ S_X} xf(x)dx$
+
+. . .
+
+$E(X) = \int_a^b x\frac{1}{b-a}dx$
+
+. . .
+
+$E(X) = \frac{1}{b-a} \big[\frac{x^2}{2}\bigg\rvert_a^b\big]$
+
+. . .
+
+$E(X) = \frac{1}{b-a} \big[\frac{b^2}{2} - \frac{a^2}{2}\big]$
+
+. . .
+
+$E(X) = \frac{b^2 - a^2}{2(b-a)}$
+
+. . .
+
+$E(X) = \frac{b+a}{2}$
+
+
+
+## $E(X^2)$
+
+$Var(X) = E(X^2)- [E(X)]^2$
+
+. . .
+
+$E(X^2) = ?$
+
+. . .
+
+$E(X^2) = \int_a^b x^2\frac{1}{b-a}dx$
+
+. . .
+
+$E(X^2) = \frac{1}{b-a} \big[\frac{x^3}{3}\bigg\rvert_a^b\big]$
+
+. . .
+
+$E(X^2) = \frac{b^3 - a^3}{3(b-a)}$
+
+
+
+## Variance
+
+$Var(X) = E(X^2)- [E(X)]^2$
+
+. . .
+
+$Var(X) =  \frac{b^3 - a^3}{3(b-a)}- (\frac{b+a}{2})^2$
+
+. . .
+
+$Var(X) =  \frac{(b-a) (b^2+ab+a^2)}{3(b-a)}- \frac{(b+a)^2}{4}$
+
+. . .
+
+$Var(X) =  \frac{(b-a)^2}{12}$
+
+## Example
+
+A cellphone has a defective alarm system. Once every day the alarm starts ringing randomly. Let X be the random variable representing the time in the
+24 hour system when the alarm goes on. 
+
+. . .
+
+:::{.pull-right}
+
+```{r echo = FALSE, message = FALSE, fig.align="center", fig.height = 4, message = FALSE, warning = FALSE}
+
+data <- data.frame (x = rep (c(0,24)),
+                   y = c(1/24,1/24),
+                   y_label = c("1/24", "1/24"))
+
+ggplot(data, aes(x = x, y = y)) + 
+  geom_line ()+
+  scale_x_continuous(breaks = data$x) +
+  scale_y_continuous(breaks = data$y,
+                     labels = data$y_label) +
+  labs(y = "f(x)")
+```
+
+:::
+
+. . .
+
+$f(x) = \frac{1}{b-a} \text{ for } \  a \leq x \leq b$
+
+$f(x) = \frac{1}{24-0} \text{ for } x \ \epsilon [0,24)$
+
+
+## pdf
+
+:::{.pull-right}
+
+```{r echo = FALSE, message = FALSE, fig.align="center", fig.height = 4, message = FALSE, warning = FALSE}
+
+
+data <- data.frame (x = rep (c(0,24)),
+                   y = c(1/24,1/24),
+                   y_label = c("1/24", "1/24"))
+
+ggplot(data, aes(x = x, y = y)) + 
+  geom_line ()+
+  scale_x_continuous(breaks = data$x) +
+  scale_y_continuous(breaks = data$y,
+                     labels = data$y_label) +
+  labs(y = "f(x)")
+```
+
+:::
+
+:::{.pull-left}
+
+```{r}
+dunif(x = 3, min = 0, max = 24)
+```
+
+:::
+
+. . .
+
+:::{.pull-left}
+
+```{r}
+dunif(x = 15, min = 0, max = 24)
+```
+
+:::
+
+. . .
+
+:::{.pull-left}
+
+```{r}
+dunif(x = 21.25, min = 0, max = 24)
+```
+
+:::
+
+
+
+## Calculating Probability
+
+What is the probability that the phone alarm will ring at 3 am?
+
+. . .
+
+
+:::{.pull-right}
+
+```{r echo = FALSE, message = FALSE, fig.align="center", fig.height =4, warning = FALSE}
+data <- data.frame (x = rep (c(0,24)),
+                   y = c(1/24,1/24),
+                   y_label = c("1/24", "1/24"))
+
+ggplot(data, aes(x = x, y = y)) + 
+  geom_line ()+
+  scale_x_continuous(breaks = data$x) +
+  scale_y_continuous(breaks = data$y,
+                     labels = data$y_label) +
+  labs(y = "f(x)") +
+   geom_segment(data = data,
+              aes(x = 3, 
+                    y = 0, 
+                    xend = 3, 
+                    yend = y), 
+              color = "#e56646") 
+```
+
+
+
+:::
+
+. . .
+
+
+$P(X = 3) = 0$
+
+
+$\int_3^{3}\frac{1}{b-a}dx = 0$
+
+. . .
+
+
+## Calculating Probability
+
+What is the probability that the phone alarm will ring at some time between midnight and 8 am?
+
+. . .
+
+:::{.pull-right}
+
+```{r echo = FALSE, message = FALSE, fig.align="center", fig.height =4, warning = FALSE}
+x <- seq(0,8, by = 0.001)
+
+
+y <- rep(1/24, times = length(x))
+
+data <- data.frame(x = x,
+                   y = y)
+
+ggplot(data = data.frame(x = c(0, 24)), 
+       aes(x = x, y = 1/24)) + 
+  geom_line ()+
+  labs(y = "f(x)") +
+   geom_segment(data = data,
+              aes(x = x, 
+                    y = 0, 
+                    xend = x, 
+                    yend = y), 
+              color = "#e56646") +
+  scale_y_continuous(breaks = c(0, 1/24),
+                     labels = c("0", "1/24")) +
+  labs(y = "f(x)") 
+
+```
+
+:::
+
+
+Cumulative probability!
+
+. . .
+
+$\int_0^{8}\frac{1}{b-a}dx$
+
+. . .
+
+
+$\frac{x}{b-a}\bigg\rvert_0^8 = \frac{8}{24} = \frac{1}{3}$
+
+. . .
+
+```{r}
+punif(q = 8, min = 0, max = 24)
+```
+
+
+## Calculating Probability
+
+What is the probability that the phone alarm will ring at some time between 2 am to 8 am?
+
+. . .
+
+
+:::{.pull-right}
+```{r echo = FALSE, message = FALSE, fig.align="center", fig.height =4, warning = FALSE}
+x <- seq(2,8, by = 0.001)
+
+
+y <- rep(1/24, times = length(x))
+
+data <- data.frame(x = x,
+                   y = y)
+
+ggplot(data = data.frame(x = c(0, 24)), 
+       aes(x = x, y = 1/24)) + 
+  geom_line ()+
+  labs(y = "f(x)") +
+   geom_segment(data = data,
+              aes(x = x, 
+                    y = 0, 
+                    xend = x, 
+                    yend = y), 
+              color = "#e56646") +
+  scale_y_continuous(breaks = c(0, 1/24),
+                     labels = c("0", "1/24")) +
+  labs(y = "f(x)") 
+
+```
+
+:::
+
+$P(2<X<8) = ?$
+
+. . .
+
+$\frac{x}{b-a}\bigg\rvert_2^8 = \frac{8}{24} - \frac{2}{24}= \frac{1}{4}$
+
+. . .
+
+$P(X<8) - P(X<2)$
+
+. . .
+
+```{r}
+punif(q = 8, min = 0, max = 24) -
+  punif(q = 2, min = 0, max = 24)
+```
+
+
+## Expected Value
+
+What is the expected value of the time that the phone alarm will go on?
+
+. . .
+
+$E(X) = \frac{b+a}{2}$
+
+. . .
+
+$E(X) = \frac{24+0}{2} = 12$
+
+. . .
+
+We found that the expected value is 12. Does that mean that every day we would expect the alarm to go on at noon (12 pm)?
+
+. . .
+
+No! Some days the alarm might go on at 9 am, some days at 3 pm (15). Some days it might go on at 9:15 pm (21.25). We would expect the average to be 12 in the long run.
+
+
+## Variance
+
+We already pointed out that there is variance to the time the alarm goes on. It is not at noon every day. What is the variance of the time that the phone alarm will go on?
+
+. . .
+
+$Var(X) =  \frac{(b-a)^2}{12}$
+
+. . .
+
+$Var(X) =  \frac{(24-0)^2}{12}$
+
+. . .
+
+$Var(X) = 48$
+
+
+

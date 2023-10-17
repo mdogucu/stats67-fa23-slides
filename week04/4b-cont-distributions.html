@@ -401,6 +401,13 @@ Dr.&nbsp;Mine Dogucu
 </div>
 
 </section>
+<section class="slide level2">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(gridExtra)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
 <section>
 <section id="exponential-distribution" class="title-slide slide level1 center">
 <h1>Exponential Distribution</h1>
@@ -425,7 +432,7 @@ Dr.&nbsp;Mine Dogucu
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="4b-cont-distributions_files/figure-revealjs/unnamed-chunk-2-1.png" width="960"></p>
+<p><img data-src="4b-cont-distributions_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -444,17 +451,17 @@ Dr.&nbsp;Mine Dogucu
 <h2>Example</h2>
 <p>Suppose your waiting time (in minutes) for a bus is <span class="math inline">\(X \sim Exp(0.1)\)</span>.</p>
 <div class="fragment">
-<p>.pull-right[</p>
+<div class="pull-right">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="4b-cont-distributions_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></p>
+<p><img data-src="4b-cont-distributions_files/figure-revealjs/unnamed-chunk-4-1.png" width="960"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>]</p>
+</div>
 </div>
 <div class="fragment">
 <p><span class="math inline">\(f(x) =0.1 e^{-0.1 x} \text{ for } \  x \ \epsilon \ [0, \infty)\)</span></p>
@@ -464,7 +471,7 @@ Dr.&nbsp;Mine Dogucu
 </div>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fl">0.1</span><span class="sc">*</span><span class="fu">exp</span>(<span class="sc">-</span><span class="fl">0.1</span><span class="sc">*</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fl">0.1</span><span class="sc">*</span><span class="fu">exp</span>(<span class="sc">-</span><span class="fl">0.1</span><span class="sc">*</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.03678794</code></pre>
 </div>
@@ -472,7 +479,7 @@ Dr.&nbsp;Mine Dogucu
 </div>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">dexp</span>(<span class="at">x =</span> <span class="dv">10</span>, <span class="at">rate =</span> <span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">dexp</span>(<span class="at">x =</span> <span class="dv">10</span>, <span class="at">rate =</span> <span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.03678794</code></pre>
 </div>
@@ -483,17 +490,17 @@ Dr.&nbsp;Mine Dogucu
 <h2>Calculating Probability</h2>
 <p>You show up at the bus stop. What is the probability that you will wait for 10 minutes for the bus?</p>
 <div class="fragment">
-<p>.pull-right[</p>
+<div class="pull-right">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="4b-cont-distributions_files/figure-revealjs/unnamed-chunk-6-1.png" width="960"></p>
+<p><img data-src="4b-cont-distributions_files/figure-revealjs/unnamed-chunk-7-1.png" width="960"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>]</p>
+</div>
 </div>
 <div class="fragment">
 <p><span class="math inline">\(P(X = 10) = 0\)</span></p>
@@ -506,17 +513,17 @@ Dr.&nbsp;Mine Dogucu
 <h2>Calculating Probability</h2>
 <p>What is the probability that you will wait for the bus less than 10 minutes?</p>
 <div class="fragment">
-<p>.pull-right[</p>
+<div class="pull-right">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="4b-cont-distributions_files/figure-revealjs/unnamed-chunk-7-1.png" width="960"></p>
+<p><img data-src="4b-cont-distributions_files/figure-revealjs/unnamed-chunk-8-1.png" width="960"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>]</p>
+</div>
 <p>Cumulative probability!</p>
 </div>
 <div class="fragment">
@@ -527,7 +534,7 @@ Dr.&nbsp;Mine Dogucu
 </div>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">pexp</span>(<span class="at">q =</span> <span class="dv">10</span>, <span class="at">rate =</span> <span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">pexp</span>(<span class="at">q =</span> <span class="dv">10</span>, <span class="at">rate =</span> <span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.6321206</code></pre>
 </div>
@@ -537,9 +544,17 @@ Dr.&nbsp;Mine Dogucu
 <section id="calculating-probability-2" class="slide level2">
 <h2>Calculating Probability</h2>
 <p>What is the probability that you will wait between 10 to 20 minutes for the bus?</p>
-<p>.pull-right[</p>
-
-<img data-src="4b-cont-distributions_files/figure-revealjs/unnamed-chunk-9-1.png" width="960" class="r-stretch quarto-figure-center"><p>]</p>
+<div class="pull-right">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="4b-cont-distributions_files/figure-revealjs/unnamed-chunk-10-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
 <p><span class="math inline">\(P(10&lt;X&lt;20) = ?\)</span></p>
 <div class="fragment">
 <p><span class="math inline">\(\int_{10}^{20}0.1 e^{-0.1 x}dx\)</span></p>
@@ -549,8 +564,8 @@ Dr.&nbsp;Mine Dogucu
 </div>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">pexp</span>(<span class="at">q =</span> <span class="dv">20</span>, <span class="at">rate =</span> <span class="fl">0.1</span>) <span class="sc">-</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a>  <span class="fu">pexp</span>(<span class="at">q =</span> <span class="dv">10</span>, <span class="at">rate =</span> <span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">pexp</span>(<span class="at">q =</span> <span class="dv">20</span>, <span class="at">rate =</span> <span class="fl">0.1</span>) <span class="sc">-</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a>  <span class="fu">pexp</span>(<span class="at">q =</span> <span class="dv">10</span>, <span class="at">rate =</span> <span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.2325442</code></pre>
 </div>
@@ -578,33 +593,600 @@ Dr.&nbsp;Mine Dogucu
 </section>
 <section id="section" class="slide level2">
 <h2></h2>
-<p>.pull-left[</p>
+<div class="columns">
+<div class="column">
 <p><strong>Poisson</strong></p>
 <p><svg aria-hidden="true" role="img" viewbox="0 0 576 512" style="height:1em;width:1.12em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M288 0C422.4 0 512 35.2 512 80V96l0 32c17.7 0 32 14.3 32 32v64c0 17.7-14.3 32-32 32l0 160c0 17.7-14.3 32-32 32v32c0 17.7-14.3 32-32 32H416c-17.7 0-32-14.3-32-32V448H192v32c0 17.7-14.3 32-32 32H128c-17.7 0-32-14.3-32-32l0-32c-17.7 0-32-14.3-32-32l0-160c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h0V96h0V80C64 35.2 153.6 0 288 0zM128 160v96c0 17.7 14.3 32 32 32H272V128H160c-17.7 0-32 14.3-32 32zM304 288H416c17.7 0 32-14.3 32-32V160c0-17.7-14.3-32-32-32H304V288zM144 400a32 32 0 1 0 0-64 32 32 0 1 0 0 64zm288 0a32 32 0 1 0 0-64 32 32 0 1 0 0 64zM384 80c0-8.8-7.2-16-16-16H208c-8.8 0-16 7.2-16 16s7.2 16 16 16H368c8.8 0 16-7.2 16-16z"></path></svg></p>
 <p>Discrete</p>
 <p>Number of events (bus)</p>
 <p>Every ten minutes we expect <strong>1 bus</strong></p>
-<p>]</p>
-<p>.pull-right[</p>
+</div><div class="column">
 <p><strong>Exponential</strong></p>
 <p><svg aria-hidden="true" role="img" viewbox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M464 256A208 208 0 1 1 48 256a208 208 0 1 1 416 0zM0 256a256 256 0 1 0 512 0A256 256 0 1 0 0 256zM232 120V256c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2V120c0-13.3-10.7-24-24-24s-24 10.7-24 24z"></path></svg></p>
 <p>Continuous</p>
 <p>Time between two events</p>
 <p>We expect to wait <strong>10 minutes</strong> for a bus</p>
-<p>]</p>
+</div>
+</div>
 </section></section>
+<section>
 <section id="normal-distribution" class="title-slide slide level1 center">
 <h1>Normal Distribution</h1>
 
 </section>
+<section id="pdf-1" class="slide level2">
+<h2>pdf</h2>
+<p><span class="math inline">\(X \sim \mathcal{N}(\mu, \sigma^2)\)</span></p>
+<div class="fragment">
+<p><span class="math inline">\(f(x) = \frac{1}{\sigma \sqrt{2\pi}}{e^{-(x-\mu)^2/2\sigma^2}}\)</span></p>
+</div>
+<div class="fragment">
+<p><span class="math inline">\(E(X) = \mu\)</span></p>
+</div>
+<div class="fragment">
+<p><span class="math inline">\(Var(X) = \sigma^2\)</span></p>
+</div>
+</section>
+<section id="characteristics" class="slide level2">
+<h2>Characteristics</h2>
+<div class="columns">
+<div class="column">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="4b-cont-distributions_files/figure-revealjs/unnamed-chunk-13-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column">
+<p>Mean = Median = Mode</p>
+<p><span class="math inline">\(P(X \leq \mu) = 0.5\)</span></p>
+</div>
+</div>
+</section>
+<section id="parameters" class="slide level2">
+<h2>Parameters</h2>
 
+<img data-src="4b-cont-distributions_files/figure-revealjs/unnamed-chunk-14-1.png" width="960" class="r-stretch quarto-figure-center"></section>
+<section id="section-1" class="slide level2">
+<h2></h2>
+<p>68.26895% of the data are within 1 standard deviation of the mean.</p>
+
+<img data-src="4b-cont-distributions_files/figure-revealjs/unnamed-chunk-15-1.png" width="960" class="r-stretch quarto-figure-center"></section>
+<section id="section-2" class="slide level2">
+<h2></h2>
+<p>95.44997% of the data are within 2 standard deviations of the mean.</p>
+
+<img data-src="4b-cont-distributions_files/figure-revealjs/unnamed-chunk-16-1.png" width="960" class="r-stretch quarto-figure-center"></section>
+<section id="section-3" class="slide level2">
+<h2></h2>
+<p>99.73002% of the data are within 3 standard deviations of the mean.</p>
+
+<img data-src="4b-cont-distributions_files/figure-revealjs/unnamed-chunk-17-1.png" width="960" class="r-stretch quarto-figure-center"></section>
+<section id="example-1" class="slide level2">
+<h2>Example</h2>
+<p>Midterm exam scores are normally distributed with a mean of 80 and standard deviation of 5 points.</p>
+<div class="fragment">
+<div class="pull-right">
+<p><span class="math display">\[X \sim N(80, 5^2)\]</span></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="4b-cont-distributions_files/figure-revealjs/unnamed-chunk-18-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="pull-left">
+<p><span class="math inline">\(f(78)\)</span> =</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">dnorm</span>(<span class="at">x =</span> <span class="dv">78</span>, <span class="at">mean =</span> <span class="dv">80</span>, <span class="at">sd =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.07365403</code></pre>
+</div>
+</div>
+<p><span class="math inline">\(f(92)\)</span> =</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">dnorm</span>(<span class="at">x =</span> <span class="dv">92</span>, <span class="at">mean =</span> <span class="dv">80</span>, <span class="at">sd =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.004478906</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="calculating-probability-3" class="slide level2">
+<h2>Calculating Probability</h2>
+<p>What is the probability that a student scores below 73 points?</p>
+<div class="pull-right">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="4b-cont-distributions_files/figure-revealjs/unnamed-chunk-21-1.png" width="960"></p>
+</div>
+</div>
+</div>
+<div class="pull-left">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">pnorm</span>(<span class="at">q =</span> <span class="dv">73</span>, <span class="at">mean =</span> <span class="dv">80</span>, <span class="at">sd =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.08075666</code></pre>
+</div>
+</div>
+<p><br></p>
+<p>If a student scores 73 points, the student’s percentile rank is 8.0756659%</p>
+</div>
+</section>
+<section id="calculating-probability-4" class="slide level2">
+<h2>Calculating Probability</h2>
+<p>What is the probability that a student scores above 78 points?</p>
+<div class="pull-right">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="4b-cont-distributions_files/figure-revealjs/unnamed-chunk-23-1.png" width="960"></p>
+</div>
+</div>
+</div>
+<div class="pull-left">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="at">q =</span> <span class="dv">78</span>, <span class="at">mean =</span> <span class="dv">80</span>, <span class="at">sd =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.6554217</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="fu">pnorm</span>(<span class="at">q =</span> <span class="dv">78</span>, <span class="at">mean =</span> <span class="dv">80</span>, <span class="at">sd =</span> <span class="dv">5</span>, </span>
+<span id="cb18-2"><a href="#cb18-2"></a>      <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.6554217</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="how-many-standard-deviations-away-from-the-mean" class="slide level2">
+<h2>How many standard deviations away from the mean?</h2>
+<p>Krishna scored 85 points on the midterm. How many standard deviations is Krishna’s score away from the mean?</p>
+<p><span class="math inline">\(\frac{85-80}{5} = 1\)</span></p>
+<div class="fragment">
+<p>Hira scored 77.5 points on the midterm. How many standard deviations is Hira’s score away from the mean?</p>
+<p><span class="math inline">\(\frac{77.5-80}{5} = -0.5\)</span></p>
+</div>
+</section>
+<section id="z-score" class="slide level2">
+<h2>Z-score</h2>
+<p><span class="math display">\[Z = \frac{X-\mu}{\sigma} \]</span></p>
+</section>
+<section id="calculating-z-scores" class="slide level2">
+<h2>Calculating z-scores</h2>
+<p>We can calculate Z-scores regardless of the distribution of the data. In other words, data do not need to be normally distributed. Z-scores only show how many standard deviations a value is away from the mean.</p>
+</section>
+<section id="interpreting-z-scores" class="slide level2">
+<h2>Interpreting z-scores</h2>
+<p>If we know that the data follow a normal distribution then we can use z-scores for probabilistic interpretations.</p>
+</section>
+<section id="normal-distribution-vs.-standard-normal-z-distribution" class="slide level2">
+<h2>Normal Distribution vs.&nbsp;Standard Normal (z) Distribution</h2>
+<div class="columns">
+<div class="column">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="4b-cont-distributions_files/figure-revealjs/unnamed-chunk-26-1.png" width="480"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="4b-cont-distributions_files/figure-revealjs/unnamed-chunk-27-1.png" width="480"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="section-4" class="slide level2">
+<h2></h2>
+<div class="columns">
+<div class="column">
+<p><strong>Normal Distribution</strong></p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="fu">pnorm</span>(<span class="at">q =</span> <span class="dv">90</span>, <span class="at">mean =</span> <span class="dv">80</span>, <span class="at">sd =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9772499</code></pre>
+</div>
+</div>
+</div><div class="column">
+<p><strong>Standard Normal (z) Distribution</strong></p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">pnorm</span>(<span class="at">q =</span> <span class="dv">2</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9772499</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="sat-scores---z-scores" class="slide level2">
+<h2>SAT scores - z scores</h2>
+<p>Let X represent the SAT scores and <span class="math inline">\(X \sim N(1100, 200^2)\)</span></p>
+<div class="fragment">
+<p>What is the Z-score of a student who scores 1500?</p>
+<p><span class="math inline">\(z = \frac{1500-1100}{200} = 2\)</span></p>
+</div>
+</section>
+<section id="sat-scores---probability" class="slide level2">
+<h2>SAT scores - probability</h2>
+<p>What is the percentile rank of a student who scores 1500?</p>
+
+<img data-src="4b-cont-distributions_files/figure-revealjs/unnamed-chunk-30-1.png" width="960" class="r-stretch quarto-figure-center"></section>
+<section id="sat-scores---probability-1" class="slide level2">
+<h2>SAT scores - probability</h2>
+<p>What is the percentile rank of a student who scores 1500?</p>
+<div class="fragment">
+<div class="columns">
+<div class="column">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">pnorm</span>(<span class="at">q =</span> <span class="dv">1500</span>, </span>
+<span id="cb24-2"><a href="#cb24-2"></a>      <span class="at">mean =</span> <span class="dv">1100</span>, </span>
+<span id="cb24-3"><a href="#cb24-3"></a>      <span class="at">sd =</span> <span class="dv">200</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9772499</code></pre>
+</div>
+</div>
+<p>If you know the order of arguments:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="fu">pnorm</span>(<span class="dv">1500</span>, <span class="dv">1100</span>, <span class="dv">200</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9772499</code></pre>
+</div>
+</div>
+</div><div class="column">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="fu">pnorm</span>(<span class="dv">2</span>, </span>
+<span id="cb28-2"><a href="#cb28-2"></a>      <span class="at">mean =</span> <span class="dv">0</span>, </span>
+<span id="cb28-3"><a href="#cb28-3"></a>      <span class="at">sd =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9772499</code></pre>
+</div>
+</div>
+<p>The default <code>mean</code> is 0 and <code>sd</code> is 1.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="fu">pnorm</span>(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9772499</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="section-5" class="slide level2">
+<h2></h2>
+<p>What percentage of test takers score between 800 and 1400?</p>
+<div class="fragment">
+<p><span class="math inline">\(P(800&lt;X&lt;1400) =P(X&lt;1400) - P(X&lt;800)\)</span></p>
+</div>
+<div class="fragment">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="4b-cont-distributions_files/figure-revealjs/unnamed-chunk-35-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="fu">pnorm</span>(<span class="at">q =</span> <span class="dv">1400</span>, <span class="at">mean =</span> <span class="dv">1100</span>, <span class="at">sd =</span> <span class="dv">200</span>) <span class="sc">-</span></span>
+<span id="cb32-2"><a href="#cb32-2"></a>  <span class="fu">pnorm</span>(<span class="at">q =</span> <span class="dv">800</span>, <span class="at">mean =</span> <span class="dv">1100</span>, <span class="at">sd =</span> <span class="dv">200</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.8663856</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="known-probability-unknown-x" class="slide level2">
+<h2>Known probability unknown x</h2>
+<p>If College Board wanted to send a congratulatory email to the top 10% in the SATs, above what SAT score should they consider sending the email to?</p>
+<div class="fragment">
+<div class="columns">
+<div class="column">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="4b-cont-distributions_files/figure-revealjs/unnamed-chunk-37-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a><span class="fu">qnorm</span>(<span class="at">p =</span> <span class="fl">0.90</span>, </span>
+<span id="cb34-2"><a href="#cb34-2"></a>      <span class="at">mean =</span> <span class="dv">1100</span>, </span>
+<span id="cb34-3"><a href="#cb34-3"></a>      <span class="at">sd =</span> <span class="dv">200</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1356.31</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
 <section id="continuous-uniform-distribution" class="title-slide slide level1 center">
 <h1>Continuous Uniform Distribution</h1>
 
-<img src="https://www.stats4cs.com/img/logo.png" class="slide-logo r-stretch"><div class="footer footer-default">
-<p><a href="https://stats4cs.com">stats4cs.com</a></p>
+</section>
+<section id="pdf-2" class="slide level2">
+<h2>pdf</h2>
+<p><span class="math inline">\(X \sim \mathcal{U}(a,b)\)</span></p>
+<div class="pull-left">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/uniform_pdf.png" style="width:90.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="pull-right">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="4b-cont-distributions_files/figure-revealjs/unnamed-chunk-40-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
 </div>
 </section>
+<section id="expected-value" class="slide level2">
+<h2>Expected Value</h2>
+<p><span class="math inline">\(E(X) = \int_{x \ \epsilon \ S_X} xf(x)dx\)</span></p>
+<div class="fragment">
+<p><span class="math inline">\(E(X) = \int_a^b x\frac{1}{b-a}dx\)</span></p>
+</div>
+<div class="fragment">
+<p><span class="math inline">\(E(X) = \frac{1}{b-a} \big[\frac{x^2}{2}\bigg\rvert_a^b\big]\)</span></p>
+</div>
+<div class="fragment">
+<p><span class="math inline">\(E(X) = \frac{1}{b-a} \big[\frac{b^2}{2} - \frac{a^2}{2}\big]\)</span></p>
+</div>
+<div class="fragment">
+<p><span class="math inline">\(E(X) = \frac{b^2 - a^2}{2(b-a)}\)</span></p>
+</div>
+<div class="fragment">
+<p><span class="math inline">\(E(X) = \frac{b+a}{2}\)</span></p>
+</div>
+</section>
+<section id="ex2" class="slide level2">
+<h2><span class="math inline">\(E(X^2)\)</span></h2>
+<p><span class="math inline">\(Var(X) = E(X^2)- [E(X)]^2\)</span></p>
+<div class="fragment">
+<p><span class="math inline">\(E(X^2) = ?\)</span></p>
+</div>
+<div class="fragment">
+<p><span class="math inline">\(E(X^2) = \int_a^b x^2\frac{1}{b-a}dx\)</span></p>
+</div>
+<div class="fragment">
+<p><span class="math inline">\(E(X^2) = \frac{1}{b-a} \big[\frac{x^3}{3}\bigg\rvert_a^b\big]\)</span></p>
+</div>
+<div class="fragment">
+<p><span class="math inline">\(E(X^2) = \frac{b^3 - a^3}{3(b-a)}\)</span></p>
+</div>
+</section>
+<section id="variance" class="slide level2">
+<h2>Variance</h2>
+<p><span class="math inline">\(Var(X) = E(X^2)- [E(X)]^2\)</span></p>
+<div class="fragment">
+<p><span class="math inline">\(Var(X) = \frac{b^3 - a^3}{3(b-a)}- (\frac{b+a}{2})^2\)</span></p>
+</div>
+<div class="fragment">
+<p><span class="math inline">\(Var(X) = \frac{(b-a) (b^2+ab+a^2)}{3(b-a)}- \frac{(b+a)^2}{4}\)</span></p>
+</div>
+<div class="fragment">
+<p><span class="math inline">\(Var(X) = \frac{(b-a)^2}{12}\)</span></p>
+</div>
+</section>
+<section id="example-2" class="slide level2">
+<h2>Example</h2>
+<p>A cellphone has a defective alarm system. Once every day the alarm starts ringing randomly. Let X be the random variable representing the time in the 24 hour system when the alarm goes on.</p>
+<div class="fragment">
+<div class="pull-right">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="4b-cont-distributions_files/figure-revealjs/unnamed-chunk-41-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p><span class="math inline">\(f(x) = \frac{1}{b-a} \text{ for } \  a \leq x \leq b\)</span></p>
+<p><span class="math inline">\(f(x) = \frac{1}{24-0} \text{ for } x \ \epsilon [0,24)\)</span></p>
+</div>
+</section>
+<section id="pdf-3" class="slide level2">
+<h2>pdf</h2>
+<div class="pull-right">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="4b-cont-distributions_files/figure-revealjs/unnamed-chunk-42-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="pull-left">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a><span class="fu">dunif</span>(<span class="at">x =</span> <span class="dv">3</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">24</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.04166667</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="pull-left">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a><span class="fu">dunif</span>(<span class="at">x =</span> <span class="dv">15</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">24</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.04166667</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="pull-left">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a><span class="fu">dunif</span>(<span class="at">x =</span> <span class="fl">21.25</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">24</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.04166667</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="calculating-probability-5" class="slide level2">
+<h2>Calculating Probability</h2>
+<p>What is the probability that the phone alarm will ring at 3 am?</p>
+<div class="fragment">
+<div class="pull-right">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="4b-cont-distributions_files/figure-revealjs/unnamed-chunk-46-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p><span class="math inline">\(P(X = 3) = 0\)</span></p>
+<p><span class="math inline">\(\int_3^{3}\frac{1}{b-a}dx = 0\)</span></p>
+</div>
+</section>
+<section id="calculating-probability-6" class="slide level2">
+<h2>Calculating Probability</h2>
+<p>What is the probability that the phone alarm will ring at some time between midnight and 8 am?</p>
+<div class="fragment">
+<div class="pull-right">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="4b-cont-distributions_files/figure-revealjs/unnamed-chunk-47-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>Cumulative probability!</p>
+</div>
+<div class="fragment">
+<p><span class="math inline">\(\int_0^{8}\frac{1}{b-a}dx\)</span></p>
+</div>
+<div class="fragment">
+<p><span class="math inline">\(\frac{x}{b-a}\bigg\rvert_0^8 = \frac{8}{24} = \frac{1}{3}\)</span></p>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a><span class="fu">punif</span>(<span class="at">q =</span> <span class="dv">8</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">24</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3333333</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="calculating-probability-7" class="slide level2">
+<h2>Calculating Probability</h2>
+<p>What is the probability that the phone alarm will ring at some time between 2 am to 8 am?</p>
+<div class="fragment">
+<div class="pull-right">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="4b-cont-distributions_files/figure-revealjs/unnamed-chunk-49-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p><span class="math inline">\(P(2&lt;X&lt;8) = ?\)</span></p>
+</div>
+<div class="fragment">
+<p><span class="math inline">\(\frac{x}{b-a}\bigg\rvert_2^8 = \frac{8}{24} - \frac{2}{24}= \frac{1}{4}\)</span></p>
+</div>
+<div class="fragment">
+<p><span class="math inline">\(P(X&lt;8) - P(X&lt;2)\)</span></p>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a><span class="fu">punif</span>(<span class="at">q =</span> <span class="dv">8</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">24</span>) <span class="sc">-</span></span>
+<span id="cb44-2"><a href="#cb44-2"></a>  <span class="fu">punif</span>(<span class="at">q =</span> <span class="dv">2</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">24</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.25</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="expected-value-1" class="slide level2">
+<h2>Expected Value</h2>
+<p>What is the expected value of the time that the phone alarm will go on?</p>
+<div class="fragment">
+<p><span class="math inline">\(E(X) = \frac{b+a}{2}\)</span></p>
+</div>
+<div class="fragment">
+<p><span class="math inline">\(E(X) = \frac{24+0}{2} = 12\)</span></p>
+</div>
+<div class="fragment">
+<p>We found that the expected value is 12. Does that mean that every day we would expect the alarm to go on at noon (12 pm)?</p>
+</div>
+<div class="fragment">
+<p>No! Some days the alarm might go on at 9 am, some days at 3 pm (15). Some days it might go on at 9:15 pm (21.25). We would expect the average to be 12 in the long run.</p>
+</div>
+</section>
+<section id="variance-1" class="slide level2">
+<h2>Variance</h2>
+<p>We already pointed out that there is variance to the time the alarm goes on. It is not at noon every day. What is the variance of the time that the phone alarm will go on?</p>
+<div class="fragment">
+<p><span class="math inline">\(Var(X) = \frac{(b-a)^2}{12}\)</span></p>
+</div>
+<div class="fragment">
+<p><span class="math inline">\(Var(X) = \frac{(24-0)^2}{12}\)</span></p>
+</div>
+<div class="fragment">
+<p><span class="math inline">\(Var(X) = 48\)</span></p>
+<p><img src="https://www.stats4cs.com/img/logo.png" class="slide-logo"></p>
+<div class="footer footer-default">
+<p><a href="https://stats4cs.com">stats4cs.com</a></p>
+</div>
+</div>
+</section></section>
     </div>
   </div>
 
