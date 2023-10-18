@@ -32,7 +32,7 @@ Assume a random process with only two outcomes. e.g. a medical test of a disease
 
 ## Success
 
-We are interested in $p$ which represents the proportion of people in the population with this disease. 
+We are interested in $\pi$ which represents the proportion of people in the population with this disease. 
 
 A success of a trial is in this case getting a positive test result.
 
@@ -88,7 +88,7 @@ $X \sim \text{Geometric} (\pi)$
 
 . . .
 
-$f(x) = (1-p)^x(p)$  
+$f(x) = (1-\pi)^x(\pi)$  
 
 $P(X = 2) = f(2) = (1-0.13)^2(0.13)$
 
@@ -175,7 +175,13 @@ If the reporter was to repeat this process would she always need 6.692308 failur
 
 . . .
 
-$Var(X) = \frac{1-p}{p^2} = \frac{1-0.13}{0.13^2} = 51.47929$
+$Var(X) = \frac{1-\pi}{\pi^2} = \frac{1-0.13}{0.13^2} = 51.47929$
+
+##
+
+::: {.callout-warning}
+Note that Geometric distribution is defined slightly differently in the OpenIntro book. We will always use the notation and the pmf provided in these slides.
+:::
 
 
 # Binomial Distribution
