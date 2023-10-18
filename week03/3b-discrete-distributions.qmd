@@ -295,7 +295,7 @@ dbinom(x = 0, size = 10, prob = 0.70) +
 ```
 
 
-## Cumulative Probability Function
+## Cumulative Distribution Function
 
 $P(X \leq 3)$
 
