@@ -273,7 +273,7 @@ data %>%
 dbinom(x = 0:10, size = 10, prob = 0.70)
 ```
 
-## Cumulative Probability Function
+## Cumulative Distribution Function
 
 What is the probability that at most three of the ten selected animals are infected? 
 
