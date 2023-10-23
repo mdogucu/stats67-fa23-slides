@@ -426,14 +426,14 @@ Dr.&nbsp;Mine Dogucu
 </section>
 <section id="bernoulli-distribution" class="slide level2">
 <h2>Bernoulli Distribution</h2>
-<p>If X is a random variable that takes value 1 with probability of success <span class="math inline">\(p\)</span> and 0 with probability <span class="math inline">\(1-p\)</span>, then X follows a Bernoulli distribution.</p>
+<p>If X is a random variable that takes value 1 with probability of success <span class="math inline">\(\pi\)</span> and 0 with probability <span class="math inline">\(1-\pi\)</span>, then X follows a Bernoulli distribution.</p>
 <p><span class="math inline">\(S = \{0, 1 \}\)</span></p>
-<p><span class="math inline">\(X \sim \text{Bernoulli} (p)\)</span></p>
+<p><span class="math inline">\(X \sim \text{Bernoulli} (\pi)\)</span></p>
 <div class="fragment">
-<p><span class="math inline">\(E(X) = \mu = p\)</span></p>
+<p><span class="math inline">\(E(X) = \mu = \pi\)</span></p>
 </div>
 <div class="fragment">
-<p><span class="math inline">\(Var(X)=\sigma^2 = p(1-p)\)</span></p>
+<p><span class="math inline">\(Var(X)=\sigma^2 = \pi(1-\pi)\)</span></p>
 </div>
 </section>
 <section id="geometric-distribution" class="slide level2">
@@ -442,10 +442,10 @@ Dr.&nbsp;Mine Dogucu
 <div class="columns">
 <div class="column">
 <p><span class="math inline">\(S = \{0, 1, 2, 3, 4, ...\}\)</span></p>
-<p><span class="math inline">\(X \sim \text{Geometric} (p)\)</span></p>
-<p><span class="math inline">\(f(x) = (1-p)^x(p)\)</span></p>
-<p><span class="math inline">\(E(X)=\frac{1-p}{p}\)</span></p>
-<p><span class="math inline">\(Var(X) = \frac{1-p}{p^2}\)</span></p>
+<p><span class="math inline">\(X \sim \text{Geometric} (\pi)\)</span></p>
+<p><span class="math inline">\(f(x) = (1-\pi)^x(\pi)\)</span></p>
+<p><span class="math inline">\(E(X)=\frac{1-\pi}{\pi}\)</span></p>
+<p><span class="math inline">\(Var(X) = \frac{1-\pi}{\pi^2}\)</span></p>
 </div><div class="column">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">dgeom</span>(x, prob) <span class="co">#pmf</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -458,14 +458,14 @@ Dr.&nbsp;Mine Dogucu
 </section>
 <section id="binomial-distribution" class="slide level2">
 <h2>Binomial Distribution</h2>
-<p>The random variable X represents the number of successes in <span class="math inline">\(n\)</span> trials where in independent trial the probability of success is <span class="math inline">\(p\)</span>.</p>
+<p>The random variable X represents the number of successes in <span class="math inline">\(n\)</span> trials where in independent trial the probability of success is <span class="math inline">\(\pi\)</span>.</p>
 <div class="columns">
 <div class="column">
 <p><span class="math inline">\(S = \{0, 1, ..., n \}\)</span></p>
-<p><span class="math inline">\(X\sim \text{Binomial}(n, p)\)</span></p>
-<p><span class="math inline">\(P(X = x) = f(x) = {n \choose x}p^{x} (1-p)^{n-x}\)</span></p>
-<p><span class="math inline">\(E(X) = np\)</span></p>
-<p><span class="math inline">\(Var(X) = np(1-p)\)</span></p>
+<p><span class="math inline">\(X\sim \text{Binomial}(n, \pi)\)</span></p>
+<p><span class="math inline">\(P(X = x) = f(x) = {n \choose x}\pi^{x} (1-\pi)^{n-x}\)</span></p>
+<p><span class="math inline">\(E(X) = n\pi\)</span></p>
+<p><span class="math inline">\(Var(X) = n\pi(1-\pi)\)</span></p>
 </div><div class="column">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">dbinom</span>(x, size, prob) <span class="co">#pmf</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -518,7 +518,7 @@ Dr.&nbsp;Mine Dogucu
 <p><span class="math display">\[\int_{x \ \epsilon \ S_X} f(x)dx = 1\]</span></p>
 </div>
 <div class="fragment">
-<p><span class="math display">\[P(a \leq X \leq b) = \int_a^b{x} f(x)dx\]</span></p>
+<p><span class="math display">\[P(a \leq X \leq b) = \int_a^b f(x)dx\]</span></p>
 </div>
 </section>
 <section id="cumulative-distribution-function" class="slide level2">
@@ -730,36 +730,10 @@ Dr.&nbsp;Mine Dogucu
 </div>
 <div class="fragment">
 <p><span class="math inline">\(Var(X) = 0.4- 0.6^2 = 0.04\)</span></p>
-</div>
-</section></section>
-<section>
-<section id="exercises-with-some-review-included" class="title-slide slide level1 center">
-<h1>Exercises with Some Review Included</h1>
-
-</section>
-<section id="section" class="slide level2">
-<h2></h2>
-
-<img data-src="4a-cont-rv_files/figure-revealjs/unnamed-chunk-17-1.png" width="960" class="r-stretch"><p>Is the function depicted with the plot above a pdf? Why/not?</p>
-</section>
-<section id="section-1" class="slide level2">
-<h2></h2>
-<ol type="a">
-<li class="fragment"><p>A lottery game requires players to guess six numbers from 1 to 49. If a player guessed all the six numbers then they win the lottery of the week. What is the probability that a player will win the lottery? </p></li>
-<li class="fragment"><p>What is the expected number of weeks until the first win for a player?</p></li>
-<li class="fragment"><p>What is the variance?</p></li>
-</ol>
-</section>
-<section id="section-2" class="slide level2">
-<h2></h2>
-<p>A customer service agent receives on average 2 calls every 5 minutes.</p>
-<ol type="a">
-<li class="fragment"><p>What is the probability that they will receive 0 calls in the next 5 minutes?</p></li>
-<li class="fragment"><p>What is the probability that they will receive more than 2 calls in the next 5 minutes?</p></li>
-</ol>
-
-<img src="https://www.stats4cs.com/img/logo.png" class="slide-logo r-stretch"><div class="footer footer-default">
+<p><img src="https://www.stats4cs.com/img/logo.png" class="slide-logo"></p>
+<div class="footer footer-default">
 <p><a href="https://stats4cs.com">stats4cs.com</a></p>
+</div>
 </div>
 </section></section>
     </div>

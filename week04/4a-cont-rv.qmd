@@ -49,20 +49,20 @@ $Var(X)= E(X^2) - [E(X)]^2$
 
 ## Bernoulli Distribution
 
-If X is a random variable that takes value 1 with probability of success $p$ and 0 with probability $1-p$, then X follows a Bernoulli distribution.
+If X is a random variable that takes value 1 with probability of success $\pi$ and 0 with probability $1-\pi$, then X follows a Bernoulli distribution.
 
 $S = \{0, 1 \}$
 
 
-$X \sim \text{Bernoulli} (p)$
+$X \sim \text{Bernoulli} (\pi)$
 
 . . .
 
-$E(X) = \mu = p$
+$E(X) = \mu = \pi$
 
 . . .
 
-$Var(X)=\sigma^2 = p(1-p)$
+$Var(X)=\sigma^2 = \pi(1-\pi)$
 
 
 
@@ -75,13 +75,13 @@ Let X be the number of failures needed __before__ the first success is observed 
 :::{.column}
 $S = \{0, 1, 2, 3, 4, ...\}$
 
-$X \sim \text{Geometric} (p)$
+$X \sim \text{Geometric} (\pi)$
 
-$f(x) = (1-p)^x(p)$  
+$f(x) = (1-\pi)^x(\pi)$  
 
-$E(X)=\frac{1-p}{p}$
+$E(X)=\frac{1-\pi}{\pi}$
 
-$Var(X) = \frac{1-p}{p^2}$
+$Var(X) = \frac{1-\pi}{\pi^2}$
 
 :::
 
@@ -102,7 +102,7 @@ pgeom(q, prob) #cdf
 
 ## Binomial Distribution
 
-The random variable X represents the number of successes in $n$ trials where in independent trial the probability of success is $p$.
+The random variable X represents the number of successes in $n$ trials where in independent trial the probability of success is $\pi$.
 
 ::::{.columns}
 
@@ -110,15 +110,15 @@ The random variable X represents the number of successes in $n$ trials where in 
 
 $S = \{0, 1, ..., n \}$
 
-$X\sim \text{Binomial}(n, p)$
+$X\sim \text{Binomial}(n, \pi)$
 
-$P(X = x) = f(x) = {n \choose x}p^{x} (1-p)^{n-x}$
-
-
-$E(X) = np$  
+$P(X = x) = f(x) = {n \choose x}\pi^{x} (1-\pi)^{n-x}$
 
 
-$Var(X) = np(1-p)$
+$E(X) = n\pi$  
+
+
+$Var(X) = n\pi(1-\pi)$
 
 :::
 
@@ -202,7 +202,7 @@ $$\int_{x \ \epsilon \ S_X} f(x)dx = 1$$
 
 . . .
 
-$$P(a \leq X \leq b) = \int_a^b{x} f(x)dx$$
+$$P(a \leq X \leq b) = \int_a^b f(x)dx$$
 
 ## Cumulative Distribution Function
 
@@ -524,39 +524,5 @@ $E(X^2) = 12\big[\frac{x^5}{5} -\frac{x^6}{6}\bigg\rvert_0^1\big] = 0.4$
 
 $Var(X) = 0.4- 0.6^2 = 0.04$
 
-# Exercises with Some Review Included
 
-##
-
-```{r}
-#| echo: false
-data.frame (x = c(0, 0.5, 1),
-                y = c(0, 2, 0)) %>% 
-  ggplot(aes(x = x, y = y)) +
-  geom_line() +
-  labs(y = "f(x)") +
-  theme_bw(base_size = 18)
-
-```
-
-Is the function depicted with the plot above a pdf? Why/not?
-
-##
-
-
-a. A lottery game requires players to guess six numbers from 1 to 49. If a player guessed all the six numbers then they win the lottery of the week. What is the probability that a player will win the lottery?
-\vspace{3cm}
-
-b. What is the expected number of weeks until the first win for a player?
-
-c. What is the variance?
-
-## 
-
-A customer service agent receives on average 2 calls every 5 minutes. 
-
-a. What is the probability that they will receive 0 calls in the next 5 minutes?
-
-
-b. What is the probability that they will receive more than 2 calls in the next 5 minutes?
 
