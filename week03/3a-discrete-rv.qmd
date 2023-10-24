@@ -205,6 +205,9 @@ data <- data.frame(x = x,
                    y = y,
                    xend = xend)
 
+empty_circles <- data.frame(x_empty = c(1, 2, 3),
+                            y_empty = c(0.125, 0.5, 0.875))
+
 ggplot(data = data,
        aes(x = x, y = y, xend = xend, yend = y)) +
   geom_point() +
@@ -215,7 +218,10 @@ ggplot(data = data,
   labs(x = "x",
       y = expression(paste("F(x)")))+
   theme_bw() +
-  theme(text = element_text(size = 20)) 
+  theme(text = element_text(size = 20)) +
+  geom_point(aes(x = 1, y = 0.125), shape = 1) +
+  geom_point(aes(x = 2, y = 0.5), shape = 1) +
+  geom_point(aes(x = 3, y = 0.875), shape = 1)
 
 ```
 
