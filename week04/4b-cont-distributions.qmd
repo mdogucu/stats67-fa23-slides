@@ -18,6 +18,7 @@ format:
 ---
 
 ```{r}
+#| echo: false
 library(tidyverse)
 library(gridExtra)
 ```
