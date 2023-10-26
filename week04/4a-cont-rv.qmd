@@ -466,7 +466,7 @@ ggplot(data = data.frame(x = c(0, 1)), aes(x)) +
 :::
 
 
-$P(X\leq x) = \int_l^x f(t)dt$ 
+$P(X\leq x) = \int_{-\infty}^x f(t)dt$ 
 
 
 $P(X\leq 0.70) =$ 
