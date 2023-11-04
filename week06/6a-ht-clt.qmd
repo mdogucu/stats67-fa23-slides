@@ -1,5 +1,5 @@
 ---
-title: "Statistical Inference"
+title: "Introduction to Statistical Inference"
 author: "Dr. Mine Dogucu"
 format: 
   revealjs:
