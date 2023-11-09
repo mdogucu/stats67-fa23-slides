@@ -256,7 +256,7 @@ We are 95% confident that the true population proportion of bike owners is in th
 ```{r}
 tibble(p = bike_prop, n = 1, lower_bound = 0.09637597, upper_bound = 0.243624) %>% 
   ggplot() +
-  aes(x = p, y = n) +
+  aes(x = 0.17, y = n) +
   geom_point() +
   geom_errorbarh(aes(xmin = lower_bound, xmax = upper_bound, height = .01)) +
   labs(y = " ",
