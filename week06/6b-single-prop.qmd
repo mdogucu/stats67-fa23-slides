@@ -483,7 +483,7 @@ According to a Gallup Survey  of 1017 adults living in US 66% of Americans favor
 
 Compute 95% confidence interval for the population proportion of those who favor legalizing marijuana. 
 
-.footnote[Information on the survey can be found [here](https://news.gallup.com/poll/267698/support-legal-marijuana-steady-past-year.aspx)]
+Information on the survey can be found [here](https://news.gallup.com/poll/267698/support-legal-marijuana-steady-past-year.aspx)
 
 
 
@@ -501,6 +501,9 @@ $np = 1017 \cdot 0.66 = 671.22$. There are more than 10 people favoring legalizi
 $n(1-p) = 1017 \cdot (1-0.66) = 345.78$. There are more than 10 people opposing legalizing marijuana.
 
 . . .
+
+##
+
 
 3) 1017 is less than 10% of US population.
 

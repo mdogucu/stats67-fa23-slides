@@ -8,7 +8,7 @@
 <link href="6b-single-prop_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="6b-single-prop_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="6b-single-prop_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.450">
+  <meta name="generator" content="quarto-1.3.433">
 
   <meta name="author" content="Dr.&nbsp;Mine Dogucu">
   <title>Inference for a Single Proportion</title>
@@ -652,7 +652,7 @@ Dr.&nbsp;Mine Dogucu
 <p><strong>Example</strong></p>
 <p>According to a Gallup Survey of 1017 adults living in US 66% of Americans favor legalizing marijuana.</p>
 <p>Compute 95% confidence interval for the population proportion of those who favor legalizing marijuana.</p>
-<p>.footnote[Information on the survey can be found <a href="https://news.gallup.com/poll/267698/support-legal-marijuana-steady-past-year.aspx">here</a>]</p>
+<p>Information on the survey can be found <a href="https://news.gallup.com/poll/267698/support-legal-marijuana-steady-past-year.aspx">here</a></p>
 </section>
 <section id="checking-conditions" class="slide level2">
 <h2>Checking Conditions</h2>
@@ -666,11 +666,12 @@ Dr.&nbsp;Mine Dogucu
 </ol>
 <p><span class="math inline">\(np = 1017 \cdot 0.66 = 671.22\)</span>. There are more than 10 people favoring legalizing marijuana. <span class="math inline">\(n(1-p) = 1017 \cdot (1-0.66) = 345.78\)</span>. There are more than 10 people opposing legalizing marijuana.</p>
 </div>
-<div class="fragment">
+</section>
+<section id="section-10" class="slide level2">
+<h2></h2>
 <ol start="3" type="1">
 <li class="fragment">1017 is less than 10% of US population.</li>
 </ol>
-</div>
 </section>
 <section id="confidence-interval-1" class="slide level2">
 <h2>Confidence Interval</h2>
@@ -729,7 +730,7 @@ Dr.&nbsp;Mine Dogucu
 </ul>
 </div>
 </section>
-<section id="section-10" class="slide level2">
+<section id="section-11" class="slide level2">
 <h2></h2>
 <ul>
 <li class="fragment"><p>If we do not find any evidence against the null (a single pink cow) then we fail to reject the null. We can keep searching for more evidence against the null (i.e.&nbsp;continue looking for a pink cow). We will never be able to say the null is true so we never accept the null. We <strong>fail to reject the null</strong>. All we can do is keep looking for a pink cow.</p></li>
@@ -778,7 +779,7 @@ Dr.&nbsp;Mine Dogucu
 <h2>Sampling Distribution</h2>
 
 <img data-src="6b-single-prop_files/figure-revealjs/unnamed-chunk-24-1.png" width="960" class="r-stretch"></section>
-<section id="section-11" class="slide level2">
+<section id="section-12" class="slide level2">
 <h2></h2>
 <p>We want to know the probability of observing an extreme sample proportion like ours (p = 0.83) if the <span class="math inline">\(H_0\)</span> were true.</p>
 <div class="fragment">
@@ -794,11 +795,11 @@ Dr.&nbsp;Mine Dogucu
 <p>This makes 0.16, 0.1512, 0.11… also “extreme”</p>
 </div>
 </section>
-<section id="section-12" class="slide level2">
+<section id="section-13" class="slide level2">
 <h2></h2>
 
 <img data-src="6b-single-prop_files/figure-revealjs/unnamed-chunk-25-1.png" width="960" class="r-stretch"></section>
-<section id="section-13" class="slide level2">
+<section id="section-14" class="slide level2">
 <h2></h2>
 <p>If the <span class="math inline">\(H_0\)</span> is true what is the probability that we will observe an extremely high or an extremely low sample proportion?</p>
 <p>Probability of observing sample proportion of 0.17 and lower</p>
