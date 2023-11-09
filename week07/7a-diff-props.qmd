@@ -1,5 +1,5 @@
 ---
-title: "Inference for a Difference of Two Proportions"
+title: "Inference for Difference of Two Proportions"
 author: "Dr. Mine Dogucu"
 format: 
   revealjs:
