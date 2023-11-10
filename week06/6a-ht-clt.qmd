@@ -450,7 +450,47 @@ Later on we will also learn
 
 
 
+
 # Central Limit Theorem
+
+## Normal Distribution
+
+## Parameters of a normal distribution $N(\mu, \sigma^2$
+
+
+```{r echo = FALSE, fig.align='center'}
+p1 <- 
+  ggplot(data = data.frame(x = c(0, 200)), 
+         aes(x)) +
+  stat_function(fun = dnorm, n = 1001, args = list(mean = 100, sd = 15)) + 
+  ylab("") +
+  labs(title = bquote(N(100, 15^2)))
+
+p2 <- 
+  ggplot(data = data.frame(x = c(0, 200)), 
+         aes(x)) +
+  stat_function(fun = dnorm, n = 1001, args = list(mean = 100, sd = 30)) + 
+  ylab("") +
+  labs(title = bquote(N(100, 30^2)))
+
+p3 <- 
+  ggplot(data = data.frame(x = c(0, 200)), 
+         aes(x)) +
+  stat_function(fun = dnorm, n = 1001, args = list(mean = 90, sd = 15)) + 
+  ylab("") +
+  labs(title = bquote(N(90, 15^2)))
+
+
+p4 <- 
+  ggplot(data = data.frame(x = c(0, 200)), 
+         aes(x)) +
+  stat_function(fun = dnorm, n = 1001, args = list(mean = 90, sd = 30)) + 
+  ylab("") +
+  labs(title = bquote(N(90, 30^2)))
+
+gridExtra::grid.arrange(p1, p2, p3, p4, ncol = 2, nrow = 2)
+```
+
 
 ## Data
 
