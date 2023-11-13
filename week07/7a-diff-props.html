@@ -505,7 +505,7 @@ Explanatory: College Science Course</p>
 <section id="confidence-interval-construction" class="slide level2">
 <h2>Confidence Interval Construction</h2>
 <p>CI = <span class="math inline">\(\text{point estimate} \pm \text { critical value} \times \text{standard error}\)</span></p>
-<p>CI for difference of two proportions = <span class="math inline">\(p_1 - p_2 \pm \text { critical value} \times \sqrt{{\frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}}}\)</span></p>
+<p>CI for difference of two proportions = <span class="math inline">\(p_1 - p_2 \pm \text { critical value} \times \sqrt{\frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}}\)</span></p>
 </section>
 <section id="steps" class="slide level2">
 <h2>Steps</h2>
@@ -519,7 +519,7 @@ Explanatory: College Science Course</p>
 </section>
 <section id="section-2" class="slide level2">
 <h2></h2>
-<p>CI for difference of two proportions = <span class="math inline">\(p_1 - p_2 \pm \text { critical value} \times \sqrt{{\frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}}}\)</span></p>
+<p>CI for difference of two proportions = <span class="math inline">\(p_1 - p_2 \pm \text { critical value} \times \sqrt{\frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}}\)</span></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>p1 <span class="ot">&lt;-</span> <span class="fl">0.83</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a>p2 <span class="ot">&lt;-</span> <span class="fl">0.8083</span></span>
@@ -537,7 +537,7 @@ Explanatory: College Science Course</p>
 </section>
 <section id="section-3" class="slide level2">
 <h2></h2>
-<p>CI for difference of two proportions = <span class="math inline">\(p_1 - p_2 \pm \text { critical value} \times \sqrt{{\frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}}}\)</span></p>
+<p>CI for difference of two proportions = <span class="math inline">\(p_1 - p_2 \pm \text { critical value} \times \sqrt{\frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}}\)</span></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>se <span class="ot">&lt;-</span> <span class="fu">sqrt</span>((p1<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>p1)<span class="sc">/</span>n1)<span class="sc">+</span>(p2<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>p2)<span class="sc">/</span>n2))</span>
 <span id="cb3-2"><a href="#cb3-2"></a></span>
