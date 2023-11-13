@@ -83,7 +83,6 @@ $n_{noscience} = 600$
 
 ## What did we observe?
 
-
 It seems like there are more after life believers among college science course takers (~83%) when compared to those who did not take college science course (~80.83%). But now that we have taken statistics course we cannot only rely on comparison of sample statistics. We know we have to think about population parameters.
 
 
