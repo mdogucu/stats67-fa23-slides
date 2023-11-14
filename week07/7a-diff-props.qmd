@@ -115,14 +115,6 @@ GSS utilizes some form of random sampling so we would expect independence within
 We have seen that all the values in the contingency table were greater than 10.
 
 
-##
-
-`r fontawesome::fa(name = "check", fill = "#e56646")` For each group the sample size needs to be smaller than 10% of the population. 
-
-Sample size of 1050 is less than 10% of the US population.
-
-
-
 ## Confidence Interval Construction 
 
 CI = $\text{point estimate} \pm \text { critical value} \times \text{standard error}$
