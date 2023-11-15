@@ -509,7 +509,7 @@ $n = 843$
 
 
 
-# Step 1 : Set hypotheses
+## Step 1 : Set hypotheses
 
 
 $H_0: \mu = 40$  
@@ -517,7 +517,7 @@ $H_A: \mu \neq 40$
 
 
 
-# Step 2: Sampling Distribution of $H_0$  
+## Step 2: Sampling Distribution of $H_0$  
 
 When certain __conditions__ are met then:
 
@@ -535,7 +535,7 @@ $\bar x \sim \text{approximately } N( \text{mean} = 40,  \frac{12.91513}{\sqrt{8
 $\bar x \sim \text{approximately } N(40, \text{sd} = 0.4448207)$
 
 
-# Step 3: Calculate p-value  
+## Step 3: Calculate p-value  
 
 How many standard deviations (standard errors) is the point estimate away from the mean in the sampling distribution of the null hypothesis? 
 
@@ -547,7 +547,7 @@ $t = \frac{\bar x - \text{null}}{se}$
 $t = \frac{38.9312-40}{\frac{12.91513}{\sqrt{843}}} = -2.402766$
 
 
-# Step 3: Calculate p-value  
+## Step 3: Calculate p-value  
 
 ```{r, fig.height=4, fig.align='center'}
 
@@ -584,6 +584,6 @@ pt(-2.402766, df = 842) * 2
 ```
 
 
-# Step 4: Make a Decision and a Conclusion.
+## Step 4: Make a Decision and a Conclusion.
 
 If the null hypothesis were true ( $\mu = 40$ ) then probability of observing a sample statistic that is at least as extreme as the one that we have observed ( $\bar x = 38.9312$ ) would be `r pt(-2.402766, df = 842) * 2`. We consider this to be an evidence against the null since p-value (`r pt(-2.402766, df = 842) * 2`) is less than 0.05. In other words, if the null were true, it would be quite unlikely to observe a sample mean that is at least that extreme but since we have observed this sample, it is unlikely that the null is true so we reject the null and conclude that the average work time in the US in 2012 differs significantly from 40.

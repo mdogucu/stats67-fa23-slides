@@ -684,15 +684,14 @@ Dr.&nbsp;Mine Dogucu
 </li>
 <li class="fragment">Make a Decision and a Conclusion.</li>
 </ol>
-</section></section>
-<section id="step-1-set-hypotheses" class="title-slide slide level1 center">
-<h1>Step 1 : Set hypotheses</h1>
+</section>
+<section id="step-1-set-hypotheses" class="slide level2">
+<h2>Step 1 : Set hypotheses</h2>
 <p><span class="math inline">\(H_0: \mu = 40\)</span><br>
 <span class="math inline">\(H_A: \mu \neq 40\)</span></p>
 </section>
-
-<section id="step-2-sampling-distribution-of-h_0" class="title-slide slide level1 center">
-<h1>Step 2: Sampling Distribution of <span class="math inline">\(H_0\)</span></h1>
+<section id="step-2-sampling-distribution-of-h_0" class="slide level2">
+<h2>Step 2: Sampling Distribution of <span class="math inline">\(H_0\)</span></h2>
 <p>When certain <strong>conditions</strong> are met then:</p>
 <p><span class="math inline">\(\bar x \sim \text{approximately } N(mean = \mu, sd =\frac{\sigma}{\sqrt{n}})\)</span></p>
 <div class="fragment">
@@ -703,18 +702,16 @@ Dr.&nbsp;Mine Dogucu
 <p><span class="math inline">\(\bar x \sim \text{approximately } N(40, \text{sd} = 0.4448207)\)</span></p>
 </div>
 </section>
-
-<section id="step-3-calculate-p-value" class="title-slide slide level1 center">
-<h1>Step 3: Calculate p-value</h1>
+<section id="step-3-calculate-p-value" class="slide level2">
+<h2>Step 3: Calculate p-value</h2>
 <p>How many standard deviations (standard errors) is the point estimate away from the mean in the sampling distribution of the null hypothesis?</p>
 <div class="fragment">
 <p><span class="math inline">\(t = \frac{\bar x - \text{null}}{se}\)</span></p>
 <p><span class="math inline">\(t = \frac{38.9312-40}{\frac{12.91513}{\sqrt{843}}} = -2.402766\)</span></p>
 </div>
 </section>
-
-<section id="step-3-calculate-p-value-1" class="title-slide slide level1 center">
-<h1>Step 3: Calculate p-value</h1>
+<section id="step-3-calculate-p-value-1" class="slide level2">
+<h2>Step 3: Calculate p-value</h2>
 
 <img data-src="7b-single-mean_files/figure-revealjs/unnamed-chunk-17-1.png" width="960" class="r-stretch quarto-figure-center"><div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">pt</span>(<span class="sc">-</span><span class="fl">2.402766</span>, <span class="at">df =</span> <span class="dv">842</span>) <span class="sc">*</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -723,15 +720,14 @@ Dr.&nbsp;Mine Dogucu
 </div>
 </div>
 </section>
-
-<section id="step-4-make-a-decision-and-a-conclusion." class="title-slide slide level1 center">
-<h1>Step 4: Make a Decision and a Conclusion.</h1>
+<section id="step-4-make-a-decision-and-a-conclusion." class="slide level2">
+<h2>Step 4: Make a Decision and a Conclusion.</h2>
 <p>If the null hypothesis were true ( <span class="math inline">\(\mu = 40\)</span> ) then probability of observing a sample statistic that is at least as extreme as the one that we have observed ( <span class="math inline">\(\bar x = 38.9312\)</span> ) would be 0.0164871. We consider this to be an evidence against the null since p-value (0.0164871) is less than 0.05. In other words, if the null were true, it would be quite unlikely to observe a sample mean that is at least that extreme but since we have observed this sample, it is unlikely that the null is true so we reject the null and conclude that the average work time in the US in 2012 differs significantly from 40.</p>
 
 <img src="https://www.stats4cs.com/img/logo.png" class="slide-logo r-stretch"><div class="footer footer-default">
 <p><a href="https://stats4cs.com">stats4cs.com</a></p>
 </div>
-</section>
+</section></section>
     </div>
   </div>
 
