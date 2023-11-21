@@ -1,6 +1,8 @@
 ---
 title: "Simple Linear Regression"
 author: "Dr. Mine Dogucu"
+execute:
+  echo: true
 format: 
   revealjs:
     footer: "[stats4cs.com](https://stats4cs.com)"

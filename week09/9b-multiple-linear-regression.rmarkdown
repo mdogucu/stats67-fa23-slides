@@ -1,0 +1,410 @@
+---
+title: "Multiple Linear Regression, Transformations, and Model Evaluation"
+author: "Dr. Mine Dogucu"
+execute:
+  echo: true
+format: 
+  revealjs:
+    footer: "[stats4cs.com](https://stats4cs.com)"
+    slide-number: true
+    incremental: true
+    theme: ["../templates/slide-style.scss"]
+    logo: "https://www.stats4cs.com/img/logo.png"
+    title-slide-attributes: 
+      data-background-image: "https://www.stats4cs.com/img/logo.png"
+      data-background-size: 5%
+      data-background-position: 50% 85%
+    include-after-body: "../templates/clean_title_page.html"
+---
+
+
+## 
+
+
+```{r}
+#| echo: false
+options(scipen=0)
+library(tidyverse)
+library(openintro)
+library(broom)
+library(modelr)
+theme_set(theme_bw(base_size = 22))
+```
+
+
+
+
+## Data `babies` in `openintro` package
+
+
+```{r echo = FALSE}
+glimpse(babies)
+```
+
+
+##
+
+<center>
+
+| y | Response    | Birth weight | Numeric |
+|---|-------------|-----------------|---------|
+| $x_1$ | Explanatory | Gestation           | Numeric |
+| $x_2$ | Explanatory | Smoke           | Categorical |
+
+</center>
+
+## Notation
+
+$y_i = \beta_0 +\beta_1x_{1i}  + \beta_2x_{2i} + \epsilon_i$
+
+$\beta_0$ is intercept  
+$\beta_1$ is the slope for gestation   
+$\beta_2$ is the slope for smoke  
+$\epsilon_i$ is error/residual  
+$i = 1, 2, ...n$ identifier for each point
+
+
+##
+
+
+```{r}
+model_gs <- lm(bwt ~ gestation + smoke, data = babies)
+tidy(model_gs)
+```
+
+
+##
+
+Expected birth weight for a baby who had 280 days of gestation with a smoker mother
+
+$\hat {\text{bwt}_i} = b_0 + b_1 \text{ gestation}_i + b_2 \text{ smoke}_i$
+
+$\hat {\text{bwt}_i} = -0.932 + (0.443 \times 280) + (-8.09 \times 1)$
+
+##
+
+
+```{r}
+babies %>% 
+  modelr::add_predictions(model_gs) %>% 
+  select(bwt, gestation, smoke, pred)
+```
+
+
+##
+
+
+```{r}
+babies %>% 
+  modelr::add_predictions(model_gs) %>% 
+  modelr::add_residuals(model_gs) %>% 
+  select(bwt, gestation, smoke, pred, resid)
+```
+
+
+# Transformations
+
+## Data
+
+
+```{r}
+library(AmesHousing)
+ames_raw <- janitor::clean_names(ames_raw)
+glimpse(ames_raw)
+```
+
+
+##
+
+
+```{r fig.align='center', echo=FALSE, message=FALSE}
+ggplot(ames_raw, aes(x = year_built, y = sale_price)) +
+  geom_point() +
+  scale_y_continuous(labels = scales::comma_format()) 
+  
+```
+
+
+
+##
+
+
+
+```{r fig.align='center', echo=FALSE}
+ggplot(ames_raw, aes(x = year_built, y = log(sale_price))) +
+  geom_point() +
+  scale_y_continuous(labels = scales::comma_format()) 
+  
+```
+
+
+Note that log is natural log in R.
+
+##
+
+
+```{r}
+model_y <- lm(log(sale_price) ~ year_built, 
+              data = ames_raw)
+tidy(model_y)
+```
+
+
+${log(\hat y_i)} = b_0 + b_1x_{1i}$
+
+${log(\hat y_i)} = -4.33 + 0.00829x_{1i}$
+
+##
+
+Estimated sale price of a house built in 1980
+
+${log(\hat y_i)} = -4.33 + 0.00829 \times 1980$
+
+. . .
+
+$e^{log(\hat y_i)} = e^{-4.33 + 0.00829 \times 1980}$
+
+. . .
+
+$\hat y_i = e^{-4.33} \times e^ {0.00829 \times 1980} = 177052.2$
+
+. . .
+
+For one-unit (year) increase in x, the y is multiplied by $e^{b_1}$.
+
+. . .
+
+Note that $e^x$ can be achieved by `exp(x)` in R.
+
+
+## Common Transformations
+
+- $log(Y)$, $log(X)$
+- $1/Y$, $1/X$
+- $\sqrt{Y}, \sqrt{X})$
+
+# Model Evaluation
+
+
+
+```{r}
+glimpse(babies)
+```
+
+
+##
+
+
+```{r}
+model_g <- lm(bwt ~ gestation, data = babies)
+tidy(model_g)
+```
+
+
+##
+
+
+```{r}
+glance(model_g)
+```
+
+
+##
+
+
+```{r}
+glance(model_g)$r.squared
+```
+
+
+16% of the variation in birth weight is explained by gestation. Higher values of R squared is preferred.
+
+
+```{r echo = FALSE, fig.align='center', message=FALSE, warning = FALSE, fig.height = 4}
+babies %>% 
+  ggplot() +
+  aes(x = gestation, y = bwt) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) 
+    
+```
+
+
+
+##
+
+
+```{r}
+model_gsa <- lm(bwt ~ gestation + smoke + age, data = babies)
+```
+
+
+
+## Adjusted R-Squared
+
+:::{.pull-left}
+
+```{r}
+glance(model_g)
+```
+
+:::
+
+:::{.pull-right}
+
+```{r}
+glance(model_gsa)
+```
+
+:::
+
+When comparing models with multiple predictors we rely on Adjusted R-squared.
+
+##
+
+
+```{r}
+babies %>% 
+  add_predictions(model_g) %>% 
+  add_residuals(model_g) %>% 
+  select(bwt, pred, resid)
+```
+
+
+
+##
+
+
+```{r}
+babies %>% 
+  add_predictions(model_gsa) %>% 
+  add_residuals(model_gsa) %>% 
+  select(bwt, pred, resid)
+```
+
+
+
+
+## Root Mean Square Error
+
+$RMSE = \sqrt{\frac{\Sigma_{i=1}^n(y_i-\hat y_i)^2}{n}}$
+
+##
+
+
+```{r}
+modelr::rmse(model_gsa, babies)
+```
+
+```{r}
+modelr::rmse(model_g, babies)
+```
+
+
+##
+
+
+```{r}
+model_full <- lm(bwt ~ gestation + parity + age +
+                   height + weight + smoke, 
+                 data = babies)
+```
+
+```{r}
+modelr::rmse(model_full, babies)
+```
+
+```{r}
+glance(model_full)$adj.r.squared
+```
+
+
+Can we keep adding all the variables and try to get an EXCELLENT model fit?
+
+## Overfitting
+
+- We are fitting the model to sample data.
+
+- Our goal is to understand the population data.
+
+- If we make our model too perfect for our sample data, the model may not perform as well with other sample data from the population.
+
+- In this case we would be overfitting the data.
+
+- We can use **model validation** techniques.
+
+
+## Splitting the Data (Train vs. Test)
+
+
+```{r message=FALSE}
+set.seed(12345)
+babies_split <- rsample::initial_split(babies) ## 75% to 25% split
+```
+
+
+. . .
+
+
+```{r}
+babies_train <- rsample::training(babies_split)
+dim(babies_train)
+```
+
+
+. . .
+
+
+```{r}
+babies_test <- rsample::testing(babies_split)
+dim(babies_test)
+```
+
+
+##
+
+
+```{r}
+model_gsa_train <- lm(bwt ~ gestation + smoke + age, data = babies_train)
+model_gsa_test <- lm(bwt ~ gestation + smoke + age, data = babies_test)
+```
+
+
+##
+
+:::{.pull-left}
+
+```{r}
+glance(model_gsa_train)
+```
+
+:::
+
+:::{.pull-right}
+
+```{r}
+glance(model_gsa_test)
+```
+
+:::
+
+
+##
+
+:::{.pull-left}
+
+```{r}
+modelr::rmse(model_gsa_train, babies_train)
+```
+
+:::
+
+:::{.pull-right}
+
+```{r}
+modelr::rmse(model_gsa_test, babies_test)
+```
+
+:::
+
+

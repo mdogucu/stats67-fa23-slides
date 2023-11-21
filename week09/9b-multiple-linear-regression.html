@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-<script src="9a-simple-linear-regression_files/libs/clipboard/clipboard.min.js"></script>
-<script src="9a-simple-linear-regression_files/libs/quarto-html/tabby.min.js"></script>
-<script src="9a-simple-linear-regression_files/libs/quarto-html/popper.min.js"></script>
-<script src="9a-simple-linear-regression_files/libs/quarto-html/tippy.umd.min.js"></script>
-<link href="9a-simple-linear-regression_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="9a-simple-linear-regression_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="9a-simple-linear-regression_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="9a-simple-linear-regression_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<script src="9b-multiple-linear-regression_files/libs/clipboard/clipboard.min.js"></script>
+<script src="9b-multiple-linear-regression_files/libs/quarto-html/tabby.min.js"></script>
+<script src="9b-multiple-linear-regression_files/libs/quarto-html/popper.min.js"></script>
+<script src="9b-multiple-linear-regression_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="9b-multiple-linear-regression_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="9b-multiple-linear-regression_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="9b-multiple-linear-regression_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="9b-multiple-linear-regression_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.3.450">
 
   <meta name="author" content="Dr.&nbsp;Mine Dogucu">
-  <title>Simple Linear Regression</title>
+  <title>Multiple Linear Regression, Transformations, and Model Evaluation</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="9a-simple-linear-regression_files/libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="9a-simple-linear-regression_files/libs/revealjs/dist/reveal.css">
+  <link rel="stylesheet" href="9b-multiple-linear-regression_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="9b-multiple-linear-regression_files/libs/revealjs/dist/reveal.css">
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -29,77 +29,12 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-    /* CSS for syntax highlighting */
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      { color: #003b4f; background-color: #f1f3f5; }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span { color: #003b4f; } /* Normal */
-    code span.al { color: #ad0000; } /* Alert */
-    code span.an { color: #5e5e5e; } /* Annotation */
-    code span.at { color: #657422; } /* Attribute */
-    code span.bn { color: #ad0000; } /* BaseN */
-    code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; } /* ControlFlow */
-    code span.ch { color: #20794d; } /* Char */
-    code span.cn { color: #8f5902; } /* Constant */
-    code span.co { color: #5e5e5e; } /* Comment */
-    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
-    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
-    code span.dt { color: #ad0000; } /* DataType */
-    code span.dv { color: #ad0000; } /* DecVal */
-    code span.er { color: #ad0000; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #ad0000; } /* Float */
-    code span.fu { color: #4758ab; } /* Function */
-    code span.im { color: #00769e; } /* Import */
-    code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; } /* Keyword */
-    code span.op { color: #5e5e5e; } /* Operator */
-    code span.ot { color: #003b4f; } /* Other */
-    code span.pp { color: #ad0000; } /* Preprocessor */
-    code span.sc { color: #5e5e5e; } /* SpecialChar */
-    code span.ss { color: #20794d; } /* SpecialString */
-    code span.st { color: #20794d; } /* String */
-    code span.va { color: #111111; } /* Variable */
-    code span.vs { color: #20794d; } /* VerbatimString */
-    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="9a-simple-linear-regression_files/libs/revealjs/dist/theme/quarto.css">
-  <link href="9a-simple-linear-regression_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="9a-simple-linear-regression_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="9a-simple-linear-regression_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="9a-simple-linear-regression_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <link rel="stylesheet" href="9b-multiple-linear-regression_files/libs/revealjs/dist/theme/quarto.css">
+  <link href="9b-multiple-linear-regression_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="9b-multiple-linear-regression_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="9b-multiple-linear-regression_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="9b-multiple-linear-regression_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
 
   .callout {
@@ -390,7 +325,7 @@
     <div class="slides">
 
 <section id="title-slide" data-background-image="https://www.stats4cs.com/img/logo.png" data-background-position="50% 85%" data-background-size="5%" class="quarto-title-block center">
-  <h1 class="title">Simple Linear Regression</h1>
+  <h1 class="title">Multiple Linear Regression, Transformations, and Model Evaluation</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -421,37 +356,6 @@ $ smoke     &lt;int&gt; 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 0, 1, 1, 0,
 </div>
 </div>
 </section>
-<section id="baby-weights" class="slide level2">
-<h2>Baby Weights</h2>
-<div class="cell columns column-output-location">
-<div class="column">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">ggplot</span>(babies, </span>
-<span id="cb2-2"><a href="#cb2-2"></a>       <span class="fu">aes</span>(<span class="at">x =</span> gestation, <span class="at">y =</span> bwt)) <span class="sc">+</span></span>
-<span id="cb2-3"><a href="#cb2-3"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div><div class="column">
-<div class="cell-output-display">
-<p><img data-src="9a-simple-linear-regression_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></p>
-</div>
-</div>
-</div>
-</section>
-<section id="baby-weights-1" class="slide level2">
-<h2>Baby Weights</h2>
-<div class="cell columns column-output-location">
-<div class="column">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">ggplot</span>(babies,</span>
-<span id="cb3-2"><a href="#cb3-2"></a>       <span class="fu">aes</span>(<span class="at">x =</span> gestation, <span class="at">y =</span> bwt)) <span class="sc">+</span></span>
-<span id="cb3-3"><a href="#cb3-3"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb3-4"><a href="#cb3-4"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div><div class="column">
-<div class="cell-output-display">
-<p><img data-src="9a-simple-linear-regression_files/figure-revealjs/unnamed-chunk-4-1.png" width="960"></p>
-</div>
-</div>
-</div>
-<p><code>lm</code> stands for linear model<br>
-<code>se</code> stands for standard error</p>
-</section>
 <section id="section-1" class="slide level2">
 <h2></h2>
 <center>
@@ -466,488 +370,460 @@ $ smoke     &lt;int&gt; 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 0, 1, 1, 0,
 </thead>
 <tbody>
 <tr class="odd">
-<td>x</td>
+<td><span class="math inline">\(x_1\)</span></td>
 <td>Explanatory</td>
 <td>Gestation</td>
 <td>Numeric</td>
 </tr>
-</tbody>
-</table>
-</center>
-</section>
-<section id="linear-equations-review" class="slide level2">
-<h2>Linear Equations Review</h2>
-<div class="pull-left">
-<p>Recall from your previous math classes</p>
-<p><span class="math inline">\(y = mx + b\)</span></p>
-<p>where <span class="math inline">\(m\)</span> is the slope and <span class="math inline">\(b\)</span> is the y-intercept</p>
-<p>e.g.&nbsp;<span class="math inline">\(y = 2x -1\)</span></p>
-</div>
-<div class="fragment">
-<div class="pull-right">
-<div class="cell">
-<div class="cell-output-display">
-<p><img data-src="9a-simple-linear-regression_files/figure-revealjs/unnamed-chunk-5-1.png" width="960"></p>
-</div>
-</div>
-<p>Notice anything different between baby weights plot and this one?</p>
-</div>
-</div>
-</section>
-<section id="section-2" class="slide level2">
-<h2></h2>
-<div class="pull-left">
-<p><strong>Math</strong> class</p>
-<p><span class="math inline">\(y = b + mx\)</span></p>
-<p><span class="math inline">\(b\)</span> is y-intercept<br>
-<span class="math inline">\(m\)</span> is slope</p>
-</div>
-<div class="pull-left">
-<p><strong>Stats</strong> class</p>
-<p><span class="math inline">\(y_i = \beta_0 +\beta_1x_i + \epsilon_i\)</span></p>
-<p><span class="math inline">\(\beta_0\)</span> is y-intercept<br>
-<span class="math inline">\(\beta_1\)</span> is slope<br>
-<span class="math inline">\(\epsilon_i\)</span> is error/residual<br>
-<span class="math inline">\(i = 1, 2, ...n\)</span> identifier for each point</p>
-</div>
-</section>
-<section id="notation" class="slide level2">
-<h2>Notation</h2>
-
-<table align="center">
-<thead>
-<tr><th>
-</th>
-<th>
-Sample Statistic
-</th>
-<th>
-Population Parameter
-</th>
-</tr></thead>
-<tbody><tr>
-<td>
-Intercept
-</td>
-<td>
-<span class="math inline">\(b_0\)</span>
-</td>
-<td>
-<span class="math inline">\(\beta_0\)</span>
-</td>
-</tr>
-<tr>
-<td>
-Slope
-</td>
-<td>
-<span class="math inline">\(b_1\)</span>
-</td>
-<td>
-<span class="math inline">\(\beta_1\)</span>
-</td>
-</tr>
-<tr>
-<td>
-Error/Residual
-</td>
-<td>
-<span class="math inline">\(e\)</span>
-</td>
-<td>
-<span class="math inline">\(\epsilon\)</span>
-</td>
-</tr>
-
-</tbody></table>
-</section>
-<section id="section-3" class="slide level2">
-<h2></h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>model_g <span class="ot">&lt;-</span> <span class="fu">lm</span>(bwt <span class="sc">~</span> gestation, <span class="at">data =</span> babies)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><code>lm</code> stands for linear model. We are fitting a linear regression model. Note that the variables are entered in y ~ x order.</p>
-</section>
-<section id="section-4" class="slide level2">
-<h2></h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>broom<span class="sc">::</span><span class="fu">tidy</span>(model_g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 5
-  term        estimate std.error statistic  p.value
-  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
-1 (Intercept)  -10.1      8.32       -1.21 2.27e- 1
-2 gestation      0.464    0.0297     15.6  3.22e-50</code></pre>
-</div>
-</div>
-<div class="fragment">
-<p><span class="math inline">\(\hat {y}_i = b_0 + b_1 x_i\)</span></p>
-<p><span class="math inline">\(\hat {\text{bwt}_i} = b_0 + b_1 \text{ gestation}_i\)</span></p>
-<p><span class="math inline">\(\hat {\text{bwt}_i} = -10.1 + 0.464\text{ gestation}_i\)</span></p>
-</div>
-</section>
-<section id="expected-bwt-for-a-baby-with-300-days-of-gestation" class="slide level2">
-<h2>Expected bwt for a baby with 300 days of gestation</h2>
-<p><span class="math inline">\(\hat {\text{bwt}_i} = -10.1 + 0.464\text{ gestation}_i\)</span></p>
-<p><span class="math inline">\(\hat {\text{bwt}} = -10.1 + 0.464 \times 300\)</span></p>
-<p><span class="math inline">\(\hat {\text{bwt}} =\)</span> 129.1</p>
-<p>For a baby with 300 days of gestation the expected birth weight is 129.1 ounces.</p>
-</section>
-<section id="interpretation-of-estimates" class="slide level2">
-<h2>Interpretation of estimates</h2>
-<div class="pull-left">
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="9a-simple-linear-regression_files/figure-revealjs/unnamed-chunk-8-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-<p><span class="math inline">\(b_1 = 0.464\)</span> which means for one unit(day) increase in gestation period the expected increase in birth weight is 0.464 ounces.</p>
-</div>
-<div class="fragment">
-<div class="pull-right">
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="9a-simple-linear-regression_files/figure-revealjs/unnamed-chunk-9-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-<p><span class="math inline">\(b_0 = -10.1\)</span> which means for gestation period of 0 days the expected birth weight is -10.1 ounces!!!!!!!! (does NOT make sense)</p>
-</div>
-</div>
-</section>
-<section id="extrapolation" class="slide level2">
-<h2>Extrapolation</h2>
-<ul>
-<li class="fragment">There is no such thing as 0 days of gestation.</li>
-</ul>
-<div class="fragment">
-<ul>
-<li class="fragment">Birth weight cannot possibly be -10.1 ounces.</li>
-</ul>
-</div>
-<div class="fragment">
-<ul>
-<li class="fragment">Extrapolation happens when we use a model outside the range of the x-values that are observed. After all, we cannot really know how the model behaves (e.g.&nbsp;may be non-linear) outside of the scope of what we have observed.</li>
-</ul>
-</div>
-</section>
-<section id="baby-number-148" class="slide level2">
-<h2>Baby number 148</h2>
-<div class="pull-left">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>babies <span class="sc">%&gt;%</span> </span>
-<span id="cb7-2"><a href="#cb7-2"></a>  <span class="fu">filter</span>(case <span class="sc">==</span> <span class="dv">148</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb7-3"><a href="#cb7-3"></a>  <span class="fu">select</span>(bwt, gestation)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1 × 2
-    bwt gestation
-  &lt;int&gt;     &lt;int&gt;
-1   160       300</code></pre>
-</div>
-</div>
-</div>
-<div class="pull-right">
-<div class="cell">
-<div class="cell-output-display">
-<p><img data-src="9a-simple-linear-regression_files/figure-revealjs/unnamed-chunk-11-1.png" width="960"></p>
-</div>
-</div>
-</div>
-</section>
-<section id="baby-148" class="slide level2">
-<h2>Baby #148</h2>
-<div class="pull-left">
-<p><strong>Expected</strong></p>
-<p><span class="math inline">\(\hat y_{148} = b_0 +b_1x_{148}\)</span></p>
-<p><span class="math inline">\(\hat y_{148} = -10.1 + 0.464\times300\)</span></p>
-<p><span class="math inline">\(\hat y_{148}\)</span> = 129.1</p>
-</div>
-<div class="pull-left">
-<p><strong>Observed</strong></p>
-<p><span class="math inline">\(y_{148} =\)</span> 160</p>
-</div>
-</section>
-<section id="residual-for-i-148" class="slide level2">
-<h2>Residual for <code>i = 148</code></h2>
-<div class="pull-left">
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="9a-simple-linear-regression_files/figure-revealjs/unnamed-chunk-12-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-<div class="pull-right">
-<p><span class="math inline">\(y_{148} = 160\)</span></p>
-<p><span class="math inline">\(\hat y_{148}\)</span> = 129.1</p>
-<p><span class="math inline">\(e_{148} = y_{148} - \hat y_{148}\)</span></p>
-<p><span class="math inline">\(e_{148} =\)</span> 30.9</p>
-</div>
-</section>
-<section id="least-squares-regression" class="slide level2">
-<h2>Least Squares Regression</h2>
-<p>The goal is to minimize</p>
-<p><span class="math display">\[e_1^2 + e_2^2 + ... + e_n^2\]</span></p>
-<div class="fragment">
-<p>which can be rewritten as</p>
-<p><span class="math display">\[\sum_{i = 1}^n e_i^2\]</span></p>
-</div>
-</section>
-<section>
-<section id="conditions" class="title-slide slide level1 center">
-<h1>Conditions</h1>
-
-</section>
-<section id="conditions-for-least-squares-regression" class="slide level2">
-<h2>Conditions for Least Squares Regression</h2>
-<ul>
-<li class="fragment"><p>Linearity</p></li>
-<li class="fragment"><p>Normality of Residuals</p></li>
-<li class="fragment"><p>Constant Variance</p></li>
-<li class="fragment"><p>Independence</p></li>
-</ul>
-</section>
-<section id="section-5" class="slide level2">
-<h2></h2>
-<div class="pull-left">
-<p><strong>Linear</strong></p>
-<div class="cell">
-<div class="cell-output-display">
-<p><img data-src="9a-simple-linear-regression_files/figure-revealjs/unnamed-chunk-13-1.png" width="960"></p>
-</div>
-</div>
-</div>
-<div class="pull-right">
-<p><strong>Non-linear</strong></p>
-<div class="cell">
-<div class="cell-output-display">
-<p><img data-src="9a-simple-linear-regression_files/figure-revealjs/unnamed-chunk-14-1.png" width="960"></p>
-</div>
-</div>
-</div>
-</section>
-<section id="section-6" class="slide level2">
-<h2></h2>
-<div class="pull-left">
-<p><strong>Nearly normal</strong></p>
-<div class="cell">
-<div class="cell-output-display">
-<p><img data-src="9a-simple-linear-regression_files/figure-revealjs/unnamed-chunk-15-1.png" width="960"></p>
-</div>
-</div>
-</div>
-<div class="pull-right">
-<p><strong>Not normal</strong></p>
-<div class="cell">
-<div class="cell-output-display">
-<p><img data-src="9a-simple-linear-regression_files/figure-revealjs/unnamed-chunk-16-1.png" width="960"></p>
-</div>
-</div>
-</div>
-</section>
-<section id="section-7" class="slide level2">
-<h2></h2>
-<div class="pull-left">
-<p><strong>Constant Variance</strong></p>
-<div class="cell">
-<div class="cell-output-display">
-<p><img data-src="9a-simple-linear-regression_files/figure-revealjs/unnamed-chunk-17-1.png" width="960"></p>
-</div>
-</div>
-</div>
-<div class="pull-right">
-<p><strong>Non-constant variance</strong></p>
-<div class="cell">
-<div class="cell-output-display">
-<p><img data-src="9a-simple-linear-regression_files/figure-revealjs/unnamed-chunk-18-1.png" width="960"></p>
-</div>
-</div>
-</div>
-</section>
-<section id="independence" class="slide level2">
-<h2>Independence</h2>
-<p>Harder to check because we need to know how the data were collected.</p>
-<div class="fragment">
-<p>In the description of the dataset it says <em>[a study]considered all pregnancies between 1960 and 1967 among women in the Kaiser Foundation Health Plan in the San Francisco East Bay area.</em></p>
-</div>
-<div class="fragment">
-<p>It is possible that babies born in the same hospital may have similar birth weight.</p>
-</div>
-</section>
-<section id="section-8" class="slide level2">
-<h2></h2>
-<p>Correlated data examples: patients within hospitals, students within schools, people within neighborhoods, time-series data.</p>
-</section></section>
-<section>
-<section id="inference" class="title-slide slide level1 center">
-<h1>Inference</h1>
-
-</section>
-<section id="inference-hypothesis-testing" class="slide level2">
-<h2>Inference: Hypothesis Testing</h2>
-<p><span class="math inline">\(H_o: \beta_1 = 0\)</span></p>
-<p><span class="math inline">\(H_A: \beta_1 \neq 0\)</span></p>
-<div class="fragment">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">tidy</span>(model_g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 5
-  term        estimate std.error statistic  p.value
-  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
-1 (Intercept)  -10.1      8.32       -1.21 2.27e- 1
-2 gestation      0.464    0.0297     15.6  3.22e-50</code></pre>
-</div>
-</div>
-<p>Since the p-value of 3.22e-50 &lt; 0.05 we reject the null hypothesis and conclude that there is a significant relationship between gestation and birth weight.</p>
-</div>
-</section>
-<section id="inference-confidence-interval" class="slide level2">
-<h2>Inference: Confidence Interval</h2>
-<p>CI = point estimate <span class="math inline">\(\pm\)</span> critical value <span class="math inline">\(\times\)</span> standard error</p>
-<p>95% CI for the slope = point estimate of the slope <span class="math inline">\(\pm\)</span> critical value <span class="math inline">\(\times\)</span> standard error of the slope</p>
-<p>Critical value</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">qt</span>(<span class="fl">0.975</span>, <span class="at">df =</span> <span class="dv">1235</span>) <span class="co"># recall n = 1236</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.961887</code></pre>
-</div>
-</div>
-</section>
-<section id="inference-confidence-interval-1" class="slide level2">
-<h2>Inference: Confidence Interval</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">tidy</span>(model_g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 5
-  term        estimate std.error statistic  p.value
-  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
-1 (Intercept)  -10.1      8.32       -1.21 2.27e- 1
-2 gestation      0.464    0.0297     15.6  3.22e-50</code></pre>
-</div>
-</div>
-<p>95% CI = 0.4642626 <span class="math inline">\(\pm\)</span> 1.9618867 <span class="math inline">\(\times\)</span> 0.0297437</p>
-<p>95% CI = (0.4059089, 0.5226163)</p>
-</section>
-<section id="inference-confidence-interval-2" class="slide level2">
-<h2>Inference: Confidence Interval</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">tidy</span>(model_g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 5
-  term        estimate std.error statistic  p.value
-  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
-1 (Intercept)  -10.1      8.32       -1.21 2.27e- 1
-2 gestation      0.464    0.0297     15.6  3.22e-50</code></pre>
-</div>
-</div>
-</section>
-<section id="inference-confidence-interval-3" class="slide level2">
-<h2>Inference: Confidence Interval</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">confint</span>(model_g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>                  2.5 %    97.5 %
-(Intercept) -26.3915884 6.2632199
-gestation     0.4059083 0.5226169</code></pre>
-</div>
-</div>
-<p>Note that the 95% confidence interval for the slope does not contain zero and all the values in the interval are positive indicating a significant positive relationship between gestation and birth weight.</p>
-</section>
-<section id="confidence-interval" class="slide level2">
-<h2>Confidence Interval</h2>
-</section>
-<section id="section-9" class="slide level2">
-<h2></h2>
-<table>
-<thead>
-<tr class="header">
-<th>y</th>
-<th>Response</th>
-<th>Birth weight</th>
-<th>Numeric</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>x</td>
+<tr class="even">
+<td><span class="math inline">\(x_2\)</span></td>
 <td>Explanatory</td>
 <td>Smoke</td>
 <td>Categorical</td>
 </tr>
 </tbody>
 </table>
+</center>
 </section>
-<section id="notation-1" class="slide level2">
+<section id="notation" class="slide level2">
 <h2>Notation</h2>
-<p><span class="math inline">\(y_i = \beta_0 +\beta_1x_i + \epsilon_i\)</span></p>
-<p><span class="math inline">\(\beta_0\)</span> is y-intercept<br>
-<span class="math inline">\(\beta_1\)</span> is slope<br>
+<p><span class="math inline">\(y_i = \beta_0 +\beta_1x_{1i} + \beta_2x_{2i} + \epsilon_i\)</span></p>
+<p><span class="math inline">\(\beta_0\)</span> is intercept<br>
+<span class="math inline">\(\beta_1\)</span> is the slope for gestation<br>
+<span class="math inline">\(\beta_2\)</span> is the slope for smoke<br>
 <span class="math inline">\(\epsilon_i\)</span> is error/residual<br>
 <span class="math inline">\(i = 1, 2, ...n\)</span> identifier for each point</p>
+</section>
+<section id="section-2" class="slide level2">
+<h2></h2>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 5
+  term        estimate std.error statistic  p.value
+  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+1 (Intercept)   -0.932    8.15      -0.114 9.09e- 1
+2 gestation      0.443    0.0290    15.3   3.16e-48
+3 smoke         -8.09     0.953     -8.49  5.96e-17</code></pre>
+</div>
+</div>
+</section>
+<section id="section-3" class="slide level2">
+<h2></h2>
+<p>Expected birth weight for a baby who had 280 days of gestation with a smoker mother</p>
+<p><span class="math inline">\(\hat {\text{bwt}_i} = b_0 + b_1 \text{ gestation}_i + b_2 \text{ smoke}_i\)</span></p>
+<p><span class="math inline">\(\hat {\text{bwt}_i} = -0.932 + (0.443 \times 280) + (-8.09 \times 1)\)</span></p>
+</section>
+<section id="section-4" class="slide level2">
+<h2></h2>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,236 × 4
+     bwt gestation smoke  pred
+   &lt;int&gt;     &lt;int&gt; &lt;int&gt; &lt;dbl&gt;
+ 1   120       284     0  125.
+ 2   113       282     0  124.
+ 3   128       279     1  115.
+ 4   123        NA     0   NA 
+ 5   108       282     1  116.
+ 6   136       286     0  126.
+ 7   138       244     0  107.
+ 8   132       245     0  108.
+ 9   120       289     0  127.
+10   143       299     1  123.
+# ℹ 1,226 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="section-5" class="slide level2">
+<h2></h2>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,236 × 5
+     bwt gestation smoke  pred  resid
+   &lt;int&gt;     &lt;int&gt; &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt;
+ 1   120       284     0  125.  -4.84
+ 2   113       282     0  124. -11.0 
+ 3   128       279     1  115.  13.5 
+ 4   123        NA     0   NA   NA   
+ 5   108       282     1  116.  -7.87
+ 6   136       286     0  126.  10.3 
+ 7   138       244     0  107.  30.9 
+ 8   132       245     0  108.  24.4 
+ 9   120       289     0  127.  -7.05
+10   143       299     1  123.  19.6 
+# ℹ 1,226 more rows</code></pre>
+</div>
+</div>
+</section>
+<section>
+<section id="transformations" class="title-slide slide level1 center">
+<h1>Transformations</h1>
+
+</section>
+<section id="data" class="slide level2">
+<h2>Data</h2>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 2,930
+Columns: 82
+$ order           &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,…
+$ pid             &lt;chr&gt; "0526301100", "0526350040", "0526351010", "0526353030"…
+$ ms_sub_class    &lt;chr&gt; "020", "020", "020", "020", "060", "060", "120", "120"…
+$ ms_zoning       &lt;chr&gt; "RL", "RH", "RL", "RL", "RL", "RL", "RL", "RL", "RL", …
+$ lot_frontage    &lt;int&gt; 141, 80, 81, 93, 74, 78, 41, 43, 39, 60, 75, NA, 63, 8…
+$ lot_area        &lt;int&gt; 31770, 11622, 14267, 11160, 13830, 9978, 4920, 5005, 5…
+$ street          &lt;chr&gt; "Pave", "Pave", "Pave", "Pave", "Pave", "Pave", "Pave"…
+$ alley           &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ lot_shape       &lt;chr&gt; "IR1", "Reg", "IR1", "Reg", "IR1", "IR1", "Reg", "IR1"…
+$ land_contour    &lt;chr&gt; "Lvl", "Lvl", "Lvl", "Lvl", "Lvl", "Lvl", "Lvl", "HLS"…
+$ utilities       &lt;chr&gt; "AllPub", "AllPub", "AllPub", "AllPub", "AllPub", "All…
+$ lot_config      &lt;chr&gt; "Corner", "Inside", "Corner", "Corner", "Inside", "Ins…
+$ land_slope      &lt;chr&gt; "Gtl", "Gtl", "Gtl", "Gtl", "Gtl", "Gtl", "Gtl", "Gtl"…
+$ neighborhood    &lt;chr&gt; "NAmes", "NAmes", "NAmes", "NAmes", "Gilbert", "Gilber…
+$ condition_1     &lt;chr&gt; "Norm", "Feedr", "Norm", "Norm", "Norm", "Norm", "Norm…
+$ condition_2     &lt;chr&gt; "Norm", "Norm", "Norm", "Norm", "Norm", "Norm", "Norm"…
+$ bldg_type       &lt;chr&gt; "1Fam", "1Fam", "1Fam", "1Fam", "1Fam", "1Fam", "Twnhs…
+$ house_style     &lt;chr&gt; "1Story", "1Story", "1Story", "1Story", "2Story", "2St…
+$ overall_qual    &lt;int&gt; 6, 5, 6, 7, 5, 6, 8, 8, 8, 7, 6, 6, 6, 7, 8, 8, 8, 9, …
+$ overall_cond    &lt;int&gt; 5, 6, 6, 5, 5, 6, 5, 5, 5, 5, 5, 7, 5, 5, 5, 5, 7, 2, …
+$ year_built      &lt;int&gt; 1960, 1961, 1958, 1968, 1997, 1998, 2001, 1992, 1995, …
+$ year_remod_add  &lt;int&gt; 1960, 1961, 1958, 1968, 1998, 1998, 2001, 1992, 1996, …
+$ roof_style      &lt;chr&gt; "Hip", "Gable", "Hip", "Hip", "Gable", "Gable", "Gable…
+$ roof_matl       &lt;chr&gt; "CompShg", "CompShg", "CompShg", "CompShg", "CompShg",…
+$ exterior_1st    &lt;chr&gt; "BrkFace", "VinylSd", "Wd Sdng", "BrkFace", "VinylSd",…
+$ exterior_2nd    &lt;chr&gt; "Plywood", "VinylSd", "Wd Sdng", "BrkFace", "VinylSd",…
+$ mas_vnr_type    &lt;chr&gt; "Stone", "None", "BrkFace", "None", "None", "BrkFace",…
+$ mas_vnr_area    &lt;int&gt; 112, 0, 108, 0, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 603,…
+$ exter_qual      &lt;chr&gt; "TA", "TA", "TA", "Gd", "TA", "TA", "Gd", "Gd", "Gd", …
+$ exter_cond      &lt;chr&gt; "TA", "TA", "TA", "TA", "TA", "TA", "TA", "TA", "TA", …
+$ foundation      &lt;chr&gt; "CBlock", "CBlock", "CBlock", "CBlock", "PConc", "PCon…
+$ bsmt_qual       &lt;chr&gt; "TA", "TA", "TA", "TA", "Gd", "TA", "Gd", "Gd", "Gd", …
+$ bsmt_cond       &lt;chr&gt; "Gd", "TA", "TA", "TA", "TA", "TA", "TA", "TA", "TA", …
+$ bsmt_exposure   &lt;chr&gt; "Gd", "No", "No", "No", "No", "No", "Mn", "No", "No", …
+$ bsmt_fin_type_1 &lt;chr&gt; "BLQ", "Rec", "ALQ", "ALQ", "GLQ", "GLQ", "GLQ", "ALQ"…
+$ bsmt_fin_sf_1   &lt;int&gt; 639, 468, 923, 1065, 791, 602, 616, 263, 1180, 0, 0, 9…
+$ bsmt_fin_type_2 &lt;chr&gt; "Unf", "LwQ", "Unf", "Unf", "Unf", "Unf", "Unf", "Unf"…
+$ bsmt_fin_sf_2   &lt;int&gt; 0, 144, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1120, 0, 0…
+$ bsmt_unf_sf     &lt;int&gt; 441, 270, 406, 1045, 137, 324, 722, 1017, 415, 994, 76…
+$ total_bsmt_sf   &lt;int&gt; 1080, 882, 1329, 2110, 928, 926, 1338, 1280, 1595, 994…
+$ heating         &lt;chr&gt; "GasA", "GasA", "GasA", "GasA", "GasA", "GasA", "GasA"…
+$ heating_qc      &lt;chr&gt; "Fa", "TA", "TA", "Ex", "Gd", "Ex", "Ex", "Ex", "Ex", …
+$ central_air     &lt;chr&gt; "Y", "Y", "Y", "Y", "Y", "Y", "Y", "Y", "Y", "Y", "Y",…
+$ electrical      &lt;chr&gt; "SBrkr", "SBrkr", "SBrkr", "SBrkr", "SBrkr", "SBrkr", …
+$ x1st_flr_sf     &lt;int&gt; 1656, 896, 1329, 2110, 928, 926, 1338, 1280, 1616, 102…
+$ x2nd_flr_sf     &lt;int&gt; 0, 0, 0, 0, 701, 678, 0, 0, 0, 776, 892, 0, 676, 0, 0,…
+$ low_qual_fin_sf &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …
+$ gr_liv_area     &lt;int&gt; 1656, 896, 1329, 2110, 1629, 1604, 1338, 1280, 1616, 1…
+$ bsmt_full_bath  &lt;int&gt; 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 1, 1, 0, 1, …
+$ bsmt_half_bath  &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …
+$ full_bath       &lt;int&gt; 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 3, 2, 1, …
+$ half_bath       &lt;int&gt; 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1, …
+$ bedroom_abv_gr  &lt;int&gt; 3, 2, 3, 3, 3, 3, 2, 2, 2, 3, 3, 3, 3, 2, 1, 4, 4, 1, …
+$ kitchen_abv_gr  &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …
+$ kitchen_qual    &lt;chr&gt; "TA", "TA", "Gd", "Ex", "TA", "Gd", "Gd", "Gd", "Gd", …
+$ tot_rms_abv_grd &lt;int&gt; 7, 5, 6, 8, 6, 7, 6, 5, 5, 7, 7, 6, 7, 5, 4, 12, 8, 8,…
+$ functional      &lt;chr&gt; "Typ", "Typ", "Typ", "Typ", "Typ", "Typ", "Typ", "Typ"…
+$ fireplaces      &lt;int&gt; 2, 0, 0, 2, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 1, 0, 1, …
+$ fireplace_qu    &lt;chr&gt; "Gd", NA, NA, "TA", "TA", "Gd", NA, NA, "TA", "TA", "T…
+$ garage_type     &lt;chr&gt; "Attchd", "Attchd", "Attchd", "Attchd", "Attchd", "Att…
+$ garage_yr_blt   &lt;int&gt; 1960, 1961, 1958, 1968, 1997, 1998, 2001, 1992, 1995, …
+$ garage_finish   &lt;chr&gt; "Fin", "Unf", "Unf", "Fin", "Fin", "Fin", "Fin", "RFn"…
+$ garage_cars     &lt;int&gt; 2, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 2, 3, …
+$ garage_area     &lt;int&gt; 528, 730, 312, 522, 482, 470, 582, 506, 608, 442, 440,…
+$ garage_qual     &lt;chr&gt; "TA", "TA", "TA", "TA", "TA", "TA", "TA", "TA", "TA", …
+$ garage_cond     &lt;chr&gt; "TA", "TA", "TA", "TA", "TA", "TA", "TA", "TA", "TA", …
+$ paved_drive     &lt;chr&gt; "P", "Y", "Y", "Y", "Y", "Y", "Y", "Y", "Y", "Y", "Y",…
+$ wood_deck_sf    &lt;int&gt; 210, 140, 393, 0, 212, 360, 0, 0, 237, 140, 157, 483, …
+$ open_porch_sf   &lt;int&gt; 62, 0, 36, 0, 34, 36, 0, 82, 152, 60, 84, 21, 75, 0, 5…
+$ enclosed_porch  &lt;int&gt; 0, 0, 0, 0, 0, 0, 170, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+$ x3ssn_porch     &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …
+$ screen_porch    &lt;int&gt; 0, 120, 0, 0, 0, 0, 0, 144, 0, 0, 0, 0, 0, 0, 140, 210…
+$ pool_area       &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …
+$ pool_qc         &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ fence           &lt;chr&gt; NA, "MnPrv", NA, NA, "MnPrv", NA, NA, NA, NA, NA, NA, …
+$ misc_feature    &lt;chr&gt; NA, NA, "Gar2", NA, NA, NA, NA, NA, NA, NA, NA, "Shed"…
+$ misc_val        &lt;int&gt; 0, 0, 12500, 0, 0, 0, 0, 0, 0, 0, 0, 500, 0, 0, 0, 0, …
+$ mo_sold         &lt;int&gt; 5, 6, 6, 4, 3, 6, 4, 1, 3, 6, 4, 3, 5, 2, 6, 6, 6, 6, …
+$ yr_sold         &lt;int&gt; 2010, 2010, 2010, 2010, 2010, 2010, 2010, 2010, 2010, …
+$ sale_type       &lt;chr&gt; "WD ", "WD ", "WD ", "WD ", "WD ", "WD ", "WD ", "WD "…
+$ sale_condition  &lt;chr&gt; "Normal", "Normal", "Normal", "Normal", "Normal", "Nor…
+$ sale_price      &lt;int&gt; 215000, 105000, 172000, 244000, 189900, 195500, 213500…</code></pre>
+</div>
+</div>
+</section>
+<section id="section-6" class="slide level2">
+<h2></h2>
+
+<img data-src="9b-multiple-linear-regression_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch quarto-figure-center"></section>
+<section id="section-7" class="slide level2">
+<h2></h2>
+
+<img data-src="9b-multiple-linear-regression_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch quarto-figure-center"><p>Note that log is natural log in R.</p>
+</section>
+<section id="section-8" class="slide level2">
+<h2></h2>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 5
+  term        estimate std.error statistic   p.value
+  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
+1 (Intercept) -4.33     0.387        -11.2 1.73e- 28
+2 year_built   0.00829  0.000196      42.3 4.45e-305</code></pre>
+</div>
+</div>
+<p><span class="math inline">\({log(\hat y_i)} = b_0 + b_1x_{1i}\)</span></p>
+<p><span class="math inline">\({log(\hat y_i)} = -4.33 + 0.00829x_{1i}\)</span></p>
+</section>
+<section id="section-9" class="slide level2">
+<h2></h2>
+<p>Estimated sale price of a house built in 1980</p>
+<p><span class="math inline">\({log(\hat y_i)} = -4.33 + 0.00829 \times 1980\)</span></p>
+<div class="fragment">
+<p><span class="math inline">\(e^{log(\hat y_i)} = e^{-4.33 + 0.00829 \times 1980}\)</span></p>
+</div>
+<div class="fragment">
+<p><span class="math inline">\(\hat y_i = e^{-4.33} \times e^ {0.00829 \times 1980} = 177052.2\)</span></p>
+</div>
+<div class="fragment">
+<p>For one-unit (year) increase in x, the y is multiplied by <span class="math inline">\(e^{b_1}\)</span>.</p>
+</div>
+<div class="fragment">
+<p>Note that <span class="math inline">\(e^x\)</span> can be achieved by <code>exp(x)</code> in R.</p>
+</div>
+</section>
+<section id="common-transformations" class="slide level2">
+<h2>Common Transformations</h2>
+<ul>
+<li class="fragment"><span class="math inline">\(log(Y)\)</span>, <span class="math inline">\(log(X)\)</span></li>
+<li class="fragment"><span class="math inline">\(1/Y\)</span>, <span class="math inline">\(1/X\)</span></li>
+<li class="fragment"><span class="math inline">\(\sqrt{Y}, \sqrt{X})\)</span></li>
+</ul>
+</section></section>
+<section>
+<section id="model-evaluation" class="title-slide slide level1 center">
+<h1>Model Evaluation</h1>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 1,236
+Columns: 8
+$ case      &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 1…
+$ bwt       &lt;int&gt; 120, 113, 128, 123, 108, 136, 138, 132, 120, 143, 140, 144, …
+$ gestation &lt;int&gt; 284, 282, 279, NA, 282, 286, 244, 245, 289, 299, 351, 282, 2…
+$ parity    &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …
+$ age       &lt;int&gt; 27, 33, 28, 36, 23, 25, 33, 23, 25, 30, 27, 32, 23, 36, 30, …
+$ height    &lt;int&gt; 62, 64, 64, 69, 67, 62, 62, 65, 62, 66, 68, 64, 63, 61, 63, …
+$ weight    &lt;int&gt; 100, 135, 115, 190, 125, 93, 178, 140, 125, 136, 120, 124, 1…
+$ smoke     &lt;int&gt; 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 0, 1, 1, 0, 1, …</code></pre>
+</div>
+</div>
 </section>
 <section id="section-10" class="slide level2">
 <h2></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>model_s <span class="ot">&lt;-</span> <span class="fu">lm</span>(bwt <span class="sc">~</span> smoke, <span class="at">data =</span> babies)</span>
-<span id="cb19-2"><a href="#cb19-2"></a><span class="fu">tidy</span>(model_s)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 5
   term        estimate std.error statistic  p.value
   &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
-1 (Intercept)   123.       0.649    190.   0       
-2 smoke          -8.94     1.03      -8.65 1.55e-17</code></pre>
+1 (Intercept)  -10.1      8.32       -1.21 2.27e- 1
+2 gestation      0.464    0.0297     15.6  3.22e-50</code></pre>
 </div>
 </div>
-<p><span class="math inline">\(\hat {y}_i = b_0 + b_1 x_i\)</span></p>
-<p><span class="math inline">\(\hat {\text{bwt}_i} = b_0 + b_1 \text{ smoke}_i\)</span></p>
-<p><span class="math inline">\(\hat {\text{bwt}_i} = 123 + (-8.94\text{ smoke}_i)\)</span></p>
 </section>
 <section id="section-11" class="slide level2">
 <h2></h2>
-<div class="pull-left">
-<p>Expected bwt for a baby with a non-smoker mother</p>
-<p><span class="math inline">\(\hat {\text{bwt}_i} = 123 + (-8.94\text{ smoke}_i)\)</span></p>
-<p><span class="math inline">\(\hat {\text{bwt}_i} = 123 + (-8.94\times 0)\)</span></p>
-<p><span class="math inline">\(\hat {\text{bwt}_i} = 123\)</span></p>
-<p><span class="math inline">\(E[bwt_i | smoke_i = 0] = b_0\)</span></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 12
+  r.squared adj.r.squared sigma statistic  p.value    df logLik    AIC    BIC
+      &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+1     0.166         0.166  16.7      244. 3.22e-50     1 -5175. 10356. 10371.
+# ℹ 3 more variables: deviance &lt;dbl&gt;, df.residual &lt;int&gt;, nobs &lt;int&gt;</code></pre>
 </div>
-<div class="pull-right">
-<p>Expected bwt for a baby with a smoker mother</p>
-<p><span class="math inline">\(\hat {\text{bwt}_i} = 123 + (-8.94\text{ smoke}_i)\)</span></p>
-<p><span class="math inline">\(\hat {\text{bwt}_i} = 123 + (-8.94\times 1)\)</span></p>
-<p><span class="math inline">\(\hat {\text{bwt}_i} = 114.06\)</span></p>
-<p><span class="math inline">\(E[bwt_i | smoke_i = 1] = b_0 + b_1\)</span></p>
 </div>
 </section>
 <section id="section-12" class="slide level2">
 <h2></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">confint</span>(model_s)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>                2.5 %     97.5 %
-(Intercept) 121.77391 124.320430
-smoke       -10.96413  -6.911199</code></pre>
+<pre><code>[1] 0.1663449</code></pre>
 </div>
 </div>
-<p>Note that the confidence interval for the “slope” does not contain 0 and all the values in the interval are negative.</p>
+<p>16% of the variation in birth weight is explained by gestation. Higher values of R squared is preferred.</p>
+
+<img data-src="9b-multiple-linear-regression_files/figure-revealjs/unnamed-chunk-14-1.png" width="960" class="r-stretch quarto-figure-center"></section>
+<section id="section-13" class="slide level2">
+<h2></h2>
 </section>
-<section id="understanding-relationships" class="slide level2">
-<h2>Understanding Relationships</h2>
+<section id="adjusted-r-squared" class="slide level2">
+<h2>Adjusted R-Squared</h2>
+<div class="pull-left">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 12
+  r.squared adj.r.squared sigma statistic  p.value    df logLik    AIC    BIC
+      &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+1     0.166         0.166  16.7      244. 3.22e-50     1 -5175. 10356. 10371.
+# ℹ 3 more variables: deviance &lt;dbl&gt;, df.residual &lt;int&gt;, nobs &lt;int&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="pull-right">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 12
+  r.squared adj.r.squared sigma statistic  p.value    df logLik    AIC    BIC
+      &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+1     0.212         0.210  16.2      108. 3.45e-62     3 -5089. 10187. 10213.
+# ℹ 3 more variables: deviance &lt;dbl&gt;, df.residual &lt;int&gt;, nobs &lt;int&gt;</code></pre>
+</div>
+</div>
+</div>
+<p>When comparing models with multiple predictors we rely on Adjusted R-squared.</p>
+</section>
+<section id="section-14" class="slide level2">
+<h2></h2>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,236 × 3
+     bwt  pred  resid
+   &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt;
+ 1   120  122.  -1.79
+ 2   113  121.  -7.86
+ 3   128  119.   8.53
+ 4   123   NA   NA   
+ 5   108  121. -12.9 
+ 6   136  123.  13.3 
+ 7   138  103.  34.8 
+ 8   132  104.  28.3 
+ 9   120  124.  -4.11
+10   143  129.  14.2 
+# ℹ 1,226 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="section-15" class="slide level2">
+<h2></h2>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,236 × 3
+     bwt  pred  resid
+   &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt;
+ 1   120  125.  -4.80
+ 2   113  125. -11.5 
+ 3   128  115.  13.3 
+ 4   123   NA   NA   
+ 5   108  115.  -7.47
+ 6   136  125.  10.5 
+ 7   138  108.  30.4 
+ 8   132  107.  25.0 
+ 9   120  127.  -6.81
+10   143  124.  19.2 
+# ℹ 1,226 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="root-mean-square-error" class="slide level2">
+<h2>Root Mean Square Error</h2>
+<p><span class="math inline">\(RMSE = \sqrt{\frac{\Sigma_{i=1}^n(y_i-\hat y_i)^2}{n}}\)</span></p>
+</section>
+<section id="section-16" class="slide level2">
+<h2></h2>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 16.1687</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 16.6512</code></pre>
+</div>
+</div>
+</section>
+<section id="section-17" class="slide level2">
+<h2></h2>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 15.78198</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.2541383</code></pre>
+</div>
+</div>
+<p>Can we keep adding all the variables and try to get an EXCELLENT model fit?</p>
+</section>
+<section id="overfitting" class="slide level2">
+<h2>Overfitting</h2>
 <ul>
-<li class="fragment"><p>Just because we observe a significant relationship between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>, it does not mean that <span class="math inline">\(x\)</span> causes <span class="math inline">\(y\)</span>.</p></li>
-<li class="fragment"><p>Just because we observe a significant relationship in a sample that does not mean the findings will generalize to the population.</p></li>
-<li class="fragment"><p>For these we need to understand sampling and study design.</p></li>
+<li class="fragment"><p>We are fitting the model to sample data.</p></li>
+<li class="fragment"><p>Our goal is to understand the population data.</p></li>
+<li class="fragment"><p>If we make our model too perfect for our sample data, the model may not perform as well with other sample data from the population.</p></li>
+<li class="fragment"><p>In this case we would be overfitting the data.</p></li>
+<li class="fragment"><p>We can use <strong>model validation</strong> techniques.</p></li>
 </ul>
+</section>
+<section id="splitting-the-data-train-vs.-test" class="slide level2">
+<h2>Splitting the Data (Train vs.&nbsp;Test)</h2>
+<div class="fragment">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 927   8</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 309   8</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="section-18" class="slide level2">
+<h2></h2>
+</section>
+<section id="section-19" class="slide level2">
+<h2></h2>
+<div class="pull-left">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 12
+  r.squared adj.r.squared sigma statistic  p.value    df logLik   AIC   BIC
+      &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1     0.204         0.201  16.4      76.8 2.87e-44     3 -3815. 7641. 7665.
+# ℹ 3 more variables: deviance &lt;dbl&gt;, df.residual &lt;int&gt;, nobs &lt;int&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="pull-right">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 12
+  r.squared adj.r.squared sigma statistic  p.value    df logLik   AIC   BIC
+      &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1     0.243         0.236  15.8      32.2 4.21e-18     3 -1272. 2553. 2572.
+# ℹ 3 more variables: deviance &lt;dbl&gt;, df.residual &lt;int&gt;, nobs &lt;int&gt;</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="section-20" class="slide level2">
+<h2></h2>
+<div class="pull-left">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 16.31741</code></pre>
+</div>
+</div>
+</div>
+<div class="pull-right">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 15.64897</code></pre>
+</div>
+</div>
+</div>
 
 <img src="https://www.stats4cs.com/img/logo.png" class="slide-logo r-stretch"><div class="footer footer-default">
 <p><a href="https://stats4cs.com">stats4cs.com</a></p>
@@ -957,19 +833,19 @@ smoke       -10.96413  -6.911199</code></pre>
   </div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="9a-simple-linear-regression_files/libs/revealjs/dist/reveal.js"></script>
+  <script src="9b-multiple-linear-regression_files/libs/revealjs/dist/reveal.js"></script>
   <!-- reveal.js plugins -->
-  <script src="9a-simple-linear-regression_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="9a-simple-linear-regression_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="9a-simple-linear-regression_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="9a-simple-linear-regression_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="9a-simple-linear-regression_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  <script src="9b-multiple-linear-regression_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="9b-multiple-linear-regression_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="9b-multiple-linear-regression_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="9b-multiple-linear-regression_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="9b-multiple-linear-regression_files/libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
-  <script src="9a-simple-linear-regression_files/libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="9a-simple-linear-regression_files/libs/revealjs/plugin/search/search.js"></script>
-  <script src="9a-simple-linear-regression_files/libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="9a-simple-linear-regression_files/libs/revealjs/plugin/math/math.js"></script>
+  <script src="9b-multiple-linear-regression_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="9b-multiple-linear-regression_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="9b-multiple-linear-regression_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="9b-multiple-linear-regression_files/libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
